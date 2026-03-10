@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-17 19:04+0100\n"
-"PO-Revision-Date: 2026-03-09 16:31+0000\n"
-"Last-Translator: mondstern <mondstern@noreply.codeberg.org>\n"
+"PO-Revision-Date: 2026-03-10 07:50+0000\n"
+"Last-Translator: drafolin <drafolin@noreply.codeberg.org>\n"
 "Language-Team: Czech <https://translate.codeberg.org/projects/tonearm/"
 "tonearm/cs/>\n"
 "Language: cs\n"
@@ -358,7 +358,7 @@ msgstr "Externí Odkaz"
 
 #: internal/ui/routes/feed.go:99
 msgid "Feed"
-msgstr "Krmivo"
+msgstr "Přehled"
 
 #: internal/ui/routes/search.go:33
 msgid "For example, Fox Stevenson"
@@ -382,7 +382,7 @@ msgstr "Stránka"
 
 #: internal/ui/window_preferences.go:107
 msgid "Images"
-msgstr "Obrázek"
+msgstr "Obrázky"
 
 #: internal/router/handler_error.go:10
 msgid "Internal Error"
@@ -406,7 +406,7 @@ msgstr "Last.fm"
 
 #: internal/ui/window_preferences.go:134
 msgid "ListenBrainz"
-msgstr "ListenBrainZ"
+msgstr "ListenBrainz"
 
 #: internal/ui/window_preferences.go:124
 msgid "ListenBrainz API Token"
@@ -430,7 +430,7 @@ msgstr "Odhlásit se z Last.fm"
 
 #: internal/ui/window_preferences.go:251
 msgid "Logged in to Last.fm as %s"
-msgstr "Přihlásit se Last.fm v %s"
+msgstr "Přihlášen do Last.fm jako %s"
 
 #: internal/ui/window_preferences.go:221
 msgid "Logged out of Last.fm"
@@ -466,11 +466,11 @@ msgstr "Maximální délka historie před zrušením starých záznamů"
 
 #: internal/ui/components/dynamic_v1.go:157
 msgid "More"
-msgstr "Mnoho"
+msgstr "Více"
 
 #: internal/ui/components/tracklist/column_controls.go:62
 msgid "More…"
-msgstr "Mnoho…"
+msgstr "Více…"
 
 #: internal/ui/routes/my_collection/albums.go:37
 msgid "My Albums"
@@ -590,7 +590,7 @@ msgstr "Nezobrazeno"
 
 #: internal/ui/routes/feed.go:87
 msgid "Older"
-msgstr "Vysoký"
+msgstr "Starší"
 
 #: internal/ui/components/linking/linking.go:75
 msgid "Open TIDAL Page"
@@ -663,7 +663,7 @@ msgstr "Chcete-li zobrazit svou sbírku, přihlaste se"
 
 #: internal/ui/routes/feed.go:100
 msgid "Please sign in to view your feed"
-msgstr "Chcete-li zobrazit svůj zdroj, přihlaste se"
+msgstr "Pro zobrazení přehledu, přihlaste se"
 
 #: internal/ui/window_shortcuts.go:16
 msgid "Preferences"
@@ -791,7 +791,7 @@ msgstr "Přihlášeno jako %s"
 
 #: internal/ui/window_actions.go:322
 msgid "Signed out"
-msgstr "Odhlásit"
+msgstr "Odhlášeno"
 
 #: internal/ui/routes/feed.go:151
 msgid "Single by %s"
@@ -829,7 +829,7 @@ msgstr "Přepnout postranní panel"
 
 #: internal/settings/playback.go:22
 msgid "Track"
-msgstr "Sledovat"
+msgstr "Skladba"
 
 #: internal/player/playback.go:36
 msgid "Track not available for streaming, skipping to next track"
@@ -837,7 +837,7 @@ msgstr "Skladba není k dispozici pro streamování, přechod na další skladbu
 
 #: internal/ui/routes/my-collection.go:81
 msgid "Tracks"
-msgstr "Skladba"
+msgstr "Skladby"
 
 #: internal/router/handler_error.go:13
 msgid ""
@@ -876,7 +876,7 @@ msgstr "Jste přihlášeni k odběru novinek Last.fm"
 
 #: internal/ui/window_preferences.go:160
 msgid "You are logged in to Last.fm as %s"
-msgstr "Jste přihlášeni k odběru novinek Last.fm v %s"
+msgstr "Jste přihlášeni do Last.fm jako %s"
 
 #: internal/ui/components/linking/linking.go:29
 msgid "You can also open the linking page using the button below"
