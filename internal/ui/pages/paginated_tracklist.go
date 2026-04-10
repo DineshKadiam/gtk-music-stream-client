@@ -30,7 +30,7 @@ func NewPaginatedTracklistPage(
 
 	return ScrolledWindow().
 		Child(
-			components.MainContent(
+			components.MainContentScrollable(
 				styleFactory(list),
 			),
 		).

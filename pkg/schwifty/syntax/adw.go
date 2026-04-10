@@ -45,6 +45,12 @@ func Clamp() adwbindings.Clamp {
 	})
 }
 
+func ClampScrollable() adwbindings.ClampScrollable {
+	return managedWidget("ClampScrollable", func() *adw.ClampScrollable {
+		return adw.NewClampScrollable()
+	})
+}
+
 func ComboRow() adwbindings.ComboRow {
 	return managedWidget("ComboRow", func() *adw.ComboRow {
 		comboRow := adw.NewComboRow()
