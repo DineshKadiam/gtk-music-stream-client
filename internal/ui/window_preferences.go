@@ -139,6 +139,7 @@ func buildPreferencesScrobbling(dialog *adw.PreferencesDialog) adwbindings.Prefe
 	dialogRef := weak.NewWidgetRef(dialog)
 	isLastFmLoggedIn := signals.NewStatefulSignal(settings.Scrobbling().LastFMToken() != "")
 
+	var lastFmLoggedInSubscription *signals.Subscription
 	return PreferencesPage(
 		PreferencesGroup(
 			SwitchRow().
@@ -170,10 +171,12 @@ func buildPreferencesScrobbling(dialog *adw.PreferencesDialog) adwbindings.Prefe
 			ActionRow().
 				Title(gettext.Get("Log In to Last.fm…")).
 				Subtitle(gettext.Get("You are currently not logged in to Last.fm")).
-				ConnectConstruct(func(ar *adw.ActionRow) {
-					actionRowRef := weak.NewWidgetRef(ar)
-
-					isLastFmLoggedIn.On(func(b bool) bool {
+				ConnectUnrealize(func(w gtk.Widget) {
+					isLastFmLoggedIn.Unsubscribe(lastFmLoggedInSubscription)
+				}).
+				ConnectRealize(func(widget gtk.Widget) {
+					actionRowRef := weak.NewWidgetRef(&widget)
+					lastFmLoggedInSubscription = isLastFmLoggedIn.On(func(b bool) bool {
 						if b {
 							actionRowRef.Use(func(obj *gtk.Widget) {
 								ar := adw.ActionRowNewFromInternalPtr(obj.Ptr)
