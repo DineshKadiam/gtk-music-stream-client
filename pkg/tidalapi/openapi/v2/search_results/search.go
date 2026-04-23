@@ -13,7 +13,7 @@ import (
 )
 
 func (s *SearchResults) Search(ctx context.Context, query string, include ...string) (*openapi.SearchResult, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/searchResults/%s", settings.ServiceTidal().OpenAPIBaseURL(), url.QueryEscape(query)), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/searchResults/%s", settings.ServiceTidal().OpenAPIBaseURL(), url.PathEscape(query)), nil)
 	if err != nil {
 		return nil, err
 	}
