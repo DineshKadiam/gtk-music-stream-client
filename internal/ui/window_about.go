@@ -141,12 +141,12 @@ func (w *Window) PresentAbout() {
 	about.AddLegalSection("Dependency Injector (infinytum/injector)", "© 2022 Infinytum https://github.com/infinytum/injector", gtk.LicenseUnknownValue, "")
 	about.AddLegalSection("System Locale Detection (jeandeaual/go-locale)", "© 2020 Alexis Jeandeau https://github.com/jeandeaual/go-locale", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("GTK4 / Libadwaita Bindings (jwijenbergh/puregotk)", "© 2022 Kyle McGough https://codeberg.org/puregotk/puregotk", gtk.LicenseMitX11Value, "")
-	about.AddLegalSection("Libsecret (lescuer97/go-libsecret)", "© 2025 Leonardo Escuer https://github.com/lescuer97/go-libsecret", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("JSON Merger (qjebbs/go-jsons)", "© 2022 Jebbs https://github.com/qjebbs/go-jsons", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("ISO8601 Duration Parser (osodev/duration)", "© 2023 Jeroen Wijenbergh https://github.com/sosodev/duration", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("QR Code Generator (yeqown/go-qrcode)", "© 2018 yeqown https://github.com/yeqown/go-qrcode", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("Gettext (leonelquinteros/gotext)", "© 2016 Leonel Quinteros https://github.com/leonelquinteros/gotext", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("Gobble.fm (twoscott/gobble-fm)", "© 2025 twoscott https://github.com/twoscott/gobble-fm", gtk.LicenseMitX11Value, "")
+	about.AddLegalSection("slogpretty (Marlliton/slogpretty)", "© 2025 Marlliton Souza https://github.com/Marlliton/slogpretty", gtk.LicenseMitX11Value, "")
 	about.Present(&w.Widget)
 	about.Unref()
 }
