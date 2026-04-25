@@ -38,6 +38,7 @@
         devShell = pkgs.mkShell {
           PUREGOTK_LIB_FOLDER = "${libraryPath}/lib";
           GSETTINGS_SCHEMA_DIR = "./internal/settings";
+          GIO_EXTRA_MODULES = pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin "${pkgs.glib-networking}/lib/gio/modules";
           TONEARM_DEBUG = "1";
 
           hardeningDisable = [ "fortify" ]; # Required for Delve
@@ -46,7 +47,6 @@
           buildInputs = with pkgs; [
             appstream
             delve
-            flatpak-builder
             go_1_26
             gopls
             gtk4
@@ -60,6 +60,9 @@
             gst_all_1.gst-plugins-bad
             pkg-config # Needed for the first compile with CGO
             sass
+            cacert
+          ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+            flatpak-builder
           ];
         };
 

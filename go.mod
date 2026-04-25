@@ -10,6 +10,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/infinytum/injector v0.0.3
 	github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
+	github.com/keybase/go-keychain v0.0.1
 	github.com/leonelquinteros/gotext v1.7.2
 	github.com/qjebbs/go-jsons v1.0.0-alpha.4
 	github.com/sosodev/duration v1.3.1
