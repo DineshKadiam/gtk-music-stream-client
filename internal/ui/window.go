@@ -6,6 +6,7 @@ import (
 	"codeberg.org/dergs/tonearm/internal/router"
 	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/internal/signals"
+	"codeberg.org/dergs/tonearm/internal/ui/accels"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/puregotk/puregotk/v4/adw"
@@ -81,7 +82,7 @@ func (w *Window) build() *gtk.Widget {
 		layout.SetShowSidebar(newState)
 	}))
 	w.AddAction(sidebarAction)
-	w.GetApplication().SetAccelsForAction("win.toggle-sidebar", []string{"<Ctrl>B", "F9"})
+	w.GetApplication().SetAccelsForAction("win.toggle-sidebar", []string{accels.PrimaryMod + "B", "F9"})
 
 	mediaViewerOverlay := gtk.NewOverlay()
 	mediaViewerOverlay.SetChild(&layout.Widget)

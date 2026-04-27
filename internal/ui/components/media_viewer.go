@@ -3,6 +3,7 @@ package components
 import (
 	"time"
 
+	"codeberg.org/dergs/tonearm/internal/ui/accels"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
@@ -47,9 +48,9 @@ func GetMediaViewer() *MediaViewer {
 	scrollGesture := gtk.NewEventControllerScroll(gtk.EventControllerScrollVerticalValue)
 	scrollGesture.SetPropagationPhase(gtk.PhaseCaptureValue)
 	scrollGesture.ConnectScroll(new(func(_ gtk.EventControllerScroll, _, dy float64) bool {
-		// Only zoom when Ctrl is held
+		// Only zoom when the primary modifier (Ctrl, or Cmd on macOS) is held
 		state := scrollGesture.GetCurrentEventState()
-		if state&gdk.ControlMaskValue != 0 {
+		if state&(gdk.ControlMaskValue|gdk.MetaMaskValue) != 0 {
 			if dy < 0 {
 				go mediaViewer.zoom(1.1)
 			} else {
@@ -162,7 +163,7 @@ func GetMediaViewer() *MediaViewer {
 			r.InsertActionGroup("mediaviewer", actionGroup)
 
 			ShortcutController().
-				ShortcutFromNames("<Ctrl>C", "mediaviewer.copy").
+				ShortcutFromNames(accels.PrimaryMod+"C", "mediaviewer.copy").
 				ShortcutFromNames("Escape", "mediaviewer.close").
 				Into(r)
 		}).

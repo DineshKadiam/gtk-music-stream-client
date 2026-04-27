@@ -14,6 +14,7 @@ import (
 	"codeberg.org/dergs/tonearm/internal/services/tidal/openapi"
 	v2 "codeberg.org/dergs/tonearm/internal/services/tidal/v2"
 	"codeberg.org/dergs/tonearm/internal/settings"
+	"codeberg.org/dergs/tonearm/internal/ui/accels"
 	"codeberg.org/dergs/tonearm/internal/ui/components/linking"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
@@ -41,28 +42,28 @@ func (w *Window) installActions() {
 	}))
 	w.GetApplication().Application.AddAction(preferencesAction)
 	// TIDAL uses CTRL + P for preferences
-	w.GetApplication().SetAccelsForAction("app.preferences", []string{"<Control>comma", "<Control>p"})
+	w.GetApplication().SetAccelsForAction("app.preferences", []string{accels.PrimaryMod + "comma", accels.PrimaryMod + "p"})
 
 	shortcutsAction := gio.NewSimpleAction("shortcuts", nil)
 	shortcutsAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
 		w.PresentShortcuts()
 	}))
 	w.GetApplication().Application.AddAction(shortcutsAction)
-	w.GetApplication().SetAccelsForAction("app.shortcuts", []string{"<Control>question"})
+	w.GetApplication().SetAccelsForAction("app.shortcuts", []string{accels.PrimaryMod + "question"})
 
 	quitAction := gio.NewSimpleAction("quit", nil)
 	quitAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
 		w.GetApplication().Quit()
 	}))
 	w.GetApplication().Application.AddAction(quitAction)
-	w.GetApplication().SetAccelsForAction("app.quit", []string{"<Ctrl>q"})
+	w.GetApplication().SetAccelsForAction("app.quit", []string{accels.PrimaryMod + "q"})
 
 	closeAction := gio.NewSimpleAction("close", nil)
 	closeAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
 		w.Close()
 	}))
 	w.AddAction(closeAction)
-	w.GetApplication().SetAccelsForAction("win.close", []string{"<Ctrl>w"})
+	w.GetApplication().SetAccelsForAction("win.close", []string{accels.PrimaryMod + "w"})
 
 	navigateBackAction := gio.NewSimpleAction("navigate-back", nil)
 	navigateBackAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -76,7 +77,7 @@ func (w *Window) installActions() {
 		router.Navigate("search")
 	}))
 	w.AddAction(searchAction)
-	w.GetApplication().SetAccelsForAction("win.search", []string{"<Ctrl>f"})
+	w.GetApplication().SetAccelsForAction("win.search", []string{accels.PrimaryMod + "f"})
 
 	playTrackAction := gio.NewSimpleAction("player.play-track", glib.NewVariantType("s"))
 	playTrackAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -100,7 +101,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(shuffleAction)
 	// TIDAL uses CTRL + S for shuffle
-	w.GetApplication().SetAccelsForAction("win.player.shuffle", []string{"<Ctrl>s"})
+	w.GetApplication().SetAccelsForAction("win.player.shuffle", []string{accels.PrimaryMod + "s"})
 
 	nextAction := gio.NewSimpleAction("player.next", nil)
 	nextAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -108,7 +109,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(nextAction)
 	// TIDAL uses CTRL + Right Arrow for next
-	w.GetApplication().SetAccelsForAction("win.player.next", []string{"<Ctrl>Right"})
+	w.GetApplication().SetAccelsForAction("win.player.next", []string{accels.PrimaryMod + "Right"})
 
 	playPauseAction := gio.NewSimpleAction("player.play-pause", nil)
 	playPauseAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -122,7 +123,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(previousAction)
 	// TIDAL uses CTRL + Left Arrow for previous
-	w.GetApplication().SetAccelsForAction("win.player.previous", []string{"<Ctrl>Left"})
+	w.GetApplication().SetAccelsForAction("win.player.previous", []string{accels.PrimaryMod + "Left"})
 
 	repeatAction := gio.NewSimpleAction("player.repeat", nil)
 	repeatAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -130,7 +131,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(repeatAction)
 	// TIDAL uses CTRL + R for repeat
-	w.GetApplication().SetAccelsForAction("win.player.repeat", []string{"<Ctrl>r"})
+	w.GetApplication().SetAccelsForAction("win.player.repeat", []string{accels.PrimaryMod + "r"})
 
 	queueTrackAction := gio.NewSimpleAction("player.queue-track", glib.NewVariantType("s"))
 	queueTrackAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -270,7 +271,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(routeHomeAction)
 	// TIDAL uses CTRL + H for route home
-	w.GetApplication().SetAccelsForAction("win.route.home", []string{"<Ctrl>h"})
+	w.GetApplication().SetAccelsForAction("win.route.home", []string{accels.PrimaryMod + "h"})
 
 	routeAlbumAction := gio.NewSimpleAction("route.album", glib.NewVariantType("s"))
 	routeAlbumAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
@@ -325,7 +326,7 @@ func (w *Window) installActions() {
 	}))
 	w.AddAction(signOutAction)
 	// TIDAL uses CTRL + L for sign out
-	w.GetApplication().SetAccelsForAction("win.sign-out", []string{"<Ctrl>l"})
+	w.GetApplication().SetAccelsForAction("win.sign-out", []string{"<Primary>l"})
 
 	setAsDefaultAction := gio.NewSimpleAction("set-as-default", nil)
 	setAsDefaultAction.ConnectActivate(new(func(action gio.SimpleAction, parameter uintptr) {
