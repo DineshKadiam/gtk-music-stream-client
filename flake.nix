@@ -35,36 +35,48 @@
         };
       in
       {
-        devShell = pkgs.mkShell {
-          PUREGOTK_LIB_FOLDER = "${libraryPath}/lib";
-          GSETTINGS_SCHEMA_DIR = "./internal/settings";
-          GIO_EXTRA_MODULES = pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin "${pkgs.glib-networking}/lib/gio/modules";
-          TONEARM_DEBUG = "1";
+        devShell = pkgs.mkShell (
+          {
+            PUREGOTK_LIB_FOLDER = "${libraryPath}/lib";
+            GSETTINGS_SCHEMA_DIR = "./internal/settings";
+            TONEARM_DEBUG = "1";
 
-          hardeningDisable = [ "fortify" ]; # Required for Delve
-          # For delve to work, you need to add the following line to your `programs.zed-editor`:
-          # package = pkgs.zed-editor.fhs;
-          buildInputs = with pkgs; [
-            appstream
-            delve
-            go_1_26
-            gopls
-            gtk4
-            librsvg
-            libsecret
-            graphviz
-            glib-networking
-            gst_all_1.gstreamer
-            gst_all_1.gst-plugins-base
-            gst_all_1.gst-plugins-good
-            gst_all_1.gst-plugins-bad
-            pkg-config # Needed for the first compile with CGO
-            sass
-            cacert
-          ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-            flatpak-builder
-          ];
-        };
+            hardeningDisable = [ "fortify" ]; # Required for Delve
+            # For delve to work, you need to add the following line to your `programs.zed-editor`:
+            # package = pkgs.zed-editor.fhs;
+            buildInputs =
+              with pkgs;
+              [
+                appstream
+                delve
+                go_1_26
+                gopls
+                gtk4
+                librsvg
+                libsecret
+                graphviz
+                glib-networking
+                gst_all_1.gstreamer
+                gst_all_1.gst-plugins-base
+                gst_all_1.gst-plugins-good
+                gst_all_1.gst-plugins-bad
+                pkg-config # Needed for the first compile with CGO
+                sass
+                cacert
+              ]
+              ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+                flatpak-builder
+              ];
+          }
+          // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+            # Only set GIO_EXTRA_MODULES on Darwin where the system gio
+            # module path is unavailable. On Linux, leaving this unset lets
+            # gio find the system glib-networking modules required for
+            # HTTPS / TLS in souphttpsrc; setting it (even to empty) breaks
+            # network streaming.
+            GIO_EXTRA_MODULES = "${pkgs.glib-networking}/lib/gio/modules";
+          }
+        );
 
         packages.tonearm = pkgs.buildGoModule.override { go = pkgs.go_1_26; } (finalAttrs: {
           pname = "tonearm";
