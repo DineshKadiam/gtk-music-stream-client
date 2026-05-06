@@ -3,10 +3,10 @@ package internal
 import "encoding/base64"
 
 const (
-	clientIDPart1     = "WmxneVNuaGtiVzUw"
-	clientIDPart2     = "V2xkTE1HbDRWQT09"
-	clientSecretPart1 = "TVU1dU9VRm1SRUZxZUhKblNrWktZa3RPVjB4bFFY"
-	clientSecretPart2 = "bExSMVpIYlVsT2RWaFFVRXhJVmxoQmRuaEJaejA9"
+	clientIDPart1     = "T0RoRmVVSmxja3A="
+	clientIDPart2     = "eVVtZHhOemRuYnc9PQ=="
+	clientSecretPart1 = "U1U4elJIZHNNVUl5WlVvMk0yeHZUblZuVlUxM1kz"
+	clientSecretPart2 = "WnZSa0oxYm1OU1VFcFBNbTVtYm5ONE9VWkxjejA9"
 
 	ClientVersion           = "2025.12.13"
 	UnauthenticatedClientID = "txNoH4kkV41MfH25"
