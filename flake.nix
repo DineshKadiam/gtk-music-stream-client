@@ -80,7 +80,7 @@
 
         packages.tonearm = pkgs.buildGoModule.override { go = pkgs.go_1_26; } (finalAttrs: {
           pname = "tonearm";
-          version = "1.4.0";
+          version = "1.4.1";
           src = pkgs.lib.cleanSource ./.;
           vendorHash = "sha256-vOkOSquBbWjx1eK7h3vmmHKzaopkbu2iL5mbknMo1Kg=";
 
