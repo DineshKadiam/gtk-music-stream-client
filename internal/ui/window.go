@@ -1,6 +1,8 @@
 package ui
 
 import (
+	"log/slog"
+
 	"codeberg.org/dergs/tonearm/internal/g"
 	"codeberg.org/dergs/tonearm/internal/notifications"
 	"codeberg.org/dergs/tonearm/internal/router"
@@ -29,6 +31,8 @@ var loadingView = g.Lazy(func() *gtk.Widget {
 	widget.Ref()
 	return widget
 })
+
+var logger = slog.With("module", "main window")
 
 func NewWindow(app *adw.Application) *Window {
 	window := &Window{

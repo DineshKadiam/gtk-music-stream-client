@@ -304,11 +304,15 @@ func (w *Window) installActions() {
 					dialog.Present(&w.Widget)
 				}, 0)
 			})
-			defer dialog.ForceClose()
 			if err != nil {
 				notifications.OnToast.Notify(gettext.Get("Sign in failed or aborted"))
+				logger.Error(err.Error())
+				if dialog != nil {
+					dialog.ForceClose()
+				}
 				return
 			}
+			defer dialog.ForceClose()
 			secrets.SetRefreshToken(resp.RefreshToken)
 			notifications.OnToast.Notify(gettext.Get("Signed in as %s", resp.User.Email))
 			router.Refresh()
