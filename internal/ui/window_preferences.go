@@ -46,6 +46,34 @@ func buildPreferencesGeneral(dialog *adw.PreferencesDialog) adwbindings.Preferen
 		).
 			Title(gettext.Get("Navigation Behaviour")).
 			Description(gettext.Get("Configure the behaviour of Tonearm when navigating between pages")),
+		PreferencesGroup(
+			ExpanderRow(
+				EntryRow().
+					Title(gettext.Get("API Base URL")).
+					ConnectConstruct(func(sr *adw.EntryRow) {
+						settings.ServiceTidal().BindAPIBaseURL(&sr.Object, "text")
+					}),
+				EntryRow().
+					Title(gettext.Get("Auth Base URL")).
+					ConnectConstruct(func(sr *adw.EntryRow) {
+						settings.ServiceTidal().BindAuthBaseURL(&sr.Object, "text")
+					}),
+				EntryRow().
+					Title(gettext.Get("OpenAPI Base URL")).
+					ConnectConstruct(func(sr *adw.EntryRow) {
+						settings.ServiceTidal().BindOpenAPIBaseURL(&sr.Object, "text")
+					}),
+				EntryRow().
+					Title(gettext.Get("Resources Base URL")).
+					ConnectConstruct(func(sr *adw.EntryRow) {
+						settings.ServiceTidal().BindResourcesBaseURL(&sr.Object, "text")
+					}),
+			).
+				Title(gettext.Get("Base URLs")).
+				Subtitle(gettext.Get("Configure the base URLs for TIDAL")),
+		).
+			Title(gettext.Get("TIDAL Settings")).
+			Description(gettext.Get("TIDAL-specific settings for advanced users")),
 	).Title(gettext.Get("General")).IconName("settings-symbolic")
 }
 
@@ -111,6 +139,7 @@ func buildPreferencesScrobbling(dialog *adw.PreferencesDialog) adwbindings.Prefe
 	dialogRef := weak.NewWidgetRef(dialog)
 	isLastFmLoggedIn := signals.NewStatefulSignal(settings.Scrobbling().LastFMToken() != "")
 
+	var lastFmLoggedInSubscription *signals.Subscription
 	return PreferencesPage(
 		PreferencesGroup(
 			SwitchRow().
@@ -142,10 +171,12 @@ func buildPreferencesScrobbling(dialog *adw.PreferencesDialog) adwbindings.Prefe
 			ActionRow().
 				Title(gettext.Get("Log In to Last.fm…")).
 				Subtitle(gettext.Get("You are currently not logged in to Last.fm")).
-				ConnectConstruct(func(ar *adw.ActionRow) {
-					actionRowRef := weak.NewWidgetRef(ar)
-
-					isLastFmLoggedIn.On(func(b bool) bool {
+				ConnectUnrealize(func(w gtk.Widget) {
+					isLastFmLoggedIn.Unsubscribe(lastFmLoggedInSubscription)
+				}).
+				ConnectRealize(func(widget gtk.Widget) {
+					actionRowRef := weak.NewWidgetRef(&widget)
+					lastFmLoggedInSubscription = isLastFmLoggedIn.On(func(b bool) bool {
 						if b {
 							actionRowRef.Use(func(obj *gtk.Widget) {
 								ar := adw.ActionRowNewFromInternalPtr(obj.Ptr)

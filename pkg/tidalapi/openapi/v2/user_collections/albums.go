@@ -7,11 +7,12 @@ import (
 	"net/http"
 	"strings"
 
+	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 )
 
 func (p *UserCollections) Albums(ctx context.Context, id string, cursor string, include ...string) (*openapi.Response[[]openapi.Relationship], error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("https://openapi.tidal.com/v2/userCollections/%s/relationships/albums", id), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/userCollections/%s/relationships/albums", settings.ServiceTidal().OpenAPIBaseURL(), id), nil)
 	if err != nil {
 		return nil, err
 	}

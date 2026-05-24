@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"codeberg.org/dergs/tonearm/internal/settings"
 )
 
 type OpenAPIClientAuthStrategy struct {
@@ -28,7 +30,7 @@ func (s *OpenAPIClientAuthStrategy) GetToken(clientID, clientSecret string) (str
 		"client_secret": []string{clientSecret},
 		"grant_type":    []string{"client_credentials"},
 	}
-	req, err := http.NewRequest(http.MethodPost, "https://auth.tidal.com/v1/oauth2/token", strings.NewReader(formValues.Encode()))
+	req, err := http.NewRequest(http.MethodPost, settings.ServiceTidal().AuthBaseURL()+"/v1/oauth2/token", strings.NewReader(formValues.Encode()))
 	if err != nil {
 		return "", err
 	}
@@ -61,7 +63,7 @@ func (s *OpenAPIClientAuthStrategy) GetToken(clientID, clientSecret string) (str
 
 func (s *OpenAPIClientAuthStrategy) Authenticate(req *http.Request, clientID, clientSecret string) error {
 	// This auth is only valid for openapi.tidal.com
-	if req.URL.Host == "openapi.tidal.com" && req.Header.Get("Authorization") == "" {
+	if strings.Contains(req.URL.String(), settings.ServiceTidal().OpenAPIBaseURL()) && req.Header.Get("Authorization") == "" {
 		token, err := s.GetToken(clientID, clientSecret)
 		if err != nil {
 			return err

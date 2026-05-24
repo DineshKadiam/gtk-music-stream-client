@@ -46,6 +46,30 @@
   <url type="contact">https://matrix.to/#/%23tonearm:derg.social</url>
 
   <releases>
+    <release version="1.4.1" date="2026-05-10">
+        <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.4.1</url>
+        <description>
+            <p>Bug Fixes:</p>
+            <ul>
+                <li>Fixed an issue where playback chose a lower quality despite a higher quality being available</li>
+                <li>Fixed a bug where an item without a picture could cause Tonearm to crash</li>
+                <li>Fixed a bug where some search queries were incorrectly submitted, resulting in worse search results or errors</li>
+                <li>Fixed a bug where the Last.fm login status was not correctly shown in the settings panel</li>
+                <li>Fixed a bug where Tonearm would crash when navigating back to the search results page</li>
+                <li>Fixed a bug where Tonearm would not render tracklists beyond ~200 tracks</li>
+                <li>Fixed a bug where MPRIS would load a low quality version of the album cover</li>
+                <li>Fixed a bug where Tonearm could use 100% CPU after reaching the end of a playlist</li>
+                <li>Fixed a bug where the UI would occasionally de-synchronise from playback when encountering an unplayable track</li>
+                <li>Fixed a bug where short tracks would cause Tonearm to race gapless playback transitions</li>
+            </ul>
+            <p>Improvements:</p>
+            <ul>
+                <li>Added Spanish (Castilian) translations</li>
+                <li>Added Catalan translations</li>
+                <li>Implement support for custom TIDAL backends, allowing advanced users to bridge Tonearm to any service</li>
+            </ul>
+        </description>
+    </release>
     <release version="1.4.0" date="2026-03-01">
         <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.4.0</url>
         <description>

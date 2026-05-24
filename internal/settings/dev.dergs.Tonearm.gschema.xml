@@ -122,4 +122,29 @@
         </key>
 
     </schema>
+
+	<!-- Service: TIDAL -->
+	<schema id="dev.dergs.Tonearm.service.tidal" path="/dev/dergs/Tonearm/service/tidal/">
+		<key name="api-baseurl" type="s">
+			<default>'https://tidal.com'</default>
+			<summary>API Base URL</summary>
+			<description>The base URL for the TIDAL API</description>
+		</key>
+		<key name="openapi-baseurl" type="s">
+			<default>'https://openapi.tidal.com'</default>
+			<summary>OpenAPI Base URL</summary>
+			<description>The base URL for the TIDAL OpenAPI</description>
+		</key>
+		<key name="resources-baseurl" type="s">
+			<default>'https://resources.tidal.com'</default>
+			<summary>Resources Base URL</summary>
+			<description>The base URL for the TIDAL Resources</description>
+		</key>
+		<key name="auth-baseurl" type="s">
+			<default>'https://auth.tidal.com'</default>
+			<summary>Auth Base URL</summary>
+			<description>The base URL for the TIDAL Auth</description>
+		</key>
+
+	</schema>
 </schemalist>

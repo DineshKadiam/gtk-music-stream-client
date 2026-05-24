@@ -10,9 +10,13 @@ type ButtonRow = adw.ButtonRow
 
 type Clamp = adw.Clamp
 
+type ClampScrollable = adw.ClampScrollable
+
 type ComboRow = adw.ComboRow
 
 type EntryRow = adw.EntryRow
+
+type ExpanderRow = adw.ExpanderRow
 
 type HeaderBar = adw.HeaderBar
 

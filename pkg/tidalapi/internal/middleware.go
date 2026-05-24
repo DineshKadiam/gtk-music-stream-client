@@ -3,8 +3,10 @@ package internal
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"time"
 
+	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi/auth"
 	"github.com/jeandeaual/go-locale"
 )
@@ -23,11 +25,14 @@ func (m MiddlewareRoundTripper) RoundTrip(req *http.Request) (*http.Response, er
 	req.Header.Set("User-Agent", "Tonearm/"+ClientVersion+" Mozilla/5.0 (Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0")
 
 	// Configure the base URL unless set
-	if req.URL.Scheme == "" {
-		req.URL.Scheme = "https"
-	}
-	if req.URL.Host == "" {
-		req.URL.Host = "tidal.com"
+	baseUrl := settings.ServiceTidal().APIBaseURL()
+	if req.URL.Scheme == "" || req.URL.Host == "" {
+		req.URL.Scheme = ""
+		req.URL.Host = ""
+		parsed, err := url.Parse(baseUrl + req.URL.String())
+		if err == nil {
+			req.URL = parsed
+		}
 	}
 
 	// Configure default query params

@@ -7,11 +7,12 @@ import (
 	"net/http"
 	"strings"
 
+	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 )
 
 func (t *Tracks) Track(ctx context.Context, id string, include ...string) (*openapi.Track, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("https://openapi.tidal.com/v2/tracks/%s", id), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/tracks/%s", settings.ServiceTidal().OpenAPIBaseURL(), id), nil)
 	if err != nil {
 		return nil, err
 	}

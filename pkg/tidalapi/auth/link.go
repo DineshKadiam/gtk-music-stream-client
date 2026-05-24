@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"codeberg.org/dergs/tonearm/internal/settings"
 )
 
 type DeviceLinkingChallenge struct {
@@ -25,7 +27,7 @@ func RequestDeviceLinkingChallenge(clientId string) (*DeviceLinkingChallenge, er
 		"client_id": []string{clientId},
 		"scope":     []string{"r_usr w_usr w_sub"},
 	}
-	req, err := http.NewRequest(http.MethodPost, "https://auth.tidal.com/v1/oauth2/device_authorization", strings.NewReader(formValues.Encode()))
+	req, err := http.NewRequest(http.MethodPost, settings.ServiceTidal().AuthBaseURL()+"/v1/oauth2/device_authorization", strings.NewReader(formValues.Encode()))
 	if err != nil {
 		return nil, err
 	}

@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"codeberg.org/dergs/tonearm/internal/settings"
 )
 
 type AuthStrategy struct {
@@ -29,7 +31,7 @@ func (s *AuthStrategy) GetToken(clientID, clientSecret string) (string, error) {
 		"grant_type":    []string{"refresh_token"},
 		"refresh_token": []string{GetRefreshToken()},
 	}
-	req, err := http.NewRequest(http.MethodPost, "https://auth.tidal.com/v1/oauth2/token", strings.NewReader(formValues.Encode()))
+	req, err := http.NewRequest(http.MethodPost, settings.ServiceTidal().AuthBaseURL()+"/v1/oauth2/token", strings.NewReader(formValues.Encode()))
 	if err != nil {
 		return "", err
 	}

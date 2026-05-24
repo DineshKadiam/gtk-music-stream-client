@@ -3,10 +3,10 @@
   path: modules.txt
   type: file
 - dest: vendor/codeberg.org/puregotk/puregotk
-  sha256: 52c4394f5fe8d2ec9ccb8a0063617a11273772e06474c265cef0104cb626d99a
+  sha256: e7fded6b4e364e3f2926d9470a991de1e422a712849008a24c347b2ccd96b5cf
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/codeberg.org/puregotk/puregotk/@v/v0.0.0-20260226083027-5647eb6a2bba.zip
+  url: https://proxy.golang.org/codeberg.org/puregotk/puregotk/@v/v0.0.0-20260420231554-98419d54d2d2.zip
 - dest: vendor/github.com/Marlliton/slogpretty
   sha256: e9d8ff673289ec7d4e53257a1d2f1b8dbe2b5ac1682c81177394d42d7cd5c9f5
   strip-components: 3
@@ -37,16 +37,16 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/jeandeaual/go-locale/@v/v0.0.0-20250612000132-0ef82f21eade.zip
+- dest: vendor/github.com/keybase/go-keychain
+  sha256: 9514a68da08d39d60a47640bef049e44c829aab5dbbddd03d272e9252039a5c7
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/keybase/go-keychain/@v/v0.0.1.zip
 - dest: vendor/github.com/leonelquinteros/gotext
   sha256: 4c01b94fd68ece10bea56ce49f37de834907ebff69a84b21e4b487511488859f
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/leonelquinteros/gotext/@v/v1.7.2.zip
-- dest: vendor/github.com/lescuer97/go-libsecret
-  sha256: 10a7fbab46f2c68a5ba5eb773c259aa13c8e3af842152ac5e27b559de6fc24f3
-  strip-components: 3
-  type: archive
-  url: https://proxy.golang.org/github.com/lescuer97/go-libsecret/@v/v0.0.0-20251130160347-067b741bcf5a.zip
 - dest: vendor/github.com/qjebbs/go-jsons
   sha256: 8e71505a6d7eec69f67921cb627d21b7f075478afb9ac218fde0da323b1acd89
   strip-components: 3
@@ -133,7 +133,7 @@
   type: archive
   url: https://proxy.golang.org/golang.org/x/image/@v/v0.10.0.zip
 - dest: vendor/golang.org/x/sys
-  sha256: d7f9fe44300fc8d47b30d06cd001d9c62c54c6119818a19a2e33a93538971669
+  sha256: cb8b073934cf7e579c9f80c4d12619d5f96fcf97af6f07fdc649e7acec0aaddf
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/golang.org/x/sys/@v/v0.40.0.zip
+  url: https://proxy.golang.org/golang.org/x/sys/@v/v0.43.0.zip

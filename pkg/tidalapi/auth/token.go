@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"codeberg.org/dergs/tonearm/internal/settings"
 )
 
 type TokenResponse struct {
@@ -29,7 +31,7 @@ type TokenError struct {
 }
 
 func Token(formValues url.Values) (*TokenResponse, *TokenError, error) {
-	req, err := http.NewRequest(http.MethodPost, "https://auth.tidal.com/v1/oauth2/token", strings.NewReader(formValues.Encode()))
+	req, err := http.NewRequest(http.MethodPost, settings.ServiceTidal().AuthBaseURL()+"/v1/oauth2/token", strings.NewReader(formValues.Encode()))
 	if err != nil {
 		return nil, nil, err
 	}

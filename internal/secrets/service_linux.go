@@ -3,36 +3,28 @@
 package secrets
 
 import (
+	"errors"
 	"strings"
 
 	"codeberg.org/dergs/tonearm/internal/gettext"
-	golibsecret "github.com/lescuer97/go-libsecret"
+	"codeberg.org/puregotk/puregotk/v4/glib"
+	"codeberg.org/puregotk/puregotk/v4/secret"
 )
 
-var schema *golibsecret.Schema
-
-func init() {
-	s, err := golibsecret.NewSchema("dev.dergs.Tonearm", golibsecret.SchemaFlagsNone, map[string]golibsecret.SchemaAttributeType{
-		"key": golibsecret.SchemaAttributeString,
-	})
-	if err != nil {
-		panic(err)
-	}
-	schema = s
-}
+var schema *secret.Schema = secret.NewSchema("dev.dergs.Tonearm", secret.SchemaNoneValue, "key", secret.SchemaAttributeStringValue)
 
 type serviceLinux struct {
-	schema *golibsecret.Schema
+	schema *secret.Schema
 }
 
 func (s *serviceLinux) Available() *ServiceError {
-	// Fake secret fetch to see if the service is available
-	attrs := golibsecret.NewAttributes()
-	attrs.Set("key", "dummy_key")
-	val, err := golibsecret.PasswordLookupSync(s.schema, attrs)
-	if val == "" && err == nil {
+	var err *glib.Error
+	secret.PasswordLookupSync(s.schema, nil, &err, "key", "dummy_key")
+
+	if err == nil {
 		return nil
 	}
+	defer err.Free()
 
 	if strings.Contains(err.Error(), "name is not activatable") || strings.Contains(err.Error(), "ServiceUnknown") {
 		return &ServiceError{
@@ -58,20 +50,28 @@ func (s *serviceLinux) Available() *ServiceError {
 }
 
 func (s *serviceLinux) Delete(key string) error {
-	_, err := golibsecret.ClearPassword(s.schema, map[string]string{
-		"key": key,
-	})
-	return err
+	var err *glib.Error
+	secret.PasswordClearSync(s.schema, nil, &err, "key", key)
+	if err != nil {
+		defer err.Free()
+		return errors.New(err.Error())
+	}
+	return nil
 }
 
 func (s *serviceLinux) Get(key string) (Item, error) {
-	attrs := golibsecret.NewAttributes()
-	attrs.Set("key", key)
-	val, err := golibsecret.PasswordLookupSync(s.schema, attrs)
-	if val == "" && err == nil {
+	var err *glib.Error
+	val := secret.PasswordLookupSync(s.schema, nil, &err, "key", key)
+
+	if err != nil {
+		defer err.Free()
+		return Item{}, errors.New(err.Error())
+	}
+
+	if val == "" {
 		return Item{}, ErrKeyNotFound
 	}
-	return Item{Label: "", Password: val}, err
+	return Item{Label: "", Password: val}, nil
 }
 
 func (s *serviceLinux) Has(key string) (bool, error) {
@@ -87,9 +87,13 @@ func (s *serviceLinux) Has(key string) (bool, error) {
 }
 
 func (s *serviceLinux) Set(key string, value Item) error {
-	attrs := golibsecret.NewAttributes()
-	attrs.Set("key", key)
-	return golibsecret.PasswordStoreSync(s.schema, attrs, golibsecret.CollectionDefault, value.Label, value.Password)
+	var err *glib.Error
+	secret.PasswordStoreSync(s.schema, secret.COLLECTION_DEFAULT, value.Label, value.Password, nil, &err, "key", key)
+	if err != nil {
+		defer err.Free()
+		return errors.New(err.Error())
+	}
+	return nil
 }
 
 func newService() Service {

@@ -52,6 +52,15 @@ var Scrobbling = g.Lazy(func() *ScrobblingSettings {
 	}
 })
 
+var ServiceTidal = g.Lazy(func() *ServiceTidalSettings {
+	settings := gio.NewSettings("dev.dergs.Tonearm.service.tidal")
+	settings.ConnectChanged(&GioSettingsChangedCallback)
+	tracking.Track(settings.GoPointer(), "Settings")
+	return &ServiceTidalSettings{
+		finalize(settings),
+	}
+})
+
 func finalize(settings *gio.Settings) *gio.Settings {
 	tracking.SetFinalizer("Settings", settings)
 	return settings

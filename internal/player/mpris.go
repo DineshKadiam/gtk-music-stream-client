@@ -1,7 +1,10 @@
+//go:build linux
+
 package player
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"time"
 
@@ -101,7 +104,7 @@ func init() {
 
 		mprisServer().SetTrackMetadata(map[string]any{
 			"mpris:trackid": dbus.ObjectPath("/org/mpris/MediaPlayer2/TrackList/Track" + trackInfo.ID()),
-			"mpris:artUrl":  trackInfo.Album().Cover(-1),
+			"mpris:artUrl":  trackInfo.Cover(math.MaxInt),
 			"mpris:length":  trackInfo.Duration().Microseconds(),
 			"xesam:album":   trackInfo.Album().Title(),
 			"xesam:artist":  artistNames,

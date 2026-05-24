@@ -47,7 +47,11 @@ type ArtworkFile struct {
 
 type ArtworkFiles []ArtworkFile
 
-func (files ArtworkFiles) AtLeast(size int) ArtworkFile {
+func (files ArtworkFiles) AtLeast(size int) *ArtworkFile {
+	if len(files) == 0 {
+		return nil
+	}
+
 	squareFiles := make(ArtworkFiles, 0, len(files))
 	for _, file := range files {
 		if file.Meta.Height == file.Meta.Width {
@@ -75,15 +79,15 @@ func (files ArtworkFiles) AtLeast(size int) ArtworkFile {
 			}
 		}
 
-		return f
+		return &f
 	}
 
 	for _, file := range squareFiles {
 		if min(file.Meta.Height, file.Meta.Width) >= size {
-			return file
+			return &file
 		}
 	}
-	return squareFiles[0]
+	return &squareFiles[0]
 }
 
 type Artworks []ArtworkData
@@ -92,8 +96,11 @@ func (artworks Artworks) AtLeast(size int) string {
 	coverUrl := ""
 	for _, artwork := range artworks {
 		if artwork.Attributes.IsPicture() {
-			coverUrl = artwork.Attributes.Files.AtLeast(size).Href
-			break
+			cover := artwork.Attributes.Files.AtLeast(size)
+			if cover != nil {
+				coverUrl = cover.Href
+				break
+			}
 		}
 	}
 	return coverUrl

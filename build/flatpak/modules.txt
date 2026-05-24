@@ -5,8 +5,8 @@ codeberg.org/puregotk/purego/internal/cgo
 codeberg.org/puregotk/purego/internal/fakecgo
 codeberg.org/puregotk/purego/internal/strings
 codeberg.org/puregotk/purego/internal/xreflect
-# codeberg.org/puregotk/puregotk v0.0.0-20260226083027-5647eb6a2bba
-## explicit; go 1.23.0
+# codeberg.org/puregotk/puregotk v0.0.0-20260420231554-98419d54d2d2
+## explicit; go 1.24.0
 codeberg.org/puregotk/puregotk/internal/core
 codeberg.org/puregotk/puregotk/pkg/core
 codeberg.org/puregotk/puregotk/v4/adw
@@ -22,6 +22,7 @@ codeberg.org/puregotk/puregotk/v4/graphene
 codeberg.org/puregotk/puregotk/v4/gsk
 codeberg.org/puregotk/puregotk/v4/gtk
 codeberg.org/puregotk/puregotk/v4/pango
+codeberg.org/puregotk/puregotk/v4/secret
 # github.com/Marlliton/slogpretty v0.1.3
 ## explicit; go 1.24.3
 github.com/Marlliton/slogpretty
@@ -58,13 +59,13 @@ github.com/infinytum/structures
 # github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
 ## explicit; go 1.18
 github.com/jeandeaual/go-locale
+# github.com/keybase/go-keychain v0.0.1
+## explicit; go 1.21
+github.com/keybase/go-keychain
 # github.com/leonelquinteros/gotext v1.7.2
 ## explicit; go 1.23.5
 github.com/leonelquinteros/gotext
 github.com/leonelquinteros/gotext/plurals
-# github.com/lescuer97/go-libsecret v0.0.0-20251130160347-067b741bcf5a
-## explicit; go 1.25.4
-github.com/lescuer97/go-libsecret
 # github.com/mattn/go-pointer v0.0.1
 ## explicit
 github.com/mattn/go-pointer
@@ -108,7 +109,7 @@ golang.org/x/image/font
 golang.org/x/image/font/basicfont
 golang.org/x/image/math/f64
 golang.org/x/image/math/fixed
-# golang.org/x/sys v0.40.0
-## explicit; go 1.24.0
+# golang.org/x/sys v0.43.0
+## explicit; go 1.25.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows

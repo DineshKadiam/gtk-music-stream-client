@@ -45,11 +45,27 @@ func Clamp() adwbindings.Clamp {
 	})
 }
 
+func ClampScrollable() adwbindings.ClampScrollable {
+	return managedWidget("ClampScrollable", func() *adw.ClampScrollable {
+		return adw.NewClampScrollable()
+	})
+}
+
 func ComboRow() adwbindings.ComboRow {
 	return managedWidget("ComboRow", func() *adw.ComboRow {
 		comboRow := adw.NewComboRow()
 		comboRow.ConnectNotify(&adwbindings.ComboRowSelectionChangedCallback)
 		return comboRow
+	})
+}
+
+func ExpanderRow(rows ...any) adwbindings.ExpanderRow {
+	return managedWidget("ExpanderRow", func() *adw.ExpanderRow {
+		expanderRow := adw.NewExpanderRow()
+		for _, row := range rows {
+			expanderRow.AddRow(gtkbindings.ResolveWidget(row))
+		}
+		return expanderRow
 	})
 }
 

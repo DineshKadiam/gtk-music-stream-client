@@ -7,11 +7,12 @@ import (
 	"net/http"
 	"strings"
 
+	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 )
 
 func (p *Playlists) Items(ctx context.Context, uuid string, cursor string, include ...string) (*openapi.Response[[]openapi.Relationship], error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("https://openapi.tidal.com/v2/playlists/%s/relationships/items", uuid), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/playlists/%s/relationships/items", settings.ServiceTidal().OpenAPIBaseURL(), uuid), nil)
 	if err != nil {
 		return nil, err
 	}

@@ -37,7 +37,11 @@ func (q *QRBuffer) Close() error {
 }
 
 func NewLinking(window *gtk.Window, code string, link string, cancel context.CancelFunc) schwifty.AlertDialog {
-	encodedUrl, err := qrcode.New("https://" + link)
+	if !strings.Contains(link, "://") {
+		link = "https://" + link
+	}
+
+	encodedUrl, err := qrcode.New(link)
 	if err != nil {
 		slog.Error("could not generate QR code to sign in")
 	}
@@ -76,7 +80,7 @@ func NewLinking(window *gtk.Window, code string, link string, cancel context.Can
 						WithCSSClass("suggested-action").
 						HPadding(20).VPadding(10).
 						ConnectClicked(func(b gtk.Button) {
-							gtk.ShowUri(window, "https://"+link, uint32(time.Now().Unix()))
+							gtk.ShowUri(window, link, uint32(time.Now().Unix()))
 						}),
 					Button().
 						Label(gettext.Get("Cancel Login")).
