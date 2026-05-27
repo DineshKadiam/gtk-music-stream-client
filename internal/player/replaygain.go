@@ -6,7 +6,7 @@ import (
 
 	"codeberg.org/dergs/tonearm/internal/g"
 	"codeberg.org/dergs/tonearm/internal/settings"
-	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
+	openapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"github.com/go-gst/go-gst/gst"
 )
@@ -88,28 +88,24 @@ func buildReplayGainFilterBin() (*gst.Bin, error) {
 	return bin, nil
 }
 
-func injectReplayGainTags(rgvolume *gst.Element, info *v1.PlaybackInfo) {
+func injectReplayGainTags(rgvolume *gst.Element, manifest *openapi.TrackManifest) {
 	tagList := gst.NewEmptyTagList()
 
 	log := slog.With()
-	if info.AlbumPeakAmplitude != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumPeak, *info.AlbumPeakAmplitude)
-		log = log.With("albumPeak", fmt.Sprintf("%.6f", *info.AlbumPeakAmplitude))
+	if data := manifest.Data.Attributes.AlbumAudioNormalizationData; data != nil {
+		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumPeak, float64(data.PeakAmplitude))
+		log = log.With("albumPeak", fmt.Sprintf("%.6f", data.PeakAmplitude))
+
+		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumGain, float64(data.ReplayGain))
+		log = log.With("albumGain", fmt.Sprintf("%.2f dB", data.ReplayGain))
 	}
 
-	if info.AlbumReplayGain != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumGain, *info.AlbumReplayGain)
-		log = log.With("albumGain", fmt.Sprintf("%.2f dB", *info.AlbumReplayGain))
-	}
+	if data := manifest.Data.Attributes.TrackAudioNormalizationData; data != nil {
+		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackGain, float64(data.ReplayGain))
+		log = log.With("trackGain", fmt.Sprintf("%.2f dB", data.ReplayGain))
 
-	if info.TrackReplayGain != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackGain, *info.TrackReplayGain)
-		log = log.With("trackGain", fmt.Sprintf("%.2f dB", *info.TrackReplayGain))
-	}
-
-	if info.TrackPeakAmplitude != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackPeak, *info.TrackPeakAmplitude)
-		log = log.With("trackPeak", fmt.Sprintf("%.6f", *info.TrackPeakAmplitude))
+		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackPeak, float64(data.PeakAmplitude))
+		log = log.With("trackPeak", fmt.Sprintf("%.6f", data.PeakAmplitude))
 	}
 
 	tagEvent := gst.NewTagEvent(tagList)

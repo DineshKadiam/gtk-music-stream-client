@@ -7,8 +7,8 @@ import (
 	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
+	openapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
-	tracksv1 "codeberg.org/dergs/tonearm/pkg/tidalapi/v1/tracks"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/glib"
 	"github.com/go-gst/go-gst/gst"
@@ -49,18 +49,20 @@ func onAboutToFinish(_ *gst.Element) {
 
 	nextTrack := getNextTrackFromQueue(true)
 	if nextTrack != nil && nextTrack.IsStreamable() {
-		playbackInfo, err := injector.MustInject[*tidalapi.TidalAPI]().V1.Tracks.PlaybackInfo(
+		trackManifest, err := injector.MustInject[*tidalapi.TidalAPI]().OpenAPI.V2.TrackManifests.TrackManifest(
 			context.Background(),
 			nextTrack.ID(),
-			tracksv1.PlaybackInfoOptions{
-				AudioQuality: settings.Player().GetAudioQuality(),
-			},
+			openapi.ManifestTypeMPEGDASH,
+			openapi.ManifestFormatsForQuality(settings.Player().GetAudioQuality()),
+			openapi.ManifestURISchemeHTTPS,
+			openapi.ManifestUsagePlayback,
+			false,
 		)
 		if err != nil {
-			logger.Error("failed to get playback info", "error", err)
+			logger.Error("failed to get track manifest", "error", err)
 			return
 		}
-		if err := enqueue(playbackInfo); err != nil {
+		if err := enqueue(trackManifest); err != nil {
 			logger.Error("enqueueing for gapless playback", "error", err)
 			return
 		}
@@ -71,7 +73,7 @@ func onAboutToFinish(_ *gst.Element) {
 		TrackChanged.OnLazy(func(t tonearm.Track) bool {
 			logger.Debug("triggered one-shot handler to propagate gapless playback quality")
 			PlaybackQualityChanged.Notify(func(oldValue v1.AudioQuality) v1.AudioQuality {
-				return playbackInfo.AudioQuality
+				return openapi.AudioQualityFromFormats(trackManifest.Data.Attributes.Formats)
 			})
 			return signals.Unsubscribe
 		})

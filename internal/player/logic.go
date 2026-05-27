@@ -1,7 +1,6 @@
 package player
 
 import (
-	"strconv"
 	"time"
 
 	"codeberg.org/dergs/tonearm/internal/player/queue"
@@ -42,7 +41,7 @@ func playNextTrack() {
 	nextTrack := getNextTrackFromQueue(false)
 	if nextTrack != nil {
 		logger.Info("playing next track", "track_id", nextTrack.ID())
-		if currentlyEnqueuedTrack == nil || strconv.Itoa(currentlyEnqueuedTrack.TrackID) != nextTrack.ID() {
+		if currentlyEnqueuedTrack == nil || currentlyEnqueuedTrack.Data.ID != nextTrack.ID() {
 			setLoadingState()
 		}
 		playTrack(nextTrack)

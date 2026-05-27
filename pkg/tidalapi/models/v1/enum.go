@@ -1,18 +1,5 @@
 package v1
 
-type AssetPresentation string
-
-const (
-	AssetPresentationFull    AssetPresentation = "FULL"
-	AssetPresentationPreview AssetPresentation = "PREVIEW"
-)
-
-type AudioMode string
-
-const (
-	AudioModeStereo AudioMode = "STEREO"
-)
-
 type AudioQuality string
 
 const (
@@ -20,18 +7,4 @@ const (
 	AudioQualityLossless        AudioQuality = "LOSSLESS"
 	AudioQualityHighRes         AudioQuality = "HIGH"
 	AudioQualityLossy           AudioQuality = "LOW"
-)
-
-type ManifestMimeType string
-
-const (
-	ManifestMimeTypeAudioBTS  ManifestMimeType = "application/vnd.tidal.bts"
-	ManifestMimeTypeAudioMPD  ManifestMimeType = "application/dash+xml"
-	ManifestMimeTypeVideoMP2T ManifestMimeType = "video/mp2t"
-)
-
-type PlaybackMode string
-
-const (
-	PlaybackModeStream PlaybackMode = "STREAM"
 )

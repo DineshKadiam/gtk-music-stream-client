@@ -8,8 +8,8 @@ import (
 	"codeberg.org/dergs/tonearm/internal/notifications"
 	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
+	openapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
-	tracksv1 "codeberg.org/dergs/tonearm/pkg/tidalapi/v1/tracks"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/infinytum/injector"
@@ -45,25 +45,26 @@ func playTrack(track tonearm.Track) error {
 		return errors.New("track not available for streaming")
 	}
 
-	logger.Debug("fetching playback info for track", "track_id", track.ID())
-	playbackInfo, err := tidal.V1.Tracks.PlaybackInfo(
+	logger.Debug("fetching track manifest", "track_id", track.ID())
+	trackManifest, err := tidal.OpenAPI.V2.TrackManifests.TrackManifest(
 		context.Background(),
 		track.ID(),
-		tracksv1.PlaybackInfoOptions{
-			AudioQuality: settings.Player().GetAudioQuality(),
-		},
+		openapi.ManifestTypeMPEGDASH,
+		openapi.ManifestFormatsForQuality(settings.Player().GetAudioQuality()),
+		openapi.ManifestURISchemeHTTPS,
+		openapi.ManifestUsagePlayback,
+		false,
 	)
 	if err != nil {
-		logger.Error("unable to fetch playback info for track", "error", err)
+		logger.Error("unable to fetch track manifest", "error", err)
 		return err
 	}
-	return play(playbackInfo)
+	return play(trackManifest)
 }
 
-func play(playbackInfo *v1.PlaybackInfo) error {
-	// Inform the UI about the track quality we got from TIDAL.
+func play(manifest *openapi.TrackManifest) error {
 	PlaybackQualityChanged.Notify(func(oldValue v1.AudioQuality) v1.AudioQuality {
-		return playbackInfo.AudioQuality
+		return openapi.AudioQualityFromFormats(manifest.Data.Attributes.Formats)
 	})
 
 	// Free up resources taken up by previous stream
@@ -76,7 +77,7 @@ func play(playbackInfo *v1.PlaybackInfo) error {
 		return &newState
 	})
 
-	if err := enqueue(playbackInfo); err != nil {
+	if err := enqueue(manifest); err != nil {
 		return err
 	}
 
