@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-17 19:04+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-06-28 11:41+0000\n"
+"Last-Translator: Anonymous104 <anonymous104@noreply.codeberg.org>\n"
+"Language-Team: Vietnamese <https://translate.codeberg.org/projects/tonearm/"
+"tonearm/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #: internal/ui/routes/artist.go:72
 msgid "%d Fan"
@@ -37,23 +39,23 @@ msgstr[1] ""
 
 #: internal/ui/routes/feed.go:145
 msgid "%s and %s"
-msgstr ""
+msgstr "%s và %s"
 
 #: internal/ui/window_sidebar.go:33
 msgid "About Tonearm"
-msgstr ""
+msgstr "Về Tonearm"
 
 #: internal/ui/routes/album.go:102
 msgid "Add Album to Queue"
-msgstr ""
+msgstr "Thêm Album từ Hàng đợi"
 
 #: internal/ui/routes/my_collection/tracks.go:54
 msgid "Add My Tracks to Queue"
-msgstr ""
+msgstr "Thêm Danh sách theo dõi của tôi vào Hàng đợi"
 
 #: internal/ui/routes/playlist.go:87
 msgid "Add Playlist to Queue"
-msgstr ""
+msgstr "Thêm Danh sách phát vào Hàng đợi"
 
 #: internal/ui/routes/artist.go:47
 msgid "Add Top Tracks to Queue"
@@ -61,15 +63,15 @@ msgstr ""
 
 #: internal/ui/components/favourite_button/favourite_button.go:54
 msgid "Add to Collection"
-msgstr ""
+msgstr "Thêm vào Bộ sưu tập"
 
 #: internal/ui/components/tracklist/column_controls.go:54
 msgid "Add to Queue"
-msgstr ""
+msgstr "Thêm vào Hàng đợi"
 
 #: internal/settings/playback.go:21
 msgid "Album"
-msgstr ""
+msgstr "Album"
 
 #: internal/ui/routes/feed.go:153
 msgid "Album by %s"
@@ -77,11 +79,11 @@ msgstr ""
 
 #: internal/ui/routes/my-collection.go:52
 msgid "Albums"
-msgstr ""
+msgstr "Albums"
 
 #: internal/ui/window_preferences.go:24
 msgid "Allow Background Activity"
-msgstr ""
+msgstr "Cho phép Hoạt động dưới nền"
 
 #: internal/ui/window_preferences.go:84
 msgid "Allow Media Card Images"
@@ -89,23 +91,25 @@ msgstr ""
 
 #: internal/ui/window_preferences.go:90
 msgid "Allow Shortcut Images"
-msgstr ""
+msgstr "Cho phép Ảnh Lối tắt"
 
 #: internal/ui/window_preferences.go:85
 msgid "Allow Tonearm to load images for media card buttons"
-msgstr ""
+msgstr "Cho phép Tonearm tải ảnh cho nút bấm thẻ phương tiện"
 
 #: internal/ui/window_preferences.go:91
 msgid "Allow Tonearm to load images for shortcut buttons"
-msgstr ""
+msgstr "Cho phép Tonearm tải ảnh cho nút bấm lối tắt"
 
 #: internal/ui/window_preferences.go:97
 msgid "Allow Tonearm to load images for tracklists with the cover column"
-msgstr ""
+msgstr "Cho phép Tonearm tải ảnh cho danh sách theo dõi với cột cover"
 
 #: internal/ui/window_preferences.go:25
 msgid "Allow Tonearm to run in the background by hiding the player window instead of quitting the application"
 msgstr ""
+"Cho phép Tonearm chạy dưới nền bằng cách ẩn cửa sổ trình phát thay vì thoát "
+"ứng dụng"
 
 #: internal/ui/window_preferences.go:139
 msgid "Allow Tonearm to send scrobbling data to Last.fm"
@@ -118,30 +122,34 @@ msgstr ""
 #: internal/ui/window_preferences.go:58
 msgid "Allow Tonearm to start a mix with the current playing song when you're at the end of an album/queue"
 msgstr ""
+"Cho phép Tonearm bắt đầu trộn các bài hát đang phát khi bạn nghe hết album/"
+"hàng đợi"
 
 #: internal/ui/window_preferences.go:103
 msgid "Allow Tonearm to temporarily store images on the file system to improve performance and reduce network traffic"
 msgstr ""
+"Cho phép Tonearm lưu tạm hình ảnh trên tệp tin hệ thống nhằm cải thiện hiệu "
+"suất và giảm lưu lượng mạng"
 
 #: internal/ui/window_preferences.go:96
 msgid "Allow Tracklist Images"
-msgstr ""
+msgstr "Cho phép Hình ảnh Danh sách theo dõi"
 
 #: internal/ui/window_preferences.go:235
 msgid "An error occurred while logging in to Last.fm"
-msgstr ""
+msgstr "Có lỗi đã xảy ra trong lúc đăng nhập vào Last.fm"
 
 #: internal/ui/window_preferences.go:210
 msgid "An error occurred while logging out of Last.fm"
-msgstr ""
+msgstr "Có lỗi đã xảy ra trong lúc đăng xuất ra Last.fm"
 
 #: internal/ui/routes/album.go:153
 msgid "An error occurred while playing the album"
-msgstr ""
+msgstr "Có lỗi xảy ra trong lúc đang phát album"
 
 #: internal/ui/routes/playlist.go:138
 msgid "An error occurred while playing the playlist"
-msgstr ""
+msgstr "Có lỗi xảy ra trong lúc đang phát danh sách phát"
 
 #: internal/ui/routes/artist.go:96
 msgid "An error occurred while playing the top tracks"
