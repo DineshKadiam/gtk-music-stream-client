@@ -13,4 +13,5 @@ type Service interface {
 	GetPlaylistTracks(id string) (Paginator[Track], error)
 
 	GetTrack(id string) (Track, error)
+	GetTrackRadio(id string) (PlaylistInfo, error)
 }

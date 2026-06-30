@@ -26,8 +26,6 @@ func (p *Tracks) Artists(ctx context.Context, id string, cursor string, include 
 	}
 	req.URL.RawQuery = params.Encode()
 
-	fmt.Println(req.URL.String())
-
 	resp, err := p.client.Do(req)
 	if err != nil {
 		return nil, err

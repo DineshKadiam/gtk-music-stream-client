@@ -1,9 +1,7 @@
 package player
 
 import (
-	"context"
 	"slices"
-	"strconv"
 
 	"codeberg.org/dergs/tonearm/internal/gettext"
 	"codeberg.org/dergs/tonearm/internal/notifications"
@@ -16,7 +14,6 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty/state"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
-	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/adw"
 	"codeberg.org/puregotk/puregotk/v4/gdk"
@@ -220,21 +217,17 @@ func actionRow() schwifty.Box {
 					return
 				}
 
-				id, _ := strconv.Atoi(track.ID())
-
-				tidalapi := injector.MustInject[*tidalapi.TidalAPI]()
-				mix, err := tidalapi.V1.Tracks.Mix(context.Background(), id)
-
-				if err != nil {
-					if err.Error() == "unexpected status code: 404" {
-						notifications.OnToast.Notify(gettext.Get("No mix found for the current track"))
-						return
-					}
-
+				service := injector.MustInject[tonearm.Service]()
+				if playlist, err := service.GetTrackRadio(track.ID()); playlist != nil {
+					router.Navigate("playlist/" + playlist.ID())
+				} else if err == nil {
+					notifications.OnToast.Notify(gettext.Get("No mix found for the current track"))
+					return
+				} else {
+					notifications.OnToast.Notify(gettext.Get("An error occurred while fetching the track mix"))
+					logger.Error("error while fetching track mix", "error", err)
 					return
 				}
-
-				router.Navigate("playlist/" + mix.ID)
 			}),
 		Button().
 			TooltipText(gettext.Get("Copy Track URL")).

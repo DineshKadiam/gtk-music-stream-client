@@ -6,11 +6,9 @@ import (
 
 	"codeberg.org/dergs/tonearm/internal/secrets"
 	"codeberg.org/dergs/tonearm/internal/services/tidal/openapi"
-	v1 "codeberg.org/dergs/tonearm/internal/services/tidal/v1"
 	v2 "codeberg.org/dergs/tonearm/internal/services/tidal/v2"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	modelopenapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
-	modelv1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"github.com/infinytum/injector"
 )
@@ -58,18 +56,14 @@ func (t *Tidal) GetAlbumInfo(id string) (tonearm.AlbumInfo, error) {
 }
 
 func (t *Tidal) GetAlbumTracks(id string) (tonearm.Paginator[tonearm.Track], error) {
-	albumInfo, err := t.GetAlbumInfo(id)
-	if err != nil {
-		return nil, err
-	}
-
-	paginator := v1.NewPaginatorV1(t.API.V1.Albums.Items, id, func(pr *modelv1.PaginatedResponse[modelv1.AlbumItem]) []tonearm.Track {
-		items := make([]tonearm.Track, len(pr.Items))
-		for i, item := range pr.Items {
-			items[i] = v1.NewTrack(item.Item, albumInfo)
+	paginator := openapi.NewPaginator(t.API.OpenAPI.V2.Albums.Items, id, func(r *modelopenapi.Response[[]modelopenapi.Relationship]) []tonearm.Track {
+		results := r.Included.Tracks(r.Data...)
+		tracks := make([]tonearm.Track, len(results))
+		for i, track := range results {
+			tracks[i] = openapi.NewTrack(track)
 		}
-		return items
-	})
+		return tracks
+	}, "items.artists.profileArt", "items.albums.coverArt")
 	return paginator, nil
 }
 
@@ -128,6 +122,20 @@ func (t *Tidal) GetTrack(id string) (tonearm.Track, error) {
 	}
 
 	return openapi.NewTrack(*track), nil
+}
+
+func (t *Tidal) GetTrackRadio(id string) (tonearm.PlaylistInfo, error) {
+	radio, err := t.API.OpenAPI.V2.Tracks.Radio(context.Background(), id, "", "radio.playlists.coverArt")
+	if err != nil {
+		return nil, err
+	}
+
+	playlists := radio.Included.Playlists(radio.Data...)
+	if len(playlists) == 0 {
+		return nil, nil
+	}
+
+	return openapi.NewPlaylist(playlists[0]), nil
 }
 
 func NewTidal(api *tidalapi.TidalAPI) tonearm.Service {

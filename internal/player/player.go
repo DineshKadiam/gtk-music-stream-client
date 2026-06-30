@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"time"
 
+	"codeberg.org/dergs/tonearm/internal/gettext"
+	"codeberg.org/dergs/tonearm/internal/notifications"
 	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
@@ -246,24 +248,23 @@ func PlayPlaylist(playlistId string, shuffle bool, position int) error {
 
 func PlayTrackRadio(trackId string, skipSelf bool) error {
 	setLoadingState()
-	tidal, err := injector.Inject[*tidalapi.TidalAPI]()
+	service, err := injector.Inject[tonearm.Service]()
 	if err != nil {
 		resetLoadingState()
 		return err
 	}
 
-	trackIdInt, err := strconv.Atoi(trackId)
-	if err != nil {
-		logger.Error("failed to parse track id", "error", err)
-		resetLoadingState()
-		return err
-	}
-
-	mix, err := tidal.V1.Tracks.Mix(context.Background(), trackIdInt)
+	playlist, err := service.GetTrackRadio(trackId)
 	if err != nil {
 		logger.Error("failed to retrieve mix", "error", err)
 		resetLoadingState()
 		return err
+	}
+
+	if playlist == nil {
+		notifications.OnToast.Notify(gettext.Get("No mix found for the current track"))
+		resetLoadingState()
+		return nil
 	}
 
 	position := 0
@@ -271,5 +272,5 @@ func PlayTrackRadio(trackId string, skipSelf bool) error {
 		position = 1
 	}
 
-	return PlayPlaylist(mix.ID, false, position)
+	return PlayPlaylist(playlist.ID(), false, position)
 }
