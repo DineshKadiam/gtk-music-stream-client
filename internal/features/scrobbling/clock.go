@@ -2,6 +2,7 @@ package scrobbling
 
 import (
 	"context"
+	"sync/atomic"
 	"time"
 
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
@@ -11,6 +12,7 @@ type Clock struct {
 	counter   int
 	track     tonearm.Track
 	isRunning bool
+	scrobbled atomic.Bool
 	startedAt time.Time
 
 	context    context.Context
@@ -18,10 +20,7 @@ type Clock struct {
 }
 
 func (c *Clock) Start() {
-	if c.isRunning {
-		return
-	}
-	if c.counter >= int(c.track.Duration().Seconds())/2 {
+	if c.isRunning || c.scrobbled.Load() {
 		return
 	}
 	c.isRunning = true
@@ -42,6 +41,10 @@ func (c *Clock) Start() {
 			case <-time.After(time.Second):
 				c.counter++
 				if c.counter >= int(c.track.Duration().Seconds())/2 || c.counter >= int((time.Minute*4).Seconds()) {
+					if c.scrobbled.Swap(true) {
+						return
+					}
+
 					logger.Debug("notifying scrobblers that a track should be scrobbled")
 
 					event := new(ScrobbleEvent)
