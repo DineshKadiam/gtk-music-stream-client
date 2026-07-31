@@ -125,7 +125,7 @@ func (t *Tidal) GetTrack(id string) (tonearm.Track, error) {
 }
 
 func (t *Tidal) GetTrackRadio(id string) (tonearm.PlaylistInfo, error) {
-	radio, err := t.API.OpenAPI.V2.Tracks.Radio(context.Background(), id, "", "radio.playlists.coverArt")
+	radio, err := t.API.OpenAPI.V2.Tracks.Radio(context.Background(), id, "", "radio")
 	if err != nil {
 		return nil, err
 	}
