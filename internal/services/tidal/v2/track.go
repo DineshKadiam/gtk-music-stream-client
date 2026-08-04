@@ -17,6 +17,7 @@ func (t Track) Album() tonearm.AlbumInfo {
 	logger := trackLogger.With("method", "Album").WithGroup("album")
 	logger.Debug("v2 track does not properly resolve album artists or duration")
 	return NewAlbumInfo(v2.AlbumItemData{
+		AI:          t.TrackItemData.Album.AI,
 		Artists:     t.TrackItemData.Artists,
 		Cover:       t.TrackItemData.Album.Cover,
 		Id:          t.TrackItemData.Album.ID,

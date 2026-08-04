@@ -16,6 +16,17 @@ func (t TrackInfo) Duration() time.Duration {
 	return t.Data.Attributes.Duration.Duration
 }
 
+func (t TrackInfo) Flags() tonearm.TrackFlag {
+	flags := tonearm.TrackFlag(0)
+	if t.Data.Attributes.AI {
+		flags |= tonearm.TrackFlagAI
+	}
+	if t.Data.Attributes.Explicit {
+		flags |= tonearm.TrackFlagExplicit
+	}
+	return flags
+}
+
 func (t TrackInfo) ID() string {
 	return t.Data.ID
 }

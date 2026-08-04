@@ -26,6 +26,7 @@ type PlaylistItems struct {
 }
 
 type PlaylistItem struct {
+	AI    bool `json:"ai"`
 	Album struct {
 		ID    int    `json:"id"`
 		Title string `json:"title"`
@@ -35,6 +36,7 @@ type PlaylistItem struct {
 		Name string `json:"name"`
 	} `json:"artists"`
 	Duration    int    `json:"duration"`
+	Explicit    bool   `json:"explicit"`
 	ID          int    `json:"id"`
 	Title       string `json:"title"`
 	TrackNumber int    `json:"trackNumber"`

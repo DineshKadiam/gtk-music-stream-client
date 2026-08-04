@@ -36,6 +36,7 @@ type TrackData struct {
 
 type TrackAttributes struct {
 	AccessType   string              `json:"accessType"`
+	AI           bool                `json:"ai"`
 	Availability []TrackAvailability `json:"availability"`
 	BPM          float64             `json:"bpm"`
 	Copyright    struct {

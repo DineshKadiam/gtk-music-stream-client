@@ -11,11 +11,31 @@ const (
 	TrackQualityLow    TrackQuality = "low"
 )
 
+type TrackFlag int
+
+func (f TrackFlag) IsAI() bool {
+	return f&TrackFlagAI != 0
+}
+
+func (f TrackFlag) IsExplicit() bool {
+	return f&TrackFlagExplicit != 0
+}
+
+const TrackFlagNone TrackFlag = 0
+
+const (
+	TrackFlagExplicit TrackFlag = 1 << iota
+	TrackFlagAI
+)
+
 type TrackInfo interface {
 	Shareable
 
 	// Duration returns the total duration of the track
 	Duration() time.Duration
+
+	// Flags returns the flags associated with the track
+	Flags() TrackFlag
 
 	// ID returns the unique identifier for the track
 	ID() string
@@ -42,8 +62,16 @@ type Track interface {
 }
 
 func FormatTitle(track TrackInfo) string {
-	if track.Version() == "" {
-		return track.Title()
+	suffix := ""
+	if track.Version() != "" {
+		suffix = " (" + track.Version() + ")"
 	}
-	return track.Title() + " (" + track.Version() + ")"
+	if track.Flags().IsAI() {
+		suffix = " \U0001F170"
+	}
+
+	if track.Flags().IsExplicit() {
+		suffix += " \U0001F174"
+	}
+	return track.Title() + suffix
 }

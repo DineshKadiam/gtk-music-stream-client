@@ -11,6 +11,7 @@ const (
 )
 
 type Album struct {
+	AI      bool   `json:"ai"`
 	ID      int    `json:"id"`
 	Title   string `json:"title"`
 	Artists []struct {

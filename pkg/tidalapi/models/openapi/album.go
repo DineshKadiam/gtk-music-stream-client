@@ -25,6 +25,7 @@ type AlbumData struct {
 
 type AlbumAttributes struct {
 	AccessType   string   `json:"accessType"`
+	AI           bool     `json:"ai"`
 	Availability []string `json:"availability"`
 	BarcodeID    string   `json:"barcodeId"`
 	Copyright    struct {

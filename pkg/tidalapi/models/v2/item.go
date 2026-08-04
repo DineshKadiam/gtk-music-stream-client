@@ -121,10 +121,12 @@ type ArtistItemData struct {
 }
 
 type AlbumItemData struct {
+	AI          bool                `json:"ai"`
 	Artists     []ArtistItemData    `json:"artists"`
 	Cover       string              `json:"cover"`
 	Id          int                 `json:"id"`
 	Duration    int                 `json:"duration"`
+	Explicit    bool                `json:"explicit"`
 	ReleaseDate helper.TimeDateOnly `json:"releaseDate"`
 	Title       string              `json:"title"`
 	Type        string              `json:"type"`
@@ -172,10 +174,12 @@ type PlaylistItemData struct {
 }
 
 type TrackItemData struct {
+	AI             bool `json:"ai"`
 	Album          TrackItemDataAlbum
 	AllowStreaming bool             `json:"allowStreaming"`
 	Artists        []ArtistItemData `json:"artists"`
 	Duration       int              `json:"duration"`
+	Explicit       bool             `json:"explicit"`
 	// In UI terms: Indicates whether the track has been "heart"-ed
 	Following bool   `json:"following"`
 	ID        int    `json:"id"`
@@ -188,6 +192,7 @@ func (t TrackItemData) GetID() string {
 }
 
 type TrackItemDataAlbum struct {
+	AI          bool                `json:"ai"`
 	Cover       string              `json:"cover"`
 	ID          int                 `json:"id"`
 	ReleaseDate helper.TimeDateOnly `json:"releaseDate"`
