@@ -315,14 +315,6 @@ msgstr "Startseite"
 
 #: internal/ui/components/sidebar/player/component_controls.go:89
 msgid "Disable Repeat"
-msgstr ""
-
-#: internal/ui/components/sidebar/player/component_controls.go:99
-msgid "Disable Shuffle"
-msgstr ""
-
-#: internal/ui/components/sidebar/player/component_controls.go:89
-msgid "Disable Repeat"
 msgstr "Wiederholungsmodus Deaktivieren"
 
 #: internal/ui/components/sidebar/player/component_controls.go:99
