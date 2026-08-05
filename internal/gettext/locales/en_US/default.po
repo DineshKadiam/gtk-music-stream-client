@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.1.0-99-ga37b2fb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-06-29 17:07+0000\n"
 "Last-Translator: mikesk8r <mikesk8r@noreply.codeberg.org>\n"
 "Language-Team: English (United States) <https://translate.codeberg.org/"
@@ -36,6 +36,9 @@ msgstr[1] "%d Tracks (%s)"
 
 msgid "%s and %s"
 msgstr "%s and %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "About Tonearm"
@@ -115,6 +118,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Allow Tracklist Images"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "An error occurred while logging in to Last.fm"
 
@@ -160,6 +166,9 @@ msgstr "Artist"
 msgid "Artists"
 msgstr "Artists"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Authentication Required"
 
@@ -171,6 +180,9 @@ msgstr "Back"
 
 msgid "Background Activity"
 msgstr "Background Activity"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Basic Shortcuts"
@@ -203,6 +215,9 @@ msgstr "Configure Tonearm to send scrobbling data to Last.fm"
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "Configure Tonearm to send scrobbling data to ListenBrainz"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Configure the behavior of Tonearm regarding images"
 
@@ -221,29 +236,17 @@ msgstr "Continue"
 msgid "Continue the authentication process in your browser."
 msgstr "Continue the authentication process in your browser."
 
-msgid "Copied album URL to clipboard"
-msgstr "Copied album URL to clipboard"
-
-msgid "Copied artist URL to clipboard"
-msgstr "Copied artist URL to clipboard"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "Copied playlist URL to clipboard"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "Copied track URL to clipboard"
 
-msgid "Copy Album URL"
-msgstr "Copy Album URL"
-
-msgid "Copy Artist URL"
-msgstr "Copy Artist URL"
-
-msgid "Copy Playlist URL"
-msgstr "Copy Playlist URL"
-
 msgid "Copy Track URL"
 msgstr "Copy Track URL"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Default Page"
@@ -311,17 +314,14 @@ msgstr "Internal Error"
 msgid "Keyboard Shortcuts"
 msgstr "Keyboard Shortcuts"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Last Month"
 
 msgid "Last Week"
 msgstr "Last Week"
-
-msgid "Last.fm"
-msgstr "Last.fm"
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainz API Token"
@@ -467,6 +467,9 @@ msgstr "Older"
 msgid "Open TIDAL Page"
 msgstr "Open TIDAL Page"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr "Pause"
 
@@ -484,15 +487,6 @@ msgstr "Play / Pause"
 
 msgid "Play Album"
 msgstr "Play Album"
-
-msgid "Play My Tracks"
-msgstr "Play My Tracks"
-
-msgid "Play Playlist"
-msgstr "Play Playlist"
-
-msgid "Play Top Tracks"
-msgstr "Play Top Tracks"
 
 msgid "Playback"
 msgstr "Playback"
@@ -548,6 +542,9 @@ msgstr "Repeat Queue"
 msgid "Repeat Track"
 msgstr "Repeat Track"
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "Scan this QR code to sign into your TIDAL account"
 
@@ -584,15 +581,6 @@ msgstr "Set the same volume for all tracks"
 msgid "Shuffle Album"
 msgstr "Shuffle Album"
 
-msgid "Shuffle My Tracks"
-msgstr "Shuffle My Tracks"
-
-msgid "Shuffle Playlist"
-msgstr "Shuffle Playlist"
-
-msgid "Shuffle Top Tracks"
-msgstr "Shuffle Top Tracks"
-
 msgid "Side Pane"
 msgstr "Side Pane"
 
@@ -626,6 +614,21 @@ msgstr ""
 
 msgid "Sync with Track"
 msgstr "Sync with Track"
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
+msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
 msgstr "The requested deeplink did not have any available handlers."
@@ -707,3 +710,45 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr ""
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "Copied album URL to clipboard"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "Copied artist URL to clipboard"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "Copied playlist URL to clipboard"
+
+#~ msgid "Copy Album URL"
+#~ msgstr "Copy Album URL"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Copy Artist URL"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Copy Playlist URL"
+
+#~ msgid "Last.fm"
+#~ msgstr "Last.fm"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play My Tracks"
+#~ msgstr "Play My Tracks"
+
+#~ msgid "Play Playlist"
+#~ msgstr "Play Playlist"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "Play Top Tracks"
+
+#~ msgid "Shuffle My Tracks"
+#~ msgstr "Shuffle My Tracks"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "Shuffle Playlist"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "Shuffle Top Tracks"

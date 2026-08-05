@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.1.0-99-ga37b2fb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-02-17 22:08+0000\n"
 "Last-Translator: Priit Jõerüüt <jrtcdbrg@noreply.codeberg.org>\n"
 "Language-Team: Estonian <https://translate.codeberg.org/projects/tonearm/"
@@ -36,6 +36,9 @@ msgstr[1] "%d lugu (%s)"
 
 msgid "%s and %s"
 msgstr "%s ja %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "Rakenduse teave: Tonearm"
@@ -119,6 +122,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Näita pilte loendivaadetes"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "Last.fm-i teenusesse sisselogimisel tekkis viga"
 
@@ -164,6 +170,9 @@ msgstr "Esitaja"
 msgid "Artists"
 msgstr "Esitajad"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Autentimine on vajalik"
 
@@ -175,6 +184,9 @@ msgstr "Tagasi"
 
 msgid "Background Activity"
 msgstr "Toimimine taustal"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Põhilised kiirklahvid"
@@ -207,6 +219,9 @@ msgstr "Seadista Tonearm saatma kraasimisandmed Last.fm-i"
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "Seadista Tonearm saatma kraasimisandmed ListenBrainzi"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Seadista viis, kuidas Tonearm käsitleb pilte"
 
@@ -225,29 +240,17 @@ msgstr "Jätka"
 msgid "Continue the authentication process in your browser."
 msgstr "Jätka autentimist oma veebibrauseris."
 
-msgid "Copied album URL to clipboard"
-msgstr "Albumi võrguaadress on kopeeritud lõikelauale"
-
-msgid "Copied artist URL to clipboard"
-msgstr "Esitaja võrguaadress on kopeeritud lõikelauale"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "Esitusloendi võrguaadress on kopeeritud lõikelauale"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "Loo võrguaadress on kopeeritud lõikelauale"
 
-msgid "Copy Album URL"
-msgstr "Kopeeri albmi võrguaadress"
-
-msgid "Copy Artist URL"
-msgstr "Kopeeri esitaja võrguaadress"
-
-msgid "Copy Playlist URL"
-msgstr "Kopeeri esitusloendi võrguaadress"
-
 msgid "Copy Track URL"
 msgstr "Kopeeri loo võrguaadress"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Vaikimisi leht"
@@ -315,17 +318,14 @@ msgstr "Sisemine viga"
 msgid "Keyboard Shortcuts"
 msgstr "Klaviatuuri kiirvalikud"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Eelmisel kuul"
 
 msgid "Last Week"
 msgstr "Eelmisel nädalal"
-
-msgid "Last.fm"
-msgstr "Last.fm"
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainzi API tunnusluba"
@@ -472,6 +472,9 @@ msgstr "Vanemad"
 msgid "Open TIDAL Page"
 msgstr "Ava TIDAL-i leht"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr "Peata"
 
@@ -489,15 +492,6 @@ msgstr "Esita / peata"
 
 msgid "Play Album"
 msgstr "Kuula albumit"
-
-msgid "Play My Tracks"
-msgstr "Esita minu lugusid"
-
-msgid "Play Playlist"
-msgstr "Kuula esitusloendit"
-
-msgid "Play Top Tracks"
-msgstr "Kuula populaarsemaid lugusid"
 
 msgid "Playback"
 msgstr "Taasesitus"
@@ -555,6 +549,9 @@ msgstr "Korda esitusjärjekorda"
 msgid "Repeat Track"
 msgstr "Korda lugu"
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "Oma TIDAL-i kontoga sisselogimiseks skaneeri seda QR-koodi"
 
@@ -591,15 +588,6 @@ msgstr "Määra kõikidele lugudele sama helivaljus"
 msgid "Shuffle Album"
 msgstr "Sega album"
 
-msgid "Shuffle My Tracks"
-msgstr "Sega minu lood"
-
-msgid "Shuffle Playlist"
-msgstr "Sega esitusloend"
-
-msgid "Shuffle Top Tracks"
-msgstr "Sega populaarsemad lood"
-
 msgid "Side Pane"
 msgstr "Külgpaan"
 
@@ -633,6 +621,21 @@ msgstr ""
 
 msgid "Sync with Track"
 msgstr "Sünkrooni looga"
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
+msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
 msgstr "Soovitud süvalinki polnud võimalik ühegi rakendusega avada."
@@ -715,3 +718,45 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr "Priit Jõerüüt 2026"
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "Albumi võrguaadress on kopeeritud lõikelauale"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "Esitaja võrguaadress on kopeeritud lõikelauale"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "Esitusloendi võrguaadress on kopeeritud lõikelauale"
+
+#~ msgid "Copy Album URL"
+#~ msgstr "Kopeeri albmi võrguaadress"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Kopeeri esitaja võrguaadress"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Kopeeri esitusloendi võrguaadress"
+
+#~ msgid "Last.fm"
+#~ msgstr "Last.fm"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play My Tracks"
+#~ msgstr "Esita minu lugusid"
+
+#~ msgid "Play Playlist"
+#~ msgstr "Kuula esitusloendit"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "Kuula populaarsemaid lugusid"
+
+#~ msgid "Shuffle My Tracks"
+#~ msgstr "Sega minu lood"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "Sega esitusloend"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "Sega populaarsemad lood"

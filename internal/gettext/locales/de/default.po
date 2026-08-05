@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-02-17 20:13+0000\n"
 "Last-Translator: NilaTheDragon <nilathedragon@noreply.codeberg.org>\n"
 "Language-Team: German <https://translate.codeberg.org/projects/tonearm/"
@@ -37,6 +37,9 @@ msgstr[1] "%d Titel (%s)"
 
 msgid "%s and %s"
 msgstr "%s und %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "Über Tonearm"
@@ -114,6 +117,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Bilder bei Titellisten"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "Während dem Anmeldevorgang bei Last.fm ist ein Fehler aufgetreten"
 
@@ -160,6 +166,9 @@ msgstr "Künstler"
 msgid "Artists"
 msgstr "Künstler"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Anmeldung Erforderlich"
 
@@ -171,6 +180,9 @@ msgstr "Zurück"
 
 msgid "Background Activity"
 msgstr "Hintergrundaktivität"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Grundlegende Kurzbefehle"
@@ -203,6 +215,9 @@ msgstr "Tonearm konfigurieren, um Scrobbling-Daten an Last.fm zu senden"
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "Konfiguriere Tonearm um Scrobbling Daten an ListenBrainz zu senden"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Entscheide welche Bilder Tonearm laden soll"
 
@@ -221,29 +236,17 @@ msgstr "Weiter"
 msgid "Continue the authentication process in your browser."
 msgstr "Fahre mit dem Authentifizierungsprozess in deinem Browser fort."
 
-msgid "Copied album URL to clipboard"
-msgstr "Album-URL in die Zwischenablage kopiert"
-
-msgid "Copied artist URL to clipboard"
-msgstr "Profillink kopiert"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "Playlistlink kopiert"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "Titellink kopiert"
 
-msgid "Copy Album URL"
-msgstr "Album-URL kopieren"
-
-msgid "Copy Artist URL"
-msgstr "Künstlerlink kopieren"
-
-msgid "Copy Playlist URL"
-msgstr "Playlistlink kopieren"
-
 msgid "Copy Track URL"
 msgstr "Titellink kopieren"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Startseite"
@@ -311,17 +314,14 @@ msgstr "Interner Fehler"
 msgid "Keyboard Shortcuts"
 msgstr "Tastaturkurzbefehle"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Letzter Monat"
 
 msgid "Last Week"
 msgstr "Letzte Woche"
-
-msgid "Last.fm"
-msgstr "Last.fm"
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainz API Schlüssel"
@@ -469,6 +469,9 @@ msgstr "Älter"
 msgid "Open TIDAL Page"
 msgstr "TIDAL Webseite öffnen"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr "Pausieren"
 
@@ -486,15 +489,6 @@ msgstr "Play / Pause"
 
 msgid "Play Album"
 msgstr "Album abspielen"
-
-msgid "Play My Tracks"
-msgstr "Meine Titel Abspielen"
-
-msgid "Play Playlist"
-msgstr "Playlist abspielen"
-
-msgid "Play Top Tracks"
-msgstr "Top Titel abspielen"
 
 msgid "Playback"
 msgstr "Wiedergabe"
@@ -552,6 +546,9 @@ msgstr "Warteschlange Wiederholen"
 msgid "Repeat Track"
 msgstr "Titel Wiederholen"
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "Scanne diesen QR Code um dich bei TIDAL anzumelden"
 
@@ -588,15 +585,6 @@ msgstr "Dieselbe Lautstärke für alle Titel festlegen"
 msgid "Shuffle Album"
 msgstr "Album im Zufallsmodus abspielen"
 
-msgid "Shuffle My Tracks"
-msgstr "Meine Titel im Zufallsmodus Wiedergeben"
-
-msgid "Shuffle Playlist"
-msgstr "Playlist im Zufallsmodus abspielen"
-
-msgid "Shuffle Top Tracks"
-msgstr "Top Titel im Zufallsmodus abspielen"
-
 msgid "Side Pane"
 msgstr "Seitenleiste"
 
@@ -630,6 +618,21 @@ msgstr ""
 
 msgid "Sync with Track"
 msgstr "Mit Titel Synchronisieren"
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
+msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
 msgstr "Die gewünschte Seite konnte nicht gefunden werden."
@@ -715,6 +718,48 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr "Nila The Dragon https://github.com/NilaTheDragon"
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "Album-URL in die Zwischenablage kopiert"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "Profillink kopiert"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "Playlistlink kopiert"
+
+#~ msgid "Copy Album URL"
+#~ msgstr "Album-URL kopieren"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Künstlerlink kopieren"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Playlistlink kopieren"
+
+#~ msgid "Last.fm"
+#~ msgstr "Last.fm"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play My Tracks"
+#~ msgstr "Meine Titel Abspielen"
+
+#~ msgid "Play Playlist"
+#~ msgstr "Playlist abspielen"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "Top Titel abspielen"
+
+#~ msgid "Shuffle My Tracks"
+#~ msgstr "Meine Titel im Zufallsmodus Wiedergeben"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "Playlist im Zufallsmodus abspielen"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "Top Titel im Zufallsmodus abspielen"
 
 #~ msgid "No lyrics available"
 #~ msgstr "Songtext nicht verfügbar"
