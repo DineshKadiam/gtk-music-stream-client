@@ -19,152 +19,117 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.15.2\n"
 
-#: internal/ui/routes/artist.go:72
 msgid "%d Fan"
 msgid_plural "%d Fans"
 msgstr[0] "%d 位粉丝"
 
-#: internal/ui/components/media_card/playlist.go:20
 msgid "%d Track"
 msgid_plural "%d Tracks"
 msgstr[0] "%d 首曲目"
 
-#: internal/ui/routes/album.go:136
 msgid "%d Track (%s)"
 msgid_plural "%d Tracks (%s)"
 msgstr[0] "%d 首曲目 (%s)"
 
-#: internal/ui/routes/feed.go:145
 msgid "%s and %s"
 msgstr "%s 和 %s"
 
-#: internal/ui/window_sidebar.go:33
 msgid "About Tonearm"
 msgstr "关于 Tonearm"
 
-#: internal/ui/routes/album.go:102
 msgid "Add Album to Queue"
 msgstr ""
 
-#: internal/ui/routes/my_collection/tracks.go:54
 msgid "Add My Tracks to Queue"
 msgstr ""
 
-#: internal/ui/routes/playlist.go:87
 msgid "Add Playlist to Queue"
 msgstr ""
 
-#: internal/ui/routes/artist.go:47
 msgid "Add Top Tracks to Queue"
 msgstr ""
 
-#: internal/ui/components/favourite_button/favourite_button.go:54
 msgid "Add to Collection"
 msgstr "添加到收藏"
 
-#: internal/ui/components/tracklist/column_controls.go:54
 msgid "Add to Queue"
 msgstr "添加到队列"
 
-#: internal/settings/playback.go:21
 msgid "Album"
 msgstr "专辑"
 
-#: internal/ui/routes/feed.go:153
 msgid "Album by %s"
 msgstr "专辑作者：%s"
 
-#: internal/ui/routes/my-collection.go:52
 msgid "Albums"
 msgstr "专辑"
 
-#: internal/ui/window_preferences.go:24
 msgid "Allow Background Activity"
 msgstr "允许后台活动"
 
-#: internal/ui/window_preferences.go:84
 msgid "Allow Media Card Images"
 msgstr "允许媒体卡片图像"
 
-#: internal/ui/window_preferences.go:90
 msgid "Allow Shortcut Images"
 msgstr "允许快捷方式图像"
 
-#: internal/ui/window_preferences.go:85
 msgid "Allow Tonearm to load images for media card buttons"
 msgstr "允许 Tonearm 为媒体卡片按钮加载图像"
 
-#: internal/ui/window_preferences.go:91
 msgid "Allow Tonearm to load images for shortcut buttons"
 msgstr "允许 Tonearm 为快捷方式按钮加载图像"
 
-#: internal/ui/window_preferences.go:97
 msgid "Allow Tonearm to load images for tracklists with the cover column"
 msgstr "允许 Tonearm 为带有封面列的曲目列表加载图像"
 
-#: internal/ui/window_preferences.go:25
 msgid ""
 "Allow Tonearm to run in the background by hiding the player window instead "
 "of quitting the application"
 msgstr "允许 Tonearm 在后台运行，通过隐藏播放器窗口而不是退出应用程序"
 
-#: internal/ui/window_preferences.go:139
 msgid "Allow Tonearm to send scrobbling data to Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:119
 msgid "Allow Tonearm to send scrobbling data to ListenBrainz"
 msgstr "允许 Tonearm 向 ListenBrainz 发送数据记录"
 
-#: internal/ui/window_preferences.go:58
 msgid ""
 "Allow Tonearm to start a mix with the current playing song when you're at "
 "the end of an album/queue"
 msgstr "允许 Tonearm 在您播放完专辑/队列末尾时，以当前播放的歌曲开始混音"
 
-#: internal/ui/window_preferences.go:103
 msgid ""
 "Allow Tonearm to temporarily store images on the file system to improve "
 "performance and reduce network traffic"
 msgstr ""
 
-#: internal/ui/window_preferences.go:96
 msgid "Allow Tracklist Images"
 msgstr "允许曲目列表图像"
 
-#: internal/ui/window_preferences.go:235
 msgid "An error occurred while logging in to Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:210
 msgid "An error occurred while logging out of Last.fm"
 msgstr ""
 
-#: internal/ui/routes/album.go:153
 msgid "An error occurred while playing the album"
 msgstr ""
 
-#: internal/ui/routes/playlist.go:138
 msgid "An error occurred while playing the playlist"
 msgstr ""
 
-#: internal/ui/routes/artist.go:96
 msgid "An error occurred while playing the top tracks"
 msgstr ""
 
-#: internal/ui/routes/album.go:89
 msgid "An error occurred while playing the track"
 msgstr ""
 
-#: internal/ui/routes/my_collection/tracks.go:105
 msgid "An error occurred while playing the tracks"
 msgstr ""
 
-#: internal/ui/routes/my_collection/tracks.go:85
 msgid "An error occurred while shuffling the tracks"
 msgstr ""
 
-#: internal/secrets/service_linux.go:55
 msgid ""
 "An unknown error occurred when checking for a secret service provider.\n"
 "\n"
@@ -179,381 +144,287 @@ msgstr ""
 "\n"
 "%s"
 
-#: internal/ui/routes/artist.go:38
 msgid "Artist"
 msgstr "艺术家"
 
-#: internal/ui/routes/my-collection.go:47
 msgid "Artists"
 msgstr "艺术家"
 
-#: internal/ui/components/auth_required.go:13
 msgid "Authentication Required"
 msgstr ""
 
-#: internal/settings/playback.go:20
 msgid "Auto"
 msgstr ""
 
-#: internal/ui/window_shortcuts.go:19
 msgid "Back"
 msgstr "返回"
 
-#: internal/ui/window_preferences.go:30
 msgid "Background Activity"
 msgstr "后台活动"
 
-#: internal/ui/window_shortcuts.go:17
 msgid "Basic Shortcuts"
 msgstr "基本快捷键"
 
-#: internal/ui/window_preferences.go:102
 msgid "Cache Images"
 msgstr "缓存图像"
 
-#: internal/features/scrobbling/lastfm.go:66
 msgid "Cancel"
 msgstr ""
 
-#: internal/ui/components/linking/linking.go:82
 msgid "Cancel Login"
 msgstr "取消登录"
 
-#: internal/ui/window_preferences.go:70
 msgid ""
 "Choose whether Tonearm should prefer album replay gain, track replay gain or "
 "decide automatically"
 msgstr ""
 
-#: internal/ui/window_shortcuts.go:11
 msgid "Close"
 msgstr "关闭"
 
-#: internal/ui/window_content.go:25
 msgid "Collection"
 msgstr "收藏"
 
-#: internal/ui/window_preferences.go:264
 msgid "Configure Tonearm to send scrobbling data to Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:135
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "配置 Tonearm 以向 ListenBrainz 发送数据记录"
 
-#: internal/ui/window_preferences.go:107
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "配置 Tonearm 关于图像的行为"
 
-#: internal/ui/window_preferences.go:76
 msgid "Configure the behaviour of Tonearm regarding playback"
 msgstr "配置 Tonearm 关于播放的行为"
 
-#: internal/ui/window_preferences.go:49
 msgid "Configure the behaviour of Tonearm when navigating between pages"
 msgstr "配置 Tonearm 在页面间导航时的行为"
 
-#: internal/ui/window_preferences.go:31
 msgid "Configure the behaviour of Tonearm when running in the background"
 msgstr "配置 Tonearm 在后台运行时的行为"
 
-#: internal/ui/window_popups.go:28
 msgid "Continue"
 msgstr "继续"
 
-#: internal/features/scrobbling/lastfm.go:43
 msgid "Continue the authentication process in your browser."
 msgstr ""
 
-#: internal/ui/routes/album.go:195
 msgid "Copied album URL to clipboard"
 msgstr ""
 
-#: internal/ui/routes/artist.go:138
 msgid "Copied artist URL to clipboard"
 msgstr "已将艺术家 URL 复制到剪贴板"
 
-#: internal/ui/routes/playlist.go:182
 msgid "Copied playlist URL to clipboard"
 msgstr "已将播放列表 URL 复制到剪贴板"
 
-#: internal/ui/components/sidebar/player/component_action_row.go:250
 msgid "Copied track URL to clipboard"
 msgstr "已将曲目 URL 复制到剪贴板"
 
-#: internal/ui/routes/album.go:185
 msgid "Copy Album URL"
 msgstr ""
 
-#: internal/ui/routes/artist.go:128
 msgid "Copy Artist URL"
 msgstr "复制艺术家 URL"
 
-#: internal/ui/routes/playlist.go:172
 msgid "Copy Playlist URL"
 msgstr "复制播放列表 URL"
 
-#: internal/ui/components/sidebar/player/component_action_row.go:239
 msgid "Copy Track URL"
 msgstr "复制曲目 URL"
 
-#: internal/ui/window_preferences.go:34
 msgid "Default Page"
 msgstr "默认页面"
 
-#: internal/ui/components/sidebar/player/component_controls.go:89
 msgid "Disable Repeat"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_controls.go:99
 msgid "Disable Shuffle"
 msgstr ""
 
-#: internal/ui/window_popups.go:21
 msgid "Don't show again"
 msgstr "不再显示"
 
-#: internal/ui/routes/feed.go:155
 msgid "EP by %s"
 msgstr "EP 作者：%s"
 
-#: internal/ui/window_preferences.go:57
 msgid "Enable Autoplay"
 msgstr ""
 
-#: internal/ui/window_preferences.go:138
 msgid "Enable Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:118
 msgid "Enable ListenBrainz"
 msgstr "启用 ListenBrainz"
 
-#: internal/ui/components/sidebar/player/component_controls.go:102
 msgid "Enable Shuffle"
 msgstr ""
 
-#: internal/ui/components/sidebar/lyrics/lyrics.go:51
 msgid "Error Fetching Lyrics"
 msgstr ""
 
-#: internal/ui/routes/my-collection.go:43
 msgid "Error loading collection"
 msgstr "加载收藏时出错"
 
-#: internal/ui/routes/explore.go:28
 msgid "Explore"
 msgstr "探索"
 
-#: internal/ui/components/shortcut_list/deeplink.go:17
 msgid "External Link"
 msgstr "外部链接"
 
-#: internal/ui/routes/feed.go:99
 msgid "Feed"
 msgstr "动态"
 
-#: internal/ui/routes/search.go:33
 msgid "For example, Fox Stevenson"
 msgstr "例如：Fox Stevenson"
 
-#: internal/ui/window_preferences.go:50
 msgid "General"
 msgstr "通用"
 
-#: internal/ui/components/sidebar/player/component_track_timeline.go:62
 msgid "High"
 msgstr "高"
 
-#: internal/ui/window_preferences.go:42
 msgid "History Length"
 msgstr "历史记录长度"
 
-#: internal/ui/routes/home.go:23
 msgid "Home"
 msgstr "主页"
 
-#: internal/ui/window_preferences.go:107
 msgid "Images"
 msgstr "图像"
 
-#: internal/router/handler_error.go:10
 msgid "Internal Error"
 msgstr "内部错误"
 
-#: internal/ui/window_shortcuts.go:15
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: internal/ui/routes/feed.go:85
 msgid "Last Month"
 msgstr "上个月"
 
-#: internal/ui/routes/feed.go:81
 msgid "Last Week"
 msgstr "上周"
 
-#: internal/ui/window_preferences.go:263
 msgid "Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:134
 msgid "ListenBrainz"
 msgstr "ListenBrainz"
 
-#: internal/ui/window_preferences.go:124
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainz API 令牌"
 
-#: internal/ui/window_preferences.go:129
 msgid "ListenBrainz API URL"
 msgstr "ListenBrainz API URL"
 
-#: internal/ui/components/sidebar/lyrics/lyrics.go:53
 msgid "Loading Lyrics"
 msgstr ""
 
-#: internal/ui/window_preferences.go:144
 msgid "Log In to Last.fm…"
 msgstr ""
 
-#: internal/ui/window_preferences.go:153
 msgid "Log Out of Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:251
 msgid "Logged in to Last.fm as %s"
 msgstr ""
 
-#: internal/ui/window_preferences.go:221
 msgid "Logged out of Last.fm"
 msgstr ""
 
-#: internal/features/scrobbling/lastfm.go:42
 msgid "Logging in to Last.fm"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_track_timeline.go:59
 msgid "Low (320 kbps)"
 msgstr "低 (320 kbps)"
 
-#: internal/ui/components/sidebar/player/component_track_timeline.go:56
 msgid "Low (96 kbps)"
 msgstr "低 (96 kbps)"
 
-#: internal/ui/window_sidebar.go:74
 msgid "Lyrics"
 msgstr "歌词"
 
-#: internal/ui/window_shortcuts.go:14
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: internal/ui/components/sidebar/player/component_track_timeline.go:65
 msgid "Max"
 msgstr "最大"
 
-#: internal/ui/window_preferences.go:43
 msgid "Maximum history length before dropping old entries"
 msgstr "在丢弃旧条目前的最大历史记录长度"
 
-#: internal/ui/components/dynamic_v1.go:157
 msgid "More"
 msgstr "更多"
 
-#: internal/ui/components/tracklist/column_controls.go:62
 msgid "More…"
 msgstr ""
 
-#: internal/ui/routes/my_collection/albums.go:37
 msgid "My Albums"
 msgstr "我的专辑"
 
-#: internal/ui/routes/my_collection/artists.go:37
 msgid "My Artists"
 msgstr "我的艺术家"
 
-#: internal/ui/routes/my-collection.go:34
 msgid "My Collection"
 msgstr "我的收藏"
 
-#: internal/ui/routes/my_collection/playlists.go:37
 msgid "My Playlists"
 msgstr "我的播放列表"
 
-#: internal/services/tidal/openapi/collection.go:19
 msgid "My Tracks"
 msgstr "我的曲目"
 
-#: internal/ui/window_content.go:49
 msgid "Navigate Back"
 msgstr "向后导航"
 
-#: internal/ui/components/tracklist/column_controls.go:35
 msgid "Navigate to %s"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_action_row.go:198
 msgid "Navigate to Album"
 msgstr "导航到专辑"
 
-#: internal/ui/components/sidebar/player/component_action_row.go:32
 msgid "Navigate to Artist"
 msgstr "导航到艺术家"
 
-#: internal/ui/window_content.go:27
 msgid "Navigate to Collection"
 msgstr "导航到收藏"
 
-#: internal/ui/window_content.go:22
 msgid "Navigate to Explore"
 msgstr "导航到探索"
 
-#: internal/ui/window_content.go:17
 msgid "Navigate to Home"
 msgstr "导航到主页"
 
-#: internal/ui/components/sidebar/player/component_action_row.go:212
 msgid "Navigate to Track Mix"
 msgstr "导航到曲目混音"
 
-#: internal/ui/window_shortcuts.go:21
 msgid "Navigation"
 msgstr "导航"
 
-#: internal/ui/window_preferences.go:48
 msgid "Navigation Behaviour"
 msgstr "导航行为"
 
-#: internal/ui/components/sidebar/miniplayer.go:122
 msgid "Next"
 msgstr "下一首"
 
-#: internal/ui/components/sidebar/player/component_track_info.go:25
 msgid "No Artist"
 msgstr "无艺术家"
 
-#: internal/ui/components/sidebar/lyrics/lyrics.go:55
 msgid "No Lyrics Available"
 msgstr ""
 
-#: internal/ui/components/sidebar/lyrics/lyrics.go:49
 msgid "No Song Currently Playing"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_track_info.go:24
 msgid "No Track"
 msgstr "无曲目"
 
-#: internal/ui/components/sidebar/queue/queue.go:40
 msgid "No Tracks in Queue"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_action_row.go:229
 msgid "No mix found for the current track"
 msgstr "未找到当前曲目的混音"
 
-#: internal/secrets/service_linux.go:40
 msgid ""
 "No secret service provider is available.\n"
 "\n"
@@ -568,269 +439,203 @@ msgstr ""
 "\n"
 "请安装密钥服务提供程序，例如 GNOME 密钥环或 KDE 钱包。"
 
-#: internal/ui/window_preferences.go:63
 msgid "Normalize Volume"
 msgstr ""
 
-#: internal/router/handler_notfound.go:10
 msgid "Not Found"
 msgstr "未找到"
 
-#: internal/router/handler_notfound.go:12
 msgid "Not found"
 msgstr "未找到"
 
-#: internal/ui/routes/feed.go:87
 msgid "Older"
 msgstr "更早"
 
-#: internal/ui/components/linking/linking.go:75
 msgid "Open TIDAL Page"
 msgstr "打开 TIDAL 页面"
 
-#: internal/ui/components/sidebar/player/component_controls.go:45
 msgid "Pause"
 msgstr ""
 
-#: internal/ui/window_preferences.go:108
 msgid "Performance"
 msgstr "性能"
 
-#: internal/ui/routes/playlist.go:62
 msgid "Personal Mix"
 msgstr "个人混音"
 
-#: internal/ui/components/sidebar/player/component_controls.go:48
 msgid "Play"
 msgstr ""
 
-#: internal/ui/components/sidebar/miniplayer.go:98
 msgid "Play / Pause"
 msgstr "播放 / 暂停"
 
-#: internal/ui/routes/album.go:160
 msgid "Play Album"
 msgstr "播放专辑"
 
-#: internal/ui/routes/my_collection/tracks.go:97
 msgid "Play My Tracks"
 msgstr ""
 
-#: internal/ui/routes/playlist.go:145
 msgid "Play Playlist"
 msgstr "播放播放列表"
 
-#: internal/ui/routes/artist.go:102
 msgid "Play Top Tracks"
 msgstr "播放热门曲目"
 
-#: internal/ui/window_preferences.go:76
 msgid "Playback"
 msgstr "播放"
 
-#: internal/ui/components/sidebar/player/component_track_timeline.go:73
 msgid "Playback quality saved. Changes will be applied on next track change"
 msgstr "播放质量已保存。更改将在下一曲目切换时生效"
 
-#: internal/ui/window_sidebar.go:73
 msgid "Player"
 msgstr "播放器"
 
-#: internal/ui/components/sidebar/player/component_playing_from.go:64
 msgid "Playing From"
 msgstr "播放来源"
 
-#: internal/ui/routes/playlist.go:45
 msgid "Playlist"
 msgstr "播放列表"
 
-#: internal/ui/routes/my-collection.go:57
 msgid "Playlists"
 msgstr "播放列表"
 
-#: internal/ui/routes/my-collection.go:35
 msgid "Please sign in to view your collection"
 msgstr ""
 
-#: internal/ui/routes/feed.go:100
 msgid "Please sign in to view your feed"
 msgstr ""
 
-#: internal/ui/window_shortcuts.go:16
 msgid "Preferences"
 msgstr "首选项"
 
-#: internal/ui/window_preferences.go:69
 msgid "Preferred Replay Gain"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_controls.go:115
 msgid "Previous"
 msgstr "上一首"
 
-#: internal/ui/window_sidebar.go:75
 msgid "Queue"
 msgstr "队列"
 
-#: internal/ui/window_shortcuts.go:12
 msgid "Quit"
 msgstr "退出"
 
-#: internal/ui/components/sidebar/queue/queue.go:79
 msgid "Remove Track from Queue"
 msgstr "从队列中移除曲目"
 
-#: internal/ui/components/favourite_button/favourite_button.go:50
 msgid "Remove from Collection"
 msgstr ""
 
-#: internal/features/scrobbling/lastfm.go:56
 msgid "Reopen Browser"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_controls.go:81
 msgid "Repeat Queue"
 msgstr ""
 
-#: internal/ui/components/sidebar/player/component_controls.go:85
 msgid "Repeat Track"
 msgstr ""
 
-#: internal/ui/components/linking/linking.go:59
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "扫描此二维码以登录您的 TIDAL 账号"
 
-#: internal/ui/window_preferences.go:265
 msgid "Scrobbling"
 msgstr "Scrobbling"
 
-#: internal/ui/components/horizontal_list/horizontal_list.go:66
 msgid "Scroll to the Left"
 msgstr "向左滚动"
 
-#: internal/ui/components/horizontal_list/horizontal_list.go:55
 msgid "Scroll to the Right"
 msgstr "向右滚动"
 
-#: internal/ui/routes/search/albums.go:32
 msgid "Search"
 msgstr "搜索"
 
-#: internal/secrets/service_linux.go:54
 msgid "Secret Service Error"
 msgstr "密钥服务错误"
 
-#: internal/secrets/service_linux.go:47
 msgid "Secret Service Issue"
 msgstr "密钥服务问题"
 
-#: internal/secrets/service_linux.go:39
 msgid "Secret Service Unavailable"
 msgstr "密钥服务不可用"
 
-#: internal/ui/window_sidebar.go:30
 msgid "Set as Default Page"
 msgstr ""
 
-#: internal/ui/window_actions.go:333
 msgid "Set current page as default"
 msgstr "将当前页面设为默认"
 
-#: internal/ui/window_preferences.go:64
 msgid "Set the same volume for all tracks"
 msgstr ""
 
-#: internal/ui/routes/album.go:147
 msgid "Shuffle Album"
 msgstr "随机播放专辑"
 
-#: internal/ui/routes/my_collection/tracks.go:78
 msgid "Shuffle My Tracks"
 msgstr ""
 
-#: internal/ui/routes/playlist.go:131
 msgid "Shuffle Playlist"
 msgstr "随机播放播放列表"
 
-#: internal/ui/routes/artist.go:89
 msgid "Shuffle Top Tracks"
 msgstr "随机播放热门曲目"
 
-#: internal/ui/window_shortcuts.go:13
 msgid "Side Pane"
 msgstr "侧边栏"
 
-#: internal/ui/components/linking/linking.go:59
 msgid "Sign In"
 msgstr "登录"
 
-#: internal/ui/components/auth_required.go:17
 msgid "Sign In…"
 msgstr ""
 
-#: internal/ui/window_sidebar.go:39
 msgid "Sign Out"
 msgstr "登出"
 
-#: internal/ui/window_actions.go:308
 msgid "Sign in failed or aborted"
 msgstr "登录失败或已取消"
 
-#: internal/ui/window_actions.go:312
 msgid "Signed in as %s"
 msgstr "已登录为 %s"
 
-#: internal/ui/window_actions.go:322
 msgid "Signed out"
 msgstr "已登出"
 
-#: internal/ui/routes/feed.go:151
 msgid "Single by %s"
 msgstr "单曲 - %s"
 
-#: internal/ui/routes/search/search.go:13
 msgid ""
 "Start typing in the search bar to search for songs, artists, albums or "
 "playlists"
 msgstr ""
 
-#: internal/ui/components/sidebar/lyrics/lyrics_view.go:63
 msgid "Sync with Track"
 msgstr ""
 
-#: internal/router/handler_notfound.go:13
 msgid "The requested deeplink did not have any available handlers."
 msgstr "请求的深度链接没有任何可用的处理程序。"
 
-#: internal/ui/routes/feed.go:83
 msgid "This Month"
 msgstr "本月"
 
-#: internal/ui/routes/feed.go:79
 msgid "This Week"
 msgstr "本周"
 
-#: internal/ui/routes/feed.go:77
 msgid "Today"
 msgstr "今日"
 
-#: internal/ui/window_content.go:44
 msgid "Toggle Sidebar"
 msgstr "切换侧边栏"
 
-#: internal/settings/playback.go:22
 msgid "Track"
 msgstr ""
 
-#: internal/player/playback.go:36
 msgid "Track not available for streaming, skipping to next track"
 msgstr "曲目无法流式播放，正在跳至下一曲目"
 
-#: internal/ui/routes/my-collection.go:81
 msgid "Tracks"
 msgstr "曲目"
 
-#: internal/router/handler_error.go:13
 msgid ""
 "Unfortunately an error occurred while loading this view. Please try again "
 "later. If the error persists, please open an issue!\n"
@@ -841,39 +646,30 @@ msgstr ""
 "\n"
 "错误信息： "
 
-#: internal/ui/routes/feed.go:157
 msgid "Unknown album type"
 msgstr "未知专辑类型"
 
-#: internal/ui/routes/feed.go:221
 msgid "Unsupported activity"
 msgstr "不支持的活动"
 
-#: internal/ui/components/horizontal_list/horizontal_list.go:35
 msgid "View All"
 msgstr "查看全部"
 
-#: internal/ui/components/sidebar/player/component_action_row.go:192
 msgid "Volume"
 msgstr "音量"
 
-#: internal/ui/window_preferences.go:145
 msgid "You are currently not logged in to Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:157
 msgid "You are logged in to Last.fm"
 msgstr ""
 
-#: internal/ui/window_preferences.go:160
 msgid "You are logged in to Last.fm as %s"
 msgstr ""
 
-#: internal/ui/components/linking/linking.go:29
 msgid "You can also open the linking page using the button below"
 msgstr "您也可以使用下方的按钮打开链接页面"
 
-#: internal/secrets/service_linux.go:48
 msgid ""
 "Your secret service provider was found, but refused to interact with "
 "Tonearm.\n"
@@ -891,7 +687,6 @@ msgstr ""
 "\n"
 "Tonearm 将无法存储任何与身份验证相关的数据，您将无法登录。"
 
-#: internal/ui/window_about.go:132
 msgid "translator-credits"
 msgstr "Poesty Li"
 
