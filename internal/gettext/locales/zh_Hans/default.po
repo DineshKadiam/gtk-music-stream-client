@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.1.0-99-ga37b2fb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-02-12 16:42+0000\n"
 "Last-Translator: Poesty Li <poesty7450@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
@@ -33,6 +33,9 @@ msgstr[0] "%d 首曲目 (%s)"
 
 msgid "%s and %s"
 msgstr "%s 和 %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "关于 Tonearm"
@@ -106,6 +109,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "允许曲目列表图像"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr ""
 
@@ -150,6 +156,9 @@ msgstr "艺术家"
 msgid "Artists"
 msgstr "艺术家"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr ""
 
@@ -161,6 +170,9 @@ msgstr "返回"
 
 msgid "Background Activity"
 msgstr "后台活动"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "基本快捷键"
@@ -191,6 +203,9 @@ msgstr ""
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "配置 Tonearm 以向 ListenBrainz 发送数据记录"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "配置 Tonearm 关于图像的行为"
 
@@ -209,29 +224,17 @@ msgstr "继续"
 msgid "Continue the authentication process in your browser."
 msgstr ""
 
-msgid "Copied album URL to clipboard"
+msgid "Copied URL to clipboard"
 msgstr ""
-
-msgid "Copied artist URL to clipboard"
-msgstr "已将艺术家 URL 复制到剪贴板"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "已将播放列表 URL 复制到剪贴板"
 
 msgid "Copied track URL to clipboard"
 msgstr "已将曲目 URL 复制到剪贴板"
 
-msgid "Copy Album URL"
-msgstr ""
-
-msgid "Copy Artist URL"
-msgstr "复制艺术家 URL"
-
-msgid "Copy Playlist URL"
-msgstr "复制播放列表 URL"
-
 msgid "Copy Track URL"
 msgstr "复制曲目 URL"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "默认页面"
@@ -299,17 +302,14 @@ msgstr "内部错误"
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "上个月"
 
 msgid "Last Week"
 msgstr "上周"
-
-msgid "Last.fm"
-msgstr ""
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainz API 令牌"
@@ -454,6 +454,9 @@ msgstr "更早"
 msgid "Open TIDAL Page"
 msgstr "打开 TIDAL 页面"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr ""
 
@@ -471,15 +474,6 @@ msgstr "播放 / 暂停"
 
 msgid "Play Album"
 msgstr "播放专辑"
-
-msgid "Play My Tracks"
-msgstr ""
-
-msgid "Play Playlist"
-msgstr "播放播放列表"
-
-msgid "Play Top Tracks"
-msgstr "播放热门曲目"
 
 msgid "Playback"
 msgstr "播放"
@@ -535,6 +529,9 @@ msgstr ""
 msgid "Repeat Track"
 msgstr ""
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "扫描此二维码以登录您的 TIDAL 账号"
 
@@ -571,15 +568,6 @@ msgstr ""
 msgid "Shuffle Album"
 msgstr "随机播放专辑"
 
-msgid "Shuffle My Tracks"
-msgstr ""
-
-msgid "Shuffle Playlist"
-msgstr "随机播放播放列表"
-
-msgid "Shuffle Top Tracks"
-msgstr "随机播放热门曲目"
-
 msgid "Side Pane"
 msgstr "侧边栏"
 
@@ -610,6 +598,21 @@ msgid ""
 msgstr ""
 
 msgid "Sync with Track"
+msgstr ""
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
 msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
@@ -689,6 +692,33 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr "Poesty Li"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "已将艺术家 URL 复制到剪贴板"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "已将播放列表 URL 复制到剪贴板"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "复制艺术家 URL"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "复制播放列表 URL"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play Playlist"
+#~ msgstr "播放播放列表"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "播放热门曲目"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "随机播放播放列表"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "随机播放热门曲目"
 
 #~ msgid ""
 #~ "Allow Tonearm to temporarily store images on the file system to improve "

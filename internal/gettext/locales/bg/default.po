@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.1.0-99-ga37b2fb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-02-15 23:06+0000\n"
 "Last-Translator: presi300 <presi300@noreply.codeberg.org>\n"
 "Language-Team: Bulgarian <https://translate.codeberg.org/projects/tonearm/"
@@ -36,6 +36,9 @@ msgstr[1] "%d Песните (%s)"
 
 msgid "%s and %s"
 msgstr "%s и %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "За Tonearm"
@@ -123,6 +126,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Позволи изображения в траклиста"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "Възникна грешка при влизането в Last.fm"
 
@@ -167,6 +173,9 @@ msgstr "Артист"
 msgid "Artists"
 msgstr "Артисти"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Необходимо е удостоверение"
 
@@ -180,6 +189,9 @@ msgstr "Назад"
 
 msgid "Background Activity"
 msgstr "Фонова активност"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Обикновени шорткътове"
@@ -211,6 +223,9 @@ msgstr "Настрой Tonearm да изпраща скробълинг инфо
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "Настрой изпращането на scrobbling информация към ListenBrainz"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 #, fuzzy
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Настрой поведението на Tonearm относно изображенията"
@@ -231,29 +246,17 @@ msgstr "Продължи"
 msgid "Continue the authentication process in your browser."
 msgstr "Продължи удостоверяването в браузъра."
 
-msgid "Copied album URL to clipboard"
-msgstr "URL-ът на албума е копиран в клипборда"
-
-msgid "Copied artist URL to clipboard"
-msgstr "URL-ът на артиста е копиран"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "URL-ът на плейлиста е копиран"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "URL-ът на песента е копиран"
 
-msgid "Copy Album URL"
-msgstr ""
-
-msgid "Copy Artist URL"
-msgstr "Копирай URL-a на изпълнителя"
-
-msgid "Copy Playlist URL"
-msgstr "Копирай URL-a на плейлиста"
-
 msgid "Copy Track URL"
 msgstr "Копирай URL-а на песента"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Страница по подразбиране"
@@ -324,17 +327,14 @@ msgstr "Вътрешна Грешка"
 msgid "Keyboard Shortcuts"
 msgstr "Клавишни Комбинации"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Последния месец"
 
 msgid "Last Week"
 msgstr "Последната седмица"
-
-msgid "Last.fm"
-msgstr ""
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "ListenBrainz API токън"
@@ -474,6 +474,9 @@ msgstr ""
 msgid "Open TIDAL Page"
 msgstr ""
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr ""
 
@@ -490,15 +493,6 @@ msgid "Play / Pause"
 msgstr ""
 
 msgid "Play Album"
-msgstr ""
-
-msgid "Play My Tracks"
-msgstr ""
-
-msgid "Play Playlist"
-msgstr ""
-
-msgid "Play Top Tracks"
 msgstr ""
 
 msgid "Playback"
@@ -555,6 +549,9 @@ msgstr ""
 msgid "Repeat Track"
 msgstr ""
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr ""
 
@@ -591,15 +588,6 @@ msgstr ""
 msgid "Shuffle Album"
 msgstr ""
 
-msgid "Shuffle My Tracks"
-msgstr ""
-
-msgid "Shuffle Playlist"
-msgstr ""
-
-msgid "Shuffle Top Tracks"
-msgstr ""
-
 msgid "Side Pane"
 msgstr ""
 
@@ -630,6 +618,21 @@ msgid ""
 msgstr ""
 
 msgid "Sync with Track"
+msgstr ""
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
 msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
@@ -700,6 +703,24 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr ""
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "URL-ът на албума е копиран в клипборда"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "URL-ът на артиста е копиран"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "URL-ът на плейлиста е копиран"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Копирай URL-a на изпълнителя"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Копирай URL-a на плейлиста"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
 
 #, fuzzy
 #~ msgid ""

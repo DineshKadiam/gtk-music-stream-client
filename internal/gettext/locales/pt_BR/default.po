@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-05-26 19:07+0000\n"
 "Last-Translator: Gustavo Fernandes <marshall570@noreply.codeberg.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.codeberg.org/projects/"
@@ -36,6 +36,9 @@ msgstr[1] "%d Faixas (%s)"
 
 msgid "%s and %s"
 msgstr "%s e %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "Sobre o Tonearm"
@@ -117,6 +120,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Permitir imagens da lista de faixas"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "Um erro ocorreu ao efetuar o login no Last.fm"
 
@@ -163,6 +169,9 @@ msgstr "Artista"
 msgid "Artists"
 msgstr "Artistas"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Requer autenticação"
 
@@ -174,6 +183,9 @@ msgstr "Retornar"
 
 msgid "Background Activity"
 msgstr "Atividade em segundo plano"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Atalhos básicos"
@@ -206,6 +218,9 @@ msgstr "Configurar o Tonearm para enviar dados de scrobble para o Last.fm"
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr "Configurar o Tonearm para enviar dados de scrobble para o ListenBrainz"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Configurar o comportamento do Tonearm em relação à imagens"
 
@@ -225,29 +240,17 @@ msgstr "Continuar"
 msgid "Continue the authentication process in your browser."
 msgstr "Continue com a autenticação no seu navegador."
 
-msgid "Copied album URL to clipboard"
-msgstr "URL do álbum copiada para a área de transferência"
-
-msgid "Copied artist URL to clipboard"
-msgstr "URL do artista copiada para a área de transferência"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "URL da playlist copiada para a área de transferência"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "URL da faixa copiada para a área de transferência"
 
-msgid "Copy Album URL"
-msgstr "Copiar URL do Álbum"
-
-msgid "Copy Artist URL"
-msgstr "Copiar URL do Artista"
-
-msgid "Copy Playlist URL"
-msgstr "Copiar URL da playlist"
-
 msgid "Copy Track URL"
 msgstr "Copiar URL da faixa"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Página padrão"
@@ -315,17 +318,14 @@ msgstr "Erro interno"
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Último mês"
 
 msgid "Last Week"
 msgstr "Última semana"
-
-msgid "Last.fm"
-msgstr "Last.fm"
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "Token da API do ListenBrainz"
@@ -472,6 +472,9 @@ msgstr "Mais antigo"
 msgid "Open TIDAL Page"
 msgstr "Abrir página do TIDAL"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr "Pausar"
 
@@ -489,15 +492,6 @@ msgstr "Reproduzir / Pausar"
 
 msgid "Play Album"
 msgstr "Reproduzir álbum"
-
-msgid "Play My Tracks"
-msgstr "Reproduzir minhas faixas"
-
-msgid "Play Playlist"
-msgstr "Reproduzir playlist"
-
-msgid "Play Top Tracks"
-msgstr "Reproduzir principais faixas"
 
 msgid "Playback"
 msgstr "Reprodução"
@@ -554,6 +548,9 @@ msgstr "Repetir fila"
 msgid "Repeat Track"
 msgstr "Repetir faixa"
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "Escaneie este QR Code para conectar a sua conta do TIDAL"
 
@@ -590,15 +587,6 @@ msgstr "Definir o volume igualmente para todas as faixas"
 msgid "Shuffle Album"
 msgstr "Embaralhar álbum"
 
-msgid "Shuffle My Tracks"
-msgstr "Embaralhar minhas faixas"
-
-msgid "Shuffle Playlist"
-msgstr "Embaralhar playlist"
-
-msgid "Shuffle Top Tracks"
-msgstr "Embaralhar principais faixas"
-
 msgid "Side Pane"
 msgstr "Painel lateral"
 
@@ -632,6 +620,21 @@ msgstr ""
 
 msgid "Sync with Track"
 msgstr "Sincronizar com a faixa"
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
+msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
 msgstr "O link requisitado não possuía nenhum gestor disponível."
@@ -714,3 +717,45 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr "Créditos da tradução"
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "URL do álbum copiada para a área de transferência"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "URL do artista copiada para a área de transferência"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "URL da playlist copiada para a área de transferência"
+
+#~ msgid "Copy Album URL"
+#~ msgstr "Copiar URL do Álbum"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Copiar URL do Artista"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Copiar URL da playlist"
+
+#~ msgid "Last.fm"
+#~ msgstr "Last.fm"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play My Tracks"
+#~ msgstr "Reproduzir minhas faixas"
+
+#~ msgid "Play Playlist"
+#~ msgstr "Reproduzir playlist"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "Reproduzir principais faixas"
+
+#~ msgid "Shuffle My Tracks"
+#~ msgstr "Embaralhar minhas faixas"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "Embaralhar playlist"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "Embaralhar principais faixas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-17 19:04+0100\n"
+"POT-Creation-Date: 2026-08-05 19:15+0200\n"
 "PO-Revision-Date: 2026-03-10 07:50+0000\n"
 "Last-Translator: drafolin <drafolin@noreply.codeberg.org>\n"
 "Language-Team: Czech <https://translate.codeberg.org/projects/tonearm/"
@@ -39,6 +39,9 @@ msgstr[2] "%d Skladby (%s)"
 
 msgid "%s and %s"
 msgstr "%s a %s"
+
+msgid "API Base URL"
+msgstr ""
 
 msgid "About Tonearm"
 msgstr "O Tonearm"
@@ -118,6 +121,9 @@ msgstr ""
 msgid "Allow Tracklist Images"
 msgstr "Povolit Obrázky Seznamu Skladeb"
 
+msgid "An error occurred while fetching the track mix"
+msgstr ""
+
 msgid "An error occurred while logging in to Last.fm"
 msgstr "Při přihlášení do Last.fm"
 
@@ -163,6 +169,9 @@ msgstr "Umělec"
 msgid "Artists"
 msgstr "Umělci"
 
+msgid "Auth Base URL"
+msgstr ""
+
 msgid "Authentication Required"
 msgstr "Vyžadováno Ověření"
 
@@ -174,6 +183,9 @@ msgstr "Zpět"
 
 msgid "Background Activity"
 msgstr "Aktivita Na Pozadí"
+
+msgid "Base URLs"
+msgstr ""
 
 msgid "Basic Shortcuts"
 msgstr "Základní Zkratky"
@@ -207,6 +219,9 @@ msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
 msgstr ""
 "Nakonfigurujte Tonearm pro odesílání scrobblingových dat do ListenBrainz"
 
+msgid "Configure the base URLs for TIDAL"
+msgstr ""
+
 msgid "Configure the behaviour of Tonearm regarding images"
 msgstr "Nakonfigurujte chování Tonearm týkající se obrázků"
 
@@ -225,29 +240,17 @@ msgstr "Pokračovat"
 msgid "Continue the authentication process in your browser."
 msgstr "Pokračujte v procesu ověřování ve svém prohlížeči."
 
-msgid "Copied album URL to clipboard"
-msgstr "Zkopírovaná adresa URL alba do schránky"
-
-msgid "Copied artist URL to clipboard"
-msgstr "Zkopírovaný umělec URL do schránky"
-
-msgid "Copied playlist URL to clipboard"
-msgstr "Zkopírovaná adresa URL seznamu skladeb do schránky"
+msgid "Copied URL to clipboard"
+msgstr ""
 
 msgid "Copied track URL to clipboard"
 msgstr "Zkopírovaná adresa URL stopy do schránky"
 
-msgid "Copy Album URL"
-msgstr "Kopírovat URL Alba"
-
-msgid "Copy Artist URL"
-msgstr "Kopírovat URL umělce"
-
-msgid "Copy Playlist URL"
-msgstr "Kopírovat URL seznamu skladeb"
-
 msgid "Copy Track URL"
 msgstr "Kopírovat adresu URL stopy"
+
+msgid "Copy URL"
+msgstr ""
 
 msgid "Default Page"
 msgstr "Výchozí Stránka"
@@ -315,17 +318,14 @@ msgstr "Interní Chyba"
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové Zkratky"
 
+msgid "Keychain Unavailable"
+msgstr ""
+
 msgid "Last Month"
 msgstr "Minulý měsíc"
 
 msgid "Last Week"
 msgstr "Minulý týden"
-
-msgid "Last.fm"
-msgstr "Last.fm"
-
-msgid "ListenBrainz"
-msgstr "ListenBrainz"
 
 msgid "ListenBrainz API Token"
 msgstr "Token API ListenBrainz"
@@ -472,6 +472,9 @@ msgstr "Starší"
 msgid "Open TIDAL Page"
 msgstr "Otevřít stránku TIDAL"
 
+msgid "OpenAPI Base URL"
+msgstr ""
+
 msgid "Pause"
 msgstr "Pauza"
 
@@ -489,15 +492,6 @@ msgstr "Přehrát / Pozastavit"
 
 msgid "Play Album"
 msgstr "Přehrát Album"
-
-msgid "Play My Tracks"
-msgstr "Přehrát Moje Skladby"
-
-msgid "Play Playlist"
-msgstr "Přehrát Seznam skladeb"
-
-msgid "Play Top Tracks"
-msgstr "Přehrát Nejlepší Skladby"
 
 msgid "Playback"
 msgstr "Přehrávání"
@@ -554,6 +548,9 @@ msgstr "Opakování Fronty"
 msgid "Repeat Track"
 msgstr "Opakovat Stopu"
 
+msgid "Resources Base URL"
+msgstr ""
+
 msgid "Scan this QR code to sign into your TIDAL account"
 msgstr "Naskenujte tento QR kód a přihlaste se ke svému účtu TIDAL"
 
@@ -590,15 +587,6 @@ msgstr "Nastavte stejnou hlasitost pro všechny skladby"
 msgid "Shuffle Album"
 msgstr "Náhodné přehrávání alba"
 
-msgid "Shuffle My Tracks"
-msgstr "Shuffle Moje Skladby"
-
-msgid "Shuffle Playlist"
-msgstr "Přehrát seznam skladeb náhodně"
-
-msgid "Shuffle Top Tracks"
-msgstr "Shuffle Top Skladby"
-
 msgid "Side Pane"
 msgstr "Boční Panel"
 
@@ -632,6 +620,21 @@ msgstr ""
 
 msgid "Sync with Track"
 msgstr "Synchronizace se stopou"
+
+msgid "TIDAL Settings"
+msgstr ""
+
+msgid "TIDAL-specific settings for advanced users"
+msgstr ""
+
+msgid ""
+"The macOS Keychain is not available or accessible.\n"
+"\n"
+"Tonearm will not be able to store any authentication-related data and you "
+"will not be able to sign in.\n"
+"\n"
+"Please ensure your keychain is unlocked and accessible."
+msgstr ""
 
 msgid "The requested deeplink did not have any available handlers."
 msgstr "Požadovaný deeplink neměl žádné dostupné obslužné rutiny."
@@ -713,3 +716,45 @@ msgstr ""
 
 msgid "translator-credits"
 msgstr "překladatel-kredity"
+
+#~ msgid "Copied album URL to clipboard"
+#~ msgstr "Zkopírovaná adresa URL alba do schránky"
+
+#~ msgid "Copied artist URL to clipboard"
+#~ msgstr "Zkopírovaný umělec URL do schránky"
+
+#~ msgid "Copied playlist URL to clipboard"
+#~ msgstr "Zkopírovaná adresa URL seznamu skladeb do schránky"
+
+#~ msgid "Copy Album URL"
+#~ msgstr "Kopírovat URL Alba"
+
+#~ msgid "Copy Artist URL"
+#~ msgstr "Kopírovat URL umělce"
+
+#~ msgid "Copy Playlist URL"
+#~ msgstr "Kopírovat URL seznamu skladeb"
+
+#~ msgid "Last.fm"
+#~ msgstr "Last.fm"
+
+#~ msgid "ListenBrainz"
+#~ msgstr "ListenBrainz"
+
+#~ msgid "Play My Tracks"
+#~ msgstr "Přehrát Moje Skladby"
+
+#~ msgid "Play Playlist"
+#~ msgstr "Přehrát Seznam skladeb"
+
+#~ msgid "Play Top Tracks"
+#~ msgstr "Přehrát Nejlepší Skladby"
+
+#~ msgid "Shuffle My Tracks"
+#~ msgstr "Shuffle Moje Skladby"
+
+#~ msgid "Shuffle Playlist"
+#~ msgstr "Přehrát seznam skladeb náhodně"
+
+#~ msgid "Shuffle Top Tracks"
+#~ msgstr "Shuffle Top Skladby"
