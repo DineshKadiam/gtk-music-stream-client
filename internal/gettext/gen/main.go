@@ -11,17 +11,22 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"time"
 )
 
 type Message struct {
-	ID       string
-	IDPlural string
-	File     string
-	Line     int
-	IsPlural bool
+	ID         string
+	IDPlural   string
+	References []Reference
+	IsPlural   bool
+}
+
+type Reference struct {
+	File string
+	Line int
 }
 
 func main() {
@@ -120,7 +125,12 @@ func scanGoFiles(root string) ([]Message, error) {
 				key = msg.ID + "|" + msg.IDPlural
 			}
 
-			if _, exists := messageMap[key]; !exists {
+			if existing, exists := messageMap[key]; exists {
+				for _, reference := range msg.References {
+					existing.References = appendReference(existing.References, reference)
+				}
+				messageMap[key] = existing
+			} else {
 				messageMap[key] = msg
 			}
 		}
@@ -133,6 +143,12 @@ func scanGoFiles(root string) ([]Message, error) {
 	}
 
 	for _, msg := range messageMap {
+		sort.Slice(msg.References, func(i, j int) bool {
+			if msg.References[i].File == msg.References[j].File {
+				return msg.References[i].Line < msg.References[j].Line
+			}
+			return msg.References[i].File < msg.References[j].File
+		})
 		messages = append(messages, msg)
 	}
 
@@ -141,6 +157,14 @@ func scanGoFiles(root string) ([]Message, error) {
 	})
 
 	return messages, nil
+}
+
+func appendReference(references []Reference, reference Reference) []Reference {
+	if slices.Contains(references, reference) {
+		return references
+	}
+
+	return append(references, reference)
 }
 
 func extractMessages(filePath, projectRoot string) ([]Message, error) {
@@ -184,9 +208,11 @@ func extractMessages(filePath, projectRoot string) ([]Message, error) {
 
 			if msgid := extractStringLiteral(call.Args[0]); msgid != "" {
 				messages = append(messages, Message{
-					ID:       msgid,
-					File:     relPath,
-					Line:     line,
+					ID: msgid,
+					References: []Reference{{
+						File: relPath,
+						Line: line,
+					}},
 					IsPlural: false,
 				})
 			}
@@ -203,8 +229,10 @@ func extractMessages(filePath, projectRoot string) ([]Message, error) {
 				messages = append(messages, Message{
 					ID:       msgid,
 					IDPlural: msgidPlural,
-					File:     relPath,
-					Line:     line,
+					References: []Reference{{
+						File: relPath,
+						Line: line,
+					}},
 					IsPlural: true,
 				})
 			}
@@ -282,7 +310,9 @@ func writePOTContent(w io.Writer, messages []Message) error {
 	fmt.Fprintln(w)
 
 	for _, msg := range messages {
-		fmt.Fprintf(w, "#: %s:%d\n", msg.File, msg.Line)
+		for _, reference := range msg.References {
+			fmt.Fprintf(w, "#: %s:%d\n", reference.File, reference.Line)
+		}
 
 		if msg.IsPlural {
 			fmt.Fprintf(w, "msgid %s\n", quotePOString(msg.ID))
