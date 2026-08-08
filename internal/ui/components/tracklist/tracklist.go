@@ -6,6 +6,7 @@ import (
 	"sync"
 	"unsafe"
 
+	"codeberg.org/dergs/tonearm/internal/gettext"
 	"codeberg.org/dergs/tonearm/internal/player"
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
@@ -116,6 +117,13 @@ func (t *TrackList) onBind(_ gtk.SignalListItemFactory, listItem *gtk.ListItem) 
 		body = body.Append(grid)
 	}
 
+	listItem.SetActivatable(track.IsStreamable())
+	container.SetSensitive(track.IsStreamable())
+	if !track.IsStreamable() {
+		container.SetTooltipText(gettext.Get("This track is not available for streaming"))
+	} else {
+		container.SetTooltipText("")
+	}
 	container.SetChild(body.ToGTK())
 }
 
