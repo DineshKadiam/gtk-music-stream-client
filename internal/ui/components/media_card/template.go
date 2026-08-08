@@ -5,6 +5,7 @@ import (
 	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/dergs/tonearm/pkg/utils/imgutil"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
 	"codeberg.org/puregotk/puregotk/v4/pango"
@@ -20,7 +21,7 @@ func SubTitle(text string) schwifty.Label {
 		Ellipsis(pango.EllipsizeEndValue)
 }
 
-func Card[T any](title string, subTitle schwifty.Widgetable[T], coverUrl string) schwifty.Button {
+func Card[T any](title string, subTitle schwifty.Widgetable[T], cover tonearm.Cover) schwifty.Button {
 	return Button().
 		Child(
 			VStack(
@@ -29,7 +30,7 @@ func Card[T any](title string, subTitle schwifty.Widgetable[T], coverUrl string)
 					FromPaintable(resources.MissingAlbum()).
 					ConnectRealize(func(i gtk.Widget) {
 						if settings.Performance().AllowMediaCardImages() {
-							injector.MustInject[*imgutil.ImgUtil]().LoadIntoImageCropped(coverUrl, gtk.ImageNewFromInternalPtr(i.Ptr))
+							injector.MustInject[*imgutil.ImgUtil]().LoadIntoImageCropped(cover.Static(), gtk.ImageNewFromInternalPtr(i.Ptr))
 						}
 					}).CornerRadius(10).Overflow(gtk.OverflowHiddenValue),
 				Label(title).

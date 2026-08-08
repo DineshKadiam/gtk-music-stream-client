@@ -17,6 +17,14 @@ func ImageURLWithSize(id string, width int, height int) string {
 	return fmt.Sprintf("%s/images/%s/%dx%d.jpg", settings.ServiceTidal().ResourcesBaseURL(), strings.ReplaceAll(id, "-", "/"), width, height)
 }
 
+func VideoURL(id string) string {
+	return VideoURLWithSize(id, 160, 160)
+}
+
+func VideoURLWithSize(id string, width int, height int) string {
+	return fmt.Sprintf("%s/videos/%s/%dx%d.mp4", settings.ServiceTidal().ResourcesBaseURL(), strings.ReplaceAll(id, "-", "/"), width, height)
+}
+
 func FormatCustomDuration(duration *openapi.Duration) string {
 	if duration == nil {
 		return "00:00"

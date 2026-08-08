@@ -4,7 +4,6 @@ import (
 	"strconv"
 	"time"
 
-	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	v2 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v2"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 )
@@ -15,14 +14,14 @@ type AlbumInfo struct {
 	v2.AlbumItemData
 }
 
-func (a AlbumInfo) Cover(preferredSize int) string {
+func (a AlbumInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := albumInfoLogger.With("method", "Cover").WithGroup("cover").With("preferred_size", preferredSize)
 
 	if preferredSize < 0 {
 		logger.Debug("legacy api does not support preferred size")
 	}
 
-	return tidalapi.ImageURL(a.AlbumItemData.Cover)
+	return coverHelper(a.AlbumItemData.Cover, a.AlbumItemData.VideoCover)
 }
 
 func (a AlbumInfo) Duration() time.Duration {

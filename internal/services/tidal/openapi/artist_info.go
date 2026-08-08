@@ -15,7 +15,7 @@ func (a ArtistInfo) ID() string {
 	return a.Artist.Data.ID
 }
 
-func (a ArtistInfo) Cover(preferredSize int) string {
+func (a ArtistInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := artistInfoLogger.With("method", "ProfilePicture").WithGroup("profile_picture").With("preferred_size", preferredSize)
 
 	if preferredSize < 0 {
@@ -23,9 +23,7 @@ func (a ArtistInfo) Cover(preferredSize int) string {
 		preferredSize = 0
 	}
 
-	artworks := a.Included.PlainArtworks(a.Data.Relationships.ProfileArt.Data...)
-
-	return artworks.AtLeast(preferredSize)
+	return coverHelper(a.Included.PlainArtworks(a.Data.Relationships.ProfileArt.Data...), preferredSize)
 }
 
 func (a ArtistInfo) Route() string {

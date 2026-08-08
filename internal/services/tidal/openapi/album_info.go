@@ -13,7 +13,7 @@ type AlbumInfo struct {
 	openapi.Album
 }
 
-func (a AlbumInfo) Cover(preferredSize int) string {
+func (a AlbumInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := albumInfoLogger.With("method", "Cover").WithGroup("cover").With("preferred_size", preferredSize)
 
 	if preferredSize < 0 {
@@ -21,9 +21,7 @@ func (a AlbumInfo) Cover(preferredSize int) string {
 		preferredSize = 0
 	}
 
-	artworks := a.Included.PlainArtworks(a.Data.Relationships.CoverArt.Data...)
-
-	return artworks.AtLeast(preferredSize)
+	return coverHelper(a.Included.PlainArtworks(a.Data.Relationships.CoverArt.Data...), preferredSize)
 }
 
 func (a AlbumInfo) Duration() time.Duration {

@@ -3,6 +3,7 @@ package media_card
 import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	v2 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v2"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/glib"
 )
 
@@ -10,7 +11,7 @@ func NewMixGeneric(id string, title string, subtitle string, coverUrl string) sc
 	return Card(
 		title,
 		SubTitle(subtitle).Lines(2),
-		coverUrl,
+		tonearm.NewURLCover("", coverUrl),
 	).ActionName("win.route.playlist").ActionTargetValue(glib.NewVariantString(id))
 }
 

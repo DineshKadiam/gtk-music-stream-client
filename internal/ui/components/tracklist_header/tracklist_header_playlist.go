@@ -27,7 +27,7 @@ func secondaryControlsPlaylist(playlist tonearm.Playlist, popover *gtk.PopoverMe
 }
 
 func NewPlaylist(playlist tonearm.Playlist, playFunc func(), shuffleFunc func()) schwifty.Widget {
-	coverUrl := playlist.Cover(154)
+	cover := playlist.Cover(154)
 	title := playlist.Title()
 	releaseDate := playlist.CreatedAt().Format("2006")
 	creator := "TIDAL"
@@ -52,5 +52,5 @@ func NewPlaylist(playlist tonearm.Playlist, playFunc func(), shuffleFunc func())
 	popover := gtk.NewPopoverMenuFromModel(&menu.MenuModel)
 	tracking.SetFinalizer("Popover", popover)
 
-	return template(coverUrl, title, releaseDate+" • "+creator, "\n"+description+"\n", componentControls(playFunc, shuffleFunc), secondaryControlsPlaylist(playlist, popover))
+	return template(cover, title, releaseDate+" • "+creator, "\n"+description+"\n", componentControls(playFunc, shuffleFunc), secondaryControlsPlaylist(playlist, popover))
 }

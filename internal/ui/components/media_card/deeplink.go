@@ -5,6 +5,7 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	v2 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v2"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
 )
 
@@ -12,7 +13,7 @@ func newDeeplink(url string, name string, coverUrl string) schwifty.Button {
 	return Card(
 		name,
 		HStack(),
-		coverUrl,
+		tonearm.NewURLCover("", coverUrl),
 	).ConnectClicked(func(b gtk.Button) {
 		router.Navigate(url)
 	})

@@ -32,7 +32,7 @@ func (t Track) Artists() tonearm.ArtistInfos {
 	return artists
 }
 
-func (t Track) Cover(perferredSize int) string {
+func (t Track) Cover(perferredSize int) tonearm.Cover {
 	return t.Album().Cover(perferredSize)
 }
 

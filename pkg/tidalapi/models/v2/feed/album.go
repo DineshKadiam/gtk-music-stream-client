@@ -39,8 +39,9 @@ type Album struct {
 	MediaMetadata          struct {
 		Tags []string `json:"tags"`
 	} `json:"mediaMetadata"`
-	ProviderID int  `json:"providerId"`
-	DjReady    bool `json:"djReady"`
-	StemReady  bool `json:"stemReady"`
-	Upload     bool `json:"upload"`
+	ProviderID int    `json:"providerId"`
+	DjReady    bool   `json:"djReady"`
+	StemReady  bool   `json:"stemReady"`
+	Upload     bool   `json:"upload"`
+	VideoCover string `json:"videoCover"`
 }

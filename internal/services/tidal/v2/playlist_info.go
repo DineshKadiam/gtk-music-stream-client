@@ -3,7 +3,6 @@ package v2
 import (
 	"time"
 
-	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	v2 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v2"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 )
@@ -14,14 +13,14 @@ type PlaylistInfo struct {
 	v2.PlaylistItemData
 }
 
-func (p PlaylistInfo) Cover(preferredSize int) string {
+func (p PlaylistInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := playlistInfoLogger.With("method", "Cover").WithGroup("cover").With("preferred_size", preferredSize)
 
 	if preferredSize < 0 {
 		logger.Debug("legacy api does not support preferred size")
 	}
 
-	return tidalapi.ImageURL(p.PlaylistItemData.SquareImage)
+	return coverHelper(p.PlaylistItemData.SquareImage, "")
 }
 
 func (p PlaylistInfo) CreatedAt() time.Time {

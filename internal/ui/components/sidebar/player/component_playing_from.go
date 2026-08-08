@@ -30,15 +30,15 @@ func init() {
 			playingFromNavTargetState.SetValue(s.Route())
 			playingFromCanNavigateState.SetValue(s.Route() != "")
 
-			coverUrl := s.Cover(80)
-			if coverUrl == "" {
+			cover := s.Cover(80)
+			if !cover.HasStatic() {
 				schwifty.OnMainThreadOncePure(func() {
 					playingFromCoverState.SetValue(resources.MissingAlbum())
 				})
 				return signals.Continue
 			}
 
-			texture, err := injector.MustInject[*imgutil.ImgUtil]().LoadCropped(coverUrl)
+			texture, err := injector.MustInject[*imgutil.ImgUtil]().LoadCropped(cover.Static())
 			if err != nil {
 				slog.Error("failed to load source cover", "error", err)
 				return signals.Continue

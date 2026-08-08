@@ -14,7 +14,7 @@ type PlaylistInfo struct {
 	openapi.Playlist
 }
 
-func (p PlaylistInfo) Cover(preferredSize int) string {
+func (p PlaylistInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := playlistInfoLogger.With("method", "Cover").WithGroup("cover").With("preferred_size", preferredSize)
 
 	if preferredSize < 0 {
@@ -22,9 +22,7 @@ func (p PlaylistInfo) Cover(preferredSize int) string {
 		preferredSize = 0
 	}
 
-	artworks := p.Included.PlainArtworks(p.Data.Relationships.CoverArt.Data...)
-
-	return artworks.AtLeast(preferredSize)
+	return coverHelper(p.Included.PlainArtworks(p.Data.Relationships.CoverArt.Data...), preferredSize)
 }
 
 func (p PlaylistInfo) CreatedAt() time.Time {

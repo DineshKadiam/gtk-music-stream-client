@@ -7,8 +7,8 @@ import (
 
 type MyTracksInfo struct{}
 
-func (m MyTracksInfo) Cover(preferredSize int) string {
-	return "https://tidal.com/assets/my-tracks-DTG3pLQW.png"
+func (m MyTracksInfo) Cover(preferredSize int) tonearm.Cover {
+	return tonearm.NewURLCover("", "https://tidal.com/assets/my-tracks-DTG3pLQW.png")
 }
 
 func (m MyTracksInfo) Route() string {

@@ -20,7 +20,7 @@ func secondaryControlsCollection(playbackSource shareablePlaybackSource, popover
 }
 
 func NewCollection(playbackSource shareablePlaybackSource, playFunc func(), shuffleFunc func()) schwifty.Widget {
-	coverUrl := playbackSource.Cover(154)
+	cover := playbackSource.Cover(154)
 	title := playbackSource.Title()
 	subtitle := gettext.Get("My Collection")
 
@@ -35,5 +35,5 @@ func NewCollection(playbackSource shareablePlaybackSource, playFunc func(), shuf
 	popover := gtk.NewPopoverMenuFromModel(&menu.MenuModel)
 	tracking.SetFinalizer("Popover", popover)
 
-	return template(coverUrl, title, subtitle, "", componentControls(playFunc, shuffleFunc), secondaryControlsCollection(playbackSource, popover))
+	return template(cover, title, subtitle, "", componentControls(playFunc, shuffleFunc), secondaryControlsCollection(playbackSource, popover))
 }

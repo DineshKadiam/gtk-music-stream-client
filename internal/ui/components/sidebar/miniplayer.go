@@ -36,13 +36,13 @@ func MiniPlayer() adwbindings.Bin {
 
 	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
 		if trackInfo != nil {
-			coverUrl := trackInfo.Cover(80)
-			if coverUrl == "" {
+			cover := trackInfo.Cover(80)
+			if !cover.HasStatic() {
 				slog.Error("Failed to load cover URL")
 				return signals.Continue
 			}
 
-			if texture, err := injector.MustInject[*imgutil.ImgUtil]().Load(coverUrl); err == nil {
+			if texture, err := injector.MustInject[*imgutil.ImgUtil]().Load(cover.Static()); err == nil {
 				schwifty.OnMainThreadOncePure(func() {
 					coverState.SetValue(texture)
 				})

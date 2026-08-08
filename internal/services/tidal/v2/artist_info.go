@@ -3,7 +3,6 @@ package v2
 import (
 	"strconv"
 
-	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	v2 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v2"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 )
@@ -18,18 +17,14 @@ func (a ArtistInfo) ID() string {
 	return strconv.Itoa(a.Id)
 }
 
-func (a ArtistInfo) Cover(preferredSize int) string {
+func (a ArtistInfo) Cover(preferredSize int) tonearm.Cover {
 	logger := artistInfoLogger.With("method", "ProfilePicture").WithGroup("profile_picture").With("preferred_size", preferredSize)
 
 	if preferredSize > 0 {
 		logger.Debug("legacy api does not support preferred size")
 	}
 
-	if a.ArtistItemData.Picture == "" {
-		return ""
-	}
-
-	return tidalapi.ImageURL(a.ArtistItemData.Picture)
+	return coverHelper(a.ArtistItemData.Picture, "")
 }
 
 func (a ArtistInfo) Route() string {

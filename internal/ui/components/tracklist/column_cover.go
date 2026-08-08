@@ -22,9 +22,9 @@ func CoverColumn(track tonearm.Track, grid *gtk.Grid, position int, column int32
 			HAlign(gtk.AlignStartValue).
 			Overflow(gtk.OverflowHiddenValue).
 			ConnectRealize(func(i gtk.Widget) {
-				coverURL := track.Cover(80)
-				if settings.Performance().AllowTracklistImages() && coverURL != "" {
-					injector.MustInject[*imgutil.ImgUtil]().LoadIntoImage(coverURL, gtk.ImageNewFromInternalPtr(i.Ptr))
+				cover := track.Cover(80)
+				if settings.Performance().AllowTracklistImages() && cover.HasStatic() {
+					injector.MustInject[*imgutil.ImgUtil]().LoadIntoImage(cover.Static(), gtk.ImageNewFromInternalPtr(i.Ptr))
 				}
 			}).ToGTK(),
 		column,

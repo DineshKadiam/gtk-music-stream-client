@@ -130,6 +130,7 @@ type AlbumItemData struct {
 	ReleaseDate helper.TimeDateOnly `json:"releaseDate"`
 	Title       string              `json:"title"`
 	Type        string              `json:"type"`
+	VideoCover  string              `json:"videoCover"`
 }
 
 type DeepLinkItemData struct {
@@ -197,4 +198,5 @@ type TrackItemDataAlbum struct {
 	ID          int                 `json:"id"`
 	ReleaseDate helper.TimeDateOnly `json:"releaseDate"`
 	Title       string              `json:"title"`
+	VideoCover  string              `json:"videoCover"`
 }

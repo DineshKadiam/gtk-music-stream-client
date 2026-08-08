@@ -104,7 +104,7 @@ func init() {
 
 		mprisServer().SetTrackMetadata(map[string]any{
 			"mpris:trackid": dbus.ObjectPath("/org/mpris/MediaPlayer2/TrackList/Track" + trackInfo.ID()),
-			"mpris:artUrl":  trackInfo.Cover(math.MaxInt),
+			"mpris:artUrl":  trackInfo.Cover(math.MaxInt).Static(),
 			"mpris:length":  trackInfo.Duration().Microseconds(),
 			"xesam:album":   trackInfo.Album().Title(),
 			"xesam:artist":  artistNames,

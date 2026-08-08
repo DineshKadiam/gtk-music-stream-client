@@ -6,6 +6,7 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/state"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/adw"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
 	"codeberg.org/puregotk/puregotk/v4/pango"
@@ -20,9 +21,9 @@ func init() {
 	})
 }
 
-func template(coverUrl string, title string, subtitle string, description string, controls schwifty.Box, secondaryControls schwifty.Box) schwifty.Widget {
+func template(cover tonearm.Cover, title string, subtitle string, description string, controls schwifty.Box, secondaryControls schwifty.Box) schwifty.Widget {
 	layout := adw.NewMultiLayoutView()
-	layout.SetChild("cover", componentCover(coverUrl).ToGTK())
+	layout.SetChild("cover", componentCover(cover).ToGTK())
 	layout.SetChild("title", Label(title).WithCSSClass("title-2").Ellipsis(pango.EllipsizeEndValue).HAlign(gtk.AlignStartValue).ToGTK())
 	layout.SetChild("subtitle", Label(subtitle).Ellipsis(pango.EllipsizeEndValue).WithCSSClass("heading").WithCSSClass("dimmed").HAlign(gtk.AlignStartValue).ToGTK())
 	layout.SetChild("controls", controls.ToGTK())

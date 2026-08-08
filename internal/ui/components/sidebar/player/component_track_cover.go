@@ -1,7 +1,7 @@
 package player
 
 import (
-	"log/slog"
+	"context"
 	"math"
 
 	"codeberg.org/dergs/tonearm/internal/player"
@@ -12,9 +12,7 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty/state"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
-	"codeberg.org/dergs/tonearm/pkg/utils/imgutil"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
-	"github.com/infinytum/injector"
 )
 
 var (
@@ -22,22 +20,14 @@ var (
 )
 
 func init() {
+	var cancel context.CancelFunc
 	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
+		if cancel != nil {
+			cancel()
+			cancel = nil
+		}
 		if trackInfo != nil {
-			coverUrl := trackInfo.Cover(math.MaxInt)
-			if coverUrl == "" {
-				slog.Error("Failed to load hi-res cover URL")
-				return signals.Continue
-			}
-
-			texture, err := injector.MustInject[*imgutil.ImgUtil]().LoadCropped(coverUrl)
-			if err != nil {
-				slog.Error("failed to load hi-res track cover", "error", err)
-				return signals.Continue
-			}
-			coverState.SetValue(texture)
-		} else {
-			coverState.SetValue(resources.MissingAlbum())
+			cancel = components.RenderCover(trackInfo.Cover(math.MaxInt), coverState)
 		}
 		return signals.Continue
 	})

@@ -25,6 +25,7 @@ func (t Track) Album() tonearm.AlbumInfo {
 		ReleaseDate: t.TrackItemData.Album.ReleaseDate,
 		Title:       t.TrackItemData.Album.Title,
 		Type:        "ALBUM",
+		VideoCover:  t.TrackItemData.Album.VideoCover,
 	})
 }
 
@@ -36,7 +37,7 @@ func (t Track) Artists() tonearm.ArtistInfos {
 	return artists
 }
 
-func (t Track) Cover(perferredSize int) string {
+func (t Track) Cover(perferredSize int) tonearm.Cover {
 	return t.Album().Cover(perferredSize)
 }
 

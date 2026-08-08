@@ -45,7 +45,7 @@ func secondaryControlsAlbum(album tonearm.Album, popover *gtk.PopoverMenu) schwi
 }
 
 func NewAlbum(album tonearm.Album, playFunc func(), shuffleFunc func()) schwifty.Widget {
-	coverUrl := album.Cover(154)
+	cover := album.Cover(154)
 	title := album.Title()
 	releaseDate := album.ReleasedAt().Format("2006")
 	artists := strings.Join(album.Artists().Names(), ", ")
@@ -62,5 +62,5 @@ func NewAlbum(album tonearm.Album, playFunc func(), shuffleFunc func()) schwifty
 	popover := gtk.NewPopoverMenuFromModel(&menu.MenuModel)
 	tracking.SetFinalizer("Popover", popover)
 
-	return template(coverUrl, title, releaseDate+" • "+artists, "\n"+description+"\n", componentControls(playFunc, shuffleFunc), secondaryControlsAlbum(album, popover))
+	return template(cover, title, releaseDate+" • "+artists, "\n"+description+"\n", componentControls(playFunc, shuffleFunc), secondaryControlsAlbum(album, popover))
 }

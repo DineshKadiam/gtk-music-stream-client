@@ -92,10 +92,10 @@ func (files ArtworkFiles) AtLeast(size int) *ArtworkFile {
 
 type Artworks []ArtworkData
 
-func (artworks Artworks) AtLeast(size int) string {
+func (artworks Artworks) AtLeast(size int, mediaType ArtworkMediaType) string {
 	coverUrl := ""
 	for _, artwork := range artworks {
-		if artwork.Attributes.IsPicture() {
+		if artwork.Attributes.MediaType == mediaType {
 			cover := artwork.Attributes.Files.AtLeast(size)
 			if cover != nil {
 				coverUrl = cover.Href
