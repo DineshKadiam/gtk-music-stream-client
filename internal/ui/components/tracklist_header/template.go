@@ -23,6 +23,8 @@ func init() {
 
 func template(cover tonearm.Cover, title string, subtitle string, description string, controls schwifty.Box, secondaryControls schwifty.Box) schwifty.Widget {
 	layout := adw.NewMultiLayoutView()
+	defer layout.Unref()
+
 	layout.SetChild("cover", componentCover(cover).ToGTK())
 	layout.SetChild("title", Label(title).WithCSSClass("title-2").Ellipsis(pango.EllipsizeEndValue).HAlign(gtk.AlignStartValue).ToGTK())
 	layout.SetChild("subtitle", Label(subtitle).Ellipsis(pango.EllipsizeEndValue).WithCSSClass("heading").WithCSSClass("dimmed").HAlign(gtk.AlignStartValue).ToGTK())

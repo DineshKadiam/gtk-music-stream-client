@@ -69,7 +69,7 @@
         <key name="cache-images" type="b">
       		<default>true</default>
       		<summary>Cache Images</summary>
-      		<description>Whether the application will temporarily cache images on the filesystem</description>
+      		<description>Whether the application will temporarily cache images in memory</description>
        	</key>
         <key name="max-router-history-size" type="i">
 			<default>10</default>

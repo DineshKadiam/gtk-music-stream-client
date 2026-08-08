@@ -10,6 +10,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/infinytum/injector v0.0.3
 	github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
+	github.com/jellydator/ttlcache/v3 v3.4.1
 	github.com/keybase/go-keychain v0.0.1
 	github.com/leonelquinteros/gotext v1.7.2
 	github.com/qjebbs/go-jsons v1.0.0-alpha.4
@@ -28,9 +29,9 @@ require (
 	github.com/infinytum/structures v0.0.1 // indirect
 	github.com/mattn/go-pointer v0.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/yeqown/reedsolomon v1.0.0 // indirect
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
 	golang.org/x/image v0.10.0 // indirect
+	golang.org/x/sync v0.16.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 )

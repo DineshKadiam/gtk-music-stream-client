@@ -59,6 +59,9 @@ github.com/infinytum/structures
 # github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
 ## explicit; go 1.18
 github.com/jeandeaual/go-locale
+# github.com/jellydator/ttlcache/v3 v3.4.1
+## explicit; go 1.23.0
+github.com/jellydator/ttlcache/v3
 # github.com/keybase/go-keychain v0.0.1
 ## explicit; go 1.21
 github.com/keybase/go-keychain
@@ -80,8 +83,6 @@ github.com/qjebbs/go-jsons/internal/ordered
 # github.com/sosodev/duration v1.3.1
 ## explicit; go 1.17
 github.com/sosodev/duration
-# github.com/stretchr/testify v1.11.1
-## explicit; go 1.17
 # github.com/twoscott/gobble-fm v1.0.8
 ## explicit; go 1.23
 github.com/twoscott/gobble-fm/api
@@ -109,6 +110,9 @@ golang.org/x/image/font
 golang.org/x/image/font/basicfont
 golang.org/x/image/math/f64
 golang.org/x/image/math/fixed
+# golang.org/x/sync v0.16.0
+## explicit; go 1.23.0
+golang.org/x/sync/singleflight
 # golang.org/x/sys v0.43.0
 ## explicit; go 1.25.0
 golang.org/x/sys/unix

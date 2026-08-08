@@ -42,7 +42,7 @@ func MiniPlayer() adwbindings.Bin {
 				return signals.Continue
 			}
 
-			if texture, err := injector.MustInject[*imgutil.ImgUtil]().Load(cover.Static()); err == nil {
+			if texture, err := injector.MustInject[*imgutil.ImgUtil]().Fetch(cover.Static()); err == nil {
 				schwifty.OnMainThreadOncePure(func() {
 					coverState.SetValue(texture)
 				})

@@ -38,7 +38,7 @@ func init() {
 				return signals.Continue
 			}
 
-			texture, err := injector.MustInject[*imgutil.ImgUtil]().LoadCropped(cover.Static())
+			texture, err := injector.MustInject[*imgutil.ImgUtil]().FetchCropped(cover.Static())
 			if err != nil {
 				slog.Error("failed to load source cover", "error", err)
 				return signals.Continue

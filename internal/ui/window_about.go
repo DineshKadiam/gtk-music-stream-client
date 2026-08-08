@@ -148,6 +148,7 @@ func (w *Window) PresentAbout() {
 	about.AddLegalSection("Gettext (leonelquinteros/gotext)", "© 2016 Leonel Quinteros https://github.com/leonelquinteros/gotext", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("Gobble.fm (twoscott/gobble-fm)", "© 2025 twoscott https://github.com/twoscott/gobble-fm", gtk.LicenseMitX11Value, "")
 	about.AddLegalSection("slogpretty (Marlliton/slogpretty)", "© 2025 Marlliton Souza https://github.com/Marlliton/slogpretty", gtk.LicenseMitX11Value, "")
+	about.AddLegalSection("ttlcache (jellydator/ttlcache)", "© 2022 Jellydator https://github.com/jellydator/ttlcache", gtk.LicenseMitX11Value, "")
 	about.Present(&w.Widget)
 	about.Unref()
 }

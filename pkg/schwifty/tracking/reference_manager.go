@@ -15,7 +15,8 @@ var (
 
 var onUnref = gobject.WeakNotify(func(userData uintptr, objPtr uintptr) {
 	if shouldLogLifecycle {
-		logger.Debug("object was destroyed by GTK", "ptr", objPtr)
+		status := GetStatus(objPtr)
+		logger.Debug("object was destroyed by GTK", "ptr", objPtr, "type", status.Type)
 	}
 	callback.DeleteCallbacks(objPtr)
 	Untrack(objPtr)

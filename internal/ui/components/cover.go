@@ -33,7 +33,7 @@ func RenderCover(cover tonearm.Cover, target *state.State[schwifty.Paintable]) c
 
 	go func() {
 		if cover.HasStatic() {
-			texture, err := injector.MustInject[*imgutil.ImgUtil]().LoadCropped(cover.Static())
+			texture, err := injector.MustInject[*imgutil.ImgUtil]().FetchCropped(cover.Static())
 			if err != nil {
 				cancel()
 				return

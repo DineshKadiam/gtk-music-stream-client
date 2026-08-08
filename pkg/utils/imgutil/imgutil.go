@@ -1,21 +1,23 @@
 package imgutil
 
 import (
+	"time"
+
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
-	"codeberg.org/dergs/tonearm/pkg/schwifty/tracking"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
-	"codeberg.org/dergs/tonearm/pkg/utils/cacheutil"
+	"codeberg.org/puregotk/puregotk/v4/gdk"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
+	"github.com/jellydator/ttlcache/v3"
 )
 
 type ImgUtil struct {
-	cache *cacheutil.Cache
+	cache *ttlcache.Cache[string, *gdk.Texture]
 }
 
 func (i *ImgUtil) LoadIntoImage(url string, image *gtk.Image) {
 	ref := weak.NewWidgetRef(&image.Widget)
 	go func() {
-		texture, err := i.Load(url)
+		texture, err := i.Fetch(url)
 		if err != nil {
 			return
 		}
@@ -32,13 +34,10 @@ func (i *ImgUtil) LoadIntoImage(url string, image *gtk.Image) {
 func (i *ImgUtil) LoadIntoImageCropped(url string, image *gtk.Image) {
 	ref := weak.NewWidgetRef(&image.Widget)
 	go func() {
-		texture, err := i.Load(url)
+		cropped, err := i.FetchCropped(url)
 		if err != nil {
 			return
 		}
-		cropped := Crop(texture)
-		texture = nil
-		tracking.SetFinalizer("Texture", cropped)
 
 		schwifty.OnMainThreadOnce(func(u uintptr) {
 			ref.Use(func(widget *gtk.Widget) {
@@ -49,8 +48,16 @@ func (i *ImgUtil) LoadIntoImageCropped(url string, image *gtk.Image) {
 	}()
 }
 
-func NewImgUtil(appId string) *ImgUtil {
-	return &ImgUtil{
-		cache: cacheutil.NewCache(appId, "images"),
-	}
+func NewImgUtil() *ImgUtil {
+	imgUtil := &ImgUtil{}
+	imgUtil.cache = ttlcache.New[string, *gdk.Texture](
+		ttlcache.WithTTL[string, *gdk.Texture](10*time.Minute),
+		ttlcache.WithMaxCost(50*(1024.0*1024.0), func(item ttlcache.CostItem[string, *gdk.Texture]) uint64 {
+			// Approximate the cost as the memory usage this GdkTexture is likely to occupy
+			return uint64(item.Value.GetWidth()) * uint64(item.Value.GetHeight()) * 4
+		}),
+		ttlcache.WithLoader(imgUtil),
+	)
+	go imgUtil.cache.Start()
+	return imgUtil
 }

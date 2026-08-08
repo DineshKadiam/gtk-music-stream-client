@@ -127,7 +127,7 @@ func buildPreferencesPerformance(*adw.PreferencesDialog) adwbindings.Preferences
 				}),
 			SwitchRow().
 				Title(gettext.Get("Cache Images")).
-				Subtitle(gettext.Get("Allow Tonearm to temporarily store images on the file system to improve performance and reduce network traffic")).
+				Subtitle(gettext.Get("Allow Tonearm to retain recently loaded images in memory to improve performance and reduce network traffic (estimated 50 MiB limit)")).
 				ConnectConstruct(func(sr *adw.SwitchRow) {
 					settings.Performance().BindCacheImages(&sr.Object, "active")
 				}),

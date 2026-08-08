@@ -186,7 +186,7 @@ func Feed() *router.Response {
 			mix := activity.FollowableActivity.HistoryMix
 
 			img, _ := injector.Inject[*imgutil.ImgUtil]()
-			texture, err := img.Load(mix.Images.Medium.Url)
+			texture, err := img.Fetch(mix.Images.Medium.Url)
 			if err != nil {
 				return &router.Response{
 					PageTitle: gettext.Get("Feed"),

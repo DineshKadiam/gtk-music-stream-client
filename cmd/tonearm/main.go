@@ -44,8 +44,8 @@ func main() {
 		return app
 	})
 
-	injector.Singleton(func(app *adw.Application) *imgutil.ImgUtil {
-		return imgutil.NewImgUtil(app.GetApplicationId())
+	injector.Singleton(func() *imgutil.ImgUtil {
+		return imgutil.NewImgUtil()
 	})
 
 	if code := app.Run(int32(len(os.Args)), os.Args); code > 0 {

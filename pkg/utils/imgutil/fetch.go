@@ -1,22 +1,12 @@
 package imgutil
 
 import (
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
 	"io"
 	"net/http"
-
-	"codeberg.org/dergs/tonearm/internal/settings"
 )
 
 func (i *ImgUtil) fetch(url string) ([]byte, error) {
-	hash := sha256.Sum256([]byte(url))
-	key := base64.StdEncoding.EncodeToString(hash[:])
-	if i.cache.Has(key) && settings.Performance().ShouldCacheImages() {
-		return i.cache.Retrieve(key)
-	}
-
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -30,10 +20,6 @@ func (i *ImgUtil) fetch(url string) ([]byte, error) {
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
-	}
-
-	if settings.Performance().ShouldCacheImages() {
-		i.cache.Store(key, data)
 	}
 
 	return data, nil
