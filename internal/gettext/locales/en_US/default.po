@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.1.0-99-ga37b2fb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 19:15+0200\n"
+"POT-Creation-Date: 2026-08-05 23:44+0200\n"
 "PO-Revision-Date: 2026-06-29 17:07+0000\n"
 "Last-Translator: mikesk8r <mikesk8r@noreply.codeberg.org>\n"
 "Language-Team: English (United States) <https://translate.codeberg.org/"
@@ -638,6 +638,9 @@ msgstr "This Month"
 
 msgid "This Week"
 msgstr "This Week"
+
+msgid "This track is not available for streaming"
+msgstr ""
 
 msgid "Today"
 msgstr "Today"

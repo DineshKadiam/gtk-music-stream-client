@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 19:15+0200\n"
+"POT-Creation-Date: 2026-08-05 23:44+0200\n"
 "PO-Revision-Date: 2026-08-06 20:25+0000\n"
 "Last-Translator: gallegonovato <gallegonovato@noreply.codeberg.org>\n"
 "Language-Team: Spanish <https://translate.codeberg.org/projects/tonearm/"
@@ -647,6 +647,9 @@ msgstr "Este mes"
 
 msgid "This Week"
 msgstr "Esta semana"
+
+msgid "This track is not available for streaming"
+msgstr ""
 
 msgid "Today"
 msgstr "Hoy"

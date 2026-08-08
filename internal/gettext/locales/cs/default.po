@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 19:15+0200\n"
+"POT-Creation-Date: 2026-08-05 23:44+0200\n"
 "PO-Revision-Date: 2026-03-10 07:50+0000\n"
 "Last-Translator: drafolin <drafolin@noreply.codeberg.org>\n"
 "Language-Team: Czech <https://translate.codeberg.org/projects/tonearm/"
@@ -644,6 +644,9 @@ msgstr "Tento měsíc"
 
 msgid "This Week"
 msgstr "Tento týden"
+
+msgid "This track is not available for streaming"
+msgstr ""
 
 msgid "Today"
 msgstr "Dnešek"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.3.1-38-gf3ed956\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 19:15+0200\n"
+"POT-Creation-Date: 2026-08-05 23:44+0200\n"
 "PO-Revision-Date: 2026-05-26 19:07+0000\n"
 "Last-Translator: Gustavo Fernandes <marshall570@noreply.codeberg.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.codeberg.org/projects/"
@@ -644,6 +644,9 @@ msgstr "Este mês"
 
 msgid "This Week"
 msgstr "Esta semana"
+
+msgid "This track is not available for streaming"
+msgstr ""
 
 msgid "Today"
 msgstr "Hoje"

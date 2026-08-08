@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 19:15+0200\n"
+"POT-Creation-Date: 2026-08-05 23:44+0200\n"
 "PO-Revision-Date: 2026-02-17 20:13+0000\n"
 "Last-Translator: NilaTheDragon <nilathedragon@noreply.codeberg.org>\n"
 "Language-Team: German <https://translate.codeberg.org/projects/tonearm/"
@@ -642,6 +642,9 @@ msgstr "Diesen Monat"
 
 msgid "This Week"
 msgstr "Diese Woche"
+
+msgid "This track is not available for streaming"
+msgstr ""
 
 msgid "Today"
 msgstr "Heute"
