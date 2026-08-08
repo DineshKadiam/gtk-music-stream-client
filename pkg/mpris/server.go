@@ -1,9 +1,7 @@
 package mpris
 
 import (
-	"fmt"
 	"log/slog"
-	"os"
 	"reflect"
 	"slices"
 	"time"
@@ -19,6 +17,16 @@ type Server struct {
 	object         *MprisDBusObject
 }
 
+func (s *Server) setProperty(property string, value any) {
+	defer func() {
+		if err := recover(); err != nil {
+			log.Error("Failed to set "+property, "error", err)
+		}
+	}()
+
+	s.properties.SetMust(playerInterface, property, value)
+}
+
 func (s *Server) Connect() {
 	if slices.Contains(s.dbusConnection.Names(), s.dbusName) {
 		log.Debug("name already owned, not re-requesting", "name", s.dbusName)
@@ -27,8 +35,7 @@ func (s *Server) Connect() {
 
 	reply, _ := s.dbusConnection.RequestName(s.dbusName, dbus.NameFlagDoNotQueue)
 	if reply != dbus.RequestNameReplyPrimaryOwner {
-		fmt.Fprintln(os.Stderr, "name already taken")
-		os.Exit(1)
+		log.Error("name already taken", "name", s.dbusName)
 	}
 }
 
@@ -130,12 +137,12 @@ func (c *Server) SetLoopStatus(status LoopStatus) {
 
 	if !ok {
 		log.Error("Unexpected non-string value in D-Bus LoopStatus value")
-		c.properties.SetMust(playerInterface, "LoopStatus", dbus.MakeVariant(status))
+		c.setProperty("LoopStatus", dbus.MakeVariant(status))
 		return
 	}
 
 	if oldVal != status {
-		c.properties.SetMust(playerInterface, "LoopStatus", dbus.MakeVariant(status))
+		c.setProperty("LoopStatus", dbus.MakeVariant(status))
 	}
 }
 
@@ -145,12 +152,12 @@ func (c *Server) SetPlaybackStatus(status PlaybackStatus) {
 
 	if !ok {
 		log.Error("Unexpected non-string value in D-Bus PlaybackStatus value")
-		c.properties.SetMust(playerInterface, "PlaybackStatus", dbus.MakeVariant(status))
+		c.setProperty("PlaybackStatus", dbus.MakeVariant(status))
 		return
 	}
 
 	if PlaybackStatus(oldVal) != status {
-		c.properties.SetMust(playerInterface, "PlaybackStatus", dbus.MakeVariant(status))
+		c.setProperty("PlaybackStatus", dbus.MakeVariant(status))
 	}
 }
 
@@ -166,12 +173,12 @@ func (c *Server) SetPosition(position time.Duration, seek bool) {
 
 	if !ok {
 		log.Error("Unexpected non-integer value in D-Bus Position value")
-		c.properties.SetMust(playerInterface, "Position", dbus.MakeVariant(newVal))
+		c.setProperty("Position", dbus.MakeVariant(newVal))
 		return
 	}
 
 	if oldVal != newVal {
-		c.properties.SetMust(playerInterface, "Position", dbus.MakeVariant(newVal))
+		c.setProperty("Position", dbus.MakeVariant(newVal))
 	}
 }
 
@@ -181,12 +188,12 @@ func (c *Server) SetTrackMetadata(metadata map[string]any) {
 
 	if !ok {
 		log.Error("Unexpected non-(string keyed map) value in D-Bus Metadata value")
-		c.properties.SetMust(playerInterface, "Metadata", dbus.MakeVariant(metadata))
+		c.setProperty("Metadata", dbus.MakeVariant(metadata))
 		return
 	}
 
 	if !reflect.DeepEqual(oldVal, metadata) {
-		c.properties.SetMust(playerInterface, "Metadata", dbus.MakeVariant(metadata))
+		c.setProperty("Metadata", dbus.MakeVariant(metadata))
 	}
 }
 
@@ -196,11 +203,11 @@ func (c *Server) SetVolume(volume float64) {
 
 	if !ok {
 		log.Error("Unexpected non-float value in D-Bus Volume value")
-		c.properties.SetMust(playerInterface, "Volume", dbus.MakeVariant(volume))
+		c.setProperty("Volume", dbus.MakeVariant(volume))
 		return
 	}
 
 	if oldVal != volume {
-		c.properties.SetMust(playerInterface, "Volume", dbus.MakeVariant(volume))
+		c.setProperty("Volume", dbus.MakeVariant(volume))
 	}
 }

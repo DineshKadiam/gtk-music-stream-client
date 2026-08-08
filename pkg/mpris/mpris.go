@@ -16,7 +16,7 @@ const (
 func NewMprisServer(name string, desktopEntry string, identity string) *Server {
 	conn, err := dbus.ConnectSessionBus()
 	if err != nil {
-		panic(err)
+		log.Error("failed to connect to session bus", err)
 	}
 
 	object := NewMprisDBusObject(desktopEntry, identity)

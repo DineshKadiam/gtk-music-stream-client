@@ -161,7 +161,9 @@ func SetVolume(volume float64) {
 	} else if volume > 1 {
 		logger.Warn("Volume is higher than 1. This will cause overdrive to the speakers.")
 	}
-	playbin.SetProperty("volume", volume)
+	if playbin != nil {
+		playbin.SetProperty("volume", volume)
+	}
 }
 
 func Stop() {
