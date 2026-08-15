@@ -40,7 +40,7 @@ func Artist(artistId string) *router.Response {
 		return router.FromError(gettext.Get("Artist"), err)
 	}
 
-	body := VStack().Spacing(25).VMargin(20)
+	body := VStack().Spacing(25).MarginTop(20).PaddingBottom(20)
 	for _, item := range artistPage.Items {
 		body = body.Append(components.ForPageItem(item))
 	}
@@ -74,6 +74,6 @@ func Artist(artistId string) *router.Response {
 				Policy(gtk.PolicyNeverValue, gtk.PolicyAutomaticValue).
 				VExpand(true).
 				MarginTop(20),
-		).VMargin(20),
+		),
 	}
 }

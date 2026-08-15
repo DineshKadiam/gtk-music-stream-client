@@ -90,8 +90,6 @@ func Tracks() *router.Response {
 			),
 			page.
 				VExpand(true),
-		).
-			VMargin(20).
-			Spacing(20),
+		).Spacing(20),
 	}
 }

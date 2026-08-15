@@ -28,6 +28,7 @@ func NewPaginatedTracklistPage(
 		list.AddTrack(track)
 	}
 
+	list.Widget = list.WithCSSClass("page")
 	return ScrolledWindow().
 		Child(
 			components.MainContentScrollable(

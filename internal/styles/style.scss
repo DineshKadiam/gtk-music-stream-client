@@ -121,6 +121,10 @@ menubutton.transparent button:not(:hover):not(.active) {
 .tracklist {
     background-color: transparent;
 
+    &.page {
+        padding-bottom: 10px;
+    }
+
     row {
         border-radius: 10px;
     }

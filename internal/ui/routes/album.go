@@ -78,6 +78,6 @@ func Album(albumId string) *router.Response {
 				}).HMargin(40),
 			),
 			page.VExpand(true).MarginTop(20),
-		).VMargin(20),
+		),
 	}
 }
