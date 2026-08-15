@@ -27,7 +27,7 @@ type ScrobbleEvent struct {
 
 func init() {
 	var scrobbleClock *Clock
-	player.TrackChanged.On(func(t tonearm.Track) bool {
+	player.TrackChanged.On(func(t *player.TrackChangedEvent) bool {
 		if t == nil {
 			return signals.Continue
 		}
@@ -50,7 +50,7 @@ func init() {
 		return signals.Continue
 	})
 
-	player.PlaybackStateChanged.On(func(ps *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(ps player.PlaybackState) bool {
 		if scrobbleClock == nil {
 			return signals.Continue
 		}

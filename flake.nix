@@ -82,7 +82,7 @@
           pname = "tonearm";
           version = "1.4.2";
           src = pkgs.lib.cleanSource ./.;
-          vendorHash = "sha256-LHLlKYNJDMkg45+PawL/x4FJ/VsNTbcgKMPqtOYCVOc=";
+          vendorHash = "sha256-pa0C0zMaKIa1wK49JIxHyfE1rbzzBB3yn44swlrR4HY=";
 
           ldflags = [
             "-X \"codeberg.org/dergs/tonearm/internal/ui.Commit=${(if (self ? rev) then self.rev else "")}\""

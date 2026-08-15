@@ -18,7 +18,7 @@ var (
 )
 
 func init() {
-	player.PlaybackStateChanged.On(func(ps *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(ps player.PlaybackState) bool {
 		isControllableState.SetValue(!ps.Loading)
 		return signals.Continue
 	})

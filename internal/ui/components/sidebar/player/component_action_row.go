@@ -40,7 +40,7 @@ var (
 )
 
 func init() {
-	player.TrackChanged.OnLazy(func(t tonearm.Track) bool {
+	player.TrackChanged.OnLazy(func(t *player.TrackChangedEvent) bool {
 		isTrackLoadedState.SetValue(t != nil)
 
 		if t != nil {
@@ -79,11 +79,12 @@ func favouriteButton() schwifty.Button {
 		return signals.Continue
 	})
 
-	player.TrackChanged.On(func(t tonearm.Track) bool {
+	player.TrackChanged.On(func(t *player.TrackChangedEvent) bool {
 		isSensitive.SetValue(t != nil && secrets.SignedInChanged.CurrentValue())
 		isLoading.Set(true)
 		defer isLoading.Set(false)
 		if t == nil {
+			isFavourited.Set(false)
 			return signals.Continue
 		}
 

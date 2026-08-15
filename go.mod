@@ -14,6 +14,7 @@ require (
 	github.com/keybase/go-keychain v0.0.1
 	github.com/leonelquinteros/gotext v1.7.2
 	github.com/qjebbs/go-jsons v1.0.0-alpha.4
+	github.com/qmuntal/stateless v1.8.0
 	github.com/sosodev/duration v1.3.1
 	github.com/twoscott/gobble-fm v1.0.8
 	github.com/yeqown/go-qrcode/v2 v2.2.5
@@ -35,3 +36,5 @@ require (
 	golang.org/x/sync v0.16.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 )
+
+replace github.com/go-gst/go-gst => github.com/nilathedragon/go-gst v0.0.0-20260804202341-1e06de8a146b

@@ -14,7 +14,6 @@ import (
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
-	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/gdk"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
@@ -33,7 +32,7 @@ var (
 )
 
 func init() {
-	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
+	player.TrackChanged.On(func(trackInfo *player.TrackChangedEvent) bool {
 		schwifty.OnMainThreadOncePure(func() {
 			if trackInfo == nil {
 				durationState.SetValue("00:00")
@@ -44,7 +43,7 @@ func init() {
 		return signals.Continue
 	})
 
-	player.PlaybackStateChanged.On(func(state *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(state player.PlaybackState) bool {
 		schwifty.OnMainThreadOncePure(func() {
 			positionState.SetValue(tidalapi.FormatDuration(state.Position))
 			if state.Duration > 0 {
@@ -57,23 +56,18 @@ func init() {
 		return signals.Continue
 	})
 
-	player.PlaybackQualityChanged.On(func(quality v1.AudioQuality) bool {
+	player.PlaybackQualityChanged.On(func(quality tonearm.TrackQuality) bool {
 		setSelectedQualityLabel(quality)
 		return signals.Continue
 	})
 
-	settings.Player().ConnectAudioQualityChanged(func(aq v1.AudioQuality) bool {
+	settings.Player().ConnectAudioQualityChanged(func(aq tonearm.TrackQuality) bool {
 		notifications.OnToast.Notify(gettext.Get("Playback quality saved. Changes will be applied on next track change"))
 
 		return signals.Continue
 	})
 
-	player.AudioStreamQuality.On(func(sq *player.StreamQuality) bool {
-		if sq == nil {
-			actualQuality.SetValue("N/A")
-			return signals.Continue
-		}
-
+	player.AudioStreamQuality.On(func(sq player.StreamQuality) bool {
 		switch sq.Codec {
 		case player.CodecAAC:
 			bitrate := g.TruncateFloat(float64(sq.BitRate)/1000, 1)
@@ -81,6 +75,8 @@ func init() {
 		case player.CodecFLAC:
 			sampleRate := g.TruncateFloat(float64(sq.SampleRate)/1000, 1)
 			actualQuality.SetValue(fmt.Sprintf("%d-bit %skHz FLAC", sq.BitDepth, sampleRate))
+		default:
+			actualQuality.SetValue("N/A")
 		}
 		return signals.Continue
 	})
@@ -88,10 +84,10 @@ func init() {
 	setSelectedQualityLabel(settings.Player().GetAudioQuality())
 }
 
-func hideCheckmarkHook(quality v1.AudioQuality) func(*gtk.Label) {
+func hideCheckmarkHook(quality tonearm.TrackQuality) func(*gtk.Label) {
 	return func(l *gtk.Label) {
 		settings.Player().ConnectAudioQualityChanged(
-			func(aq v1.AudioQuality) bool {
+			func(aq tonearm.TrackQuality) bool {
 				if aq == quality {
 					l.Show()
 				} else {
@@ -110,7 +106,7 @@ func hideCheckmarkHook(quality v1.AudioQuality) func(*gtk.Label) {
 	}
 }
 
-func makeQualitySelectEntry(quality v1.AudioQuality, css, label, details string, popover *weak.WidgetRef) schwifty.Button {
+func makeQualitySelectEntry(quality tonearm.TrackQuality, css, label, details string, popover *weak.WidgetRef) schwifty.Button {
 	return Button().
 		Child(
 			HStack(
@@ -132,18 +128,18 @@ func makeQualitySelectEntry(quality v1.AudioQuality, css, label, details string,
 		WithCSSClass(css)
 }
 
-func setSelectedQualityLabel(quality v1.AudioQuality) {
+func setSelectedQualityLabel(quality tonearm.TrackQuality) {
 	switch quality {
-	case v1.AudioQualityLossy:
+	case tonearm.TrackQualityLossy:
 		selectedQuality.SetValue(gettext.Get("Low (96 kbps)"))
 		playbackQualityClass.SetValue("low")
-	case v1.AudioQualityHighRes:
+	case tonearm.TrackQualityHigh:
 		selectedQuality.SetValue(gettext.Get("Low (320 kbps)"))
 		playbackQualityClass.SetValue("low")
-	case v1.AudioQualityLossless:
+	case tonearm.TrackQualityLossless:
 		selectedQuality.SetValue(gettext.Get("High"))
 		playbackQualityClass.SetValue("high")
-	case v1.AudioQualityHighResLossless:
+	case tonearm.TrackQualityHighResLossless:
 		selectedQuality.SetValue(gettext.Get("Max"))
 		playbackQualityClass.SetValue("max")
 	}
@@ -184,10 +180,10 @@ func trackTimeline() schwifty.Widget {
 	var ref weak.WidgetRef
 	popover := Popover(
 		VStack(
-			makeQualitySelectEntry(v1.AudioQualityLossy, "low", "Low (96 kbps)", "96 kbps AAC", &ref),
-			makeQualitySelectEntry(v1.AudioQualityHighRes, "low", "Low (320 kbps)", "320 kbps AAC", &ref),
-			makeQualitySelectEntry(v1.AudioQualityLossless, "high", "High", "16-bit 44.1kHz FLAC", &ref),
-			makeQualitySelectEntry(v1.AudioQualityHighResLossless, "max", "Max", "24-bit 192kHz FLAC", &ref),
+			makeQualitySelectEntry(tonearm.TrackQualityLossy, "low", "Low (96 kbps)", "96 kbps AAC", &ref),
+			makeQualitySelectEntry(tonearm.TrackQualityHigh, "low", "Low (320 kbps)", "320 kbps AAC", &ref),
+			makeQualitySelectEntry(tonearm.TrackQualityLossless, "high", "High", "16-bit 44.1kHz FLAC", &ref),
+			makeQualitySelectEntry(tonearm.TrackQualityHighResLossless, "max", "Max", "24-bit 192kHz FLAC", &ref),
 		).
 			WithCSSClass("selector").
 			Spacing(8),

@@ -5,7 +5,7 @@ import (
 
 	"codeberg.org/dergs/tonearm/internal/gettext"
 	"codeberg.org/dergs/tonearm/internal/player"
-	"codeberg.org/dergs/tonearm/internal/player/queue"
+	"codeberg.org/dergs/tonearm/internal/player/playqueue"
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/internal/ui/components/tracklist"
 	"codeberg.org/dergs/tonearm/pkg/schwifty"
@@ -42,7 +42,7 @@ func init() {
 
 }
 
-func makeQueueTracklist(q queue.Queue, queueState *state.State[[]tonearm.Track]) *tracklist.TrackList {
+func makeQueueTracklist(q playqueue.Queue, queueState *state.State[[]tonearm.Track]) *tracklist.TrackList {
 	trackList := tracklist.NewTrackList(
 		tracklist.CoverColumn, tracklist.TitleAlbumColumn,
 		tracklist.CustomWidgetButtonColumn(func(_ string, position int, _ int32) *gtk.Widget {

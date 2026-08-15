@@ -29,12 +29,12 @@ func MiniPlayer() adwbindings.Bin {
 		playPauseIcon = state.NewStateful("play-symbolic")
 	)
 
-	player.PlaybackStateChanged.On(func(ps *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(ps player.PlaybackState) bool {
 		miniPlayerCanControl.SetValue(!ps.Loading)
 		return signals.Continue
 	})
 
-	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
+	player.TrackChanged.On(func(trackInfo *player.TrackChangedEvent) bool {
 		if trackInfo != nil {
 			cover := trackInfo.Cover(80)
 			if !cover.HasStatic() {
@@ -57,7 +57,7 @@ func MiniPlayer() adwbindings.Bin {
 		return signals.Continue
 	})
 
-	player.PlaybackStateChanged.On(func(state *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(state player.PlaybackState) bool {
 		schwifty.OnMainThreadOncePure(func() {
 			switch state.Status {
 			case player.PlaybackStatusPaused, player.PlaybackStatusStopped:
@@ -107,7 +107,7 @@ func MiniPlayer() adwbindings.Bin {
 					BindSensitive(miniPlayerCanControl).
 					ConnectConstruct(func(b *gtk.Button) {
 						ptr := b.GoPointer()
-						miniPlayerLoadingIconSub = player.PlaybackStateChanged.On(func(ps *player.PlaybackState) bool {
+						miniPlayerLoadingIconSub = player.PlaybackStateChanged.On(func(ps player.PlaybackState) bool {
 							if ps.Loading {
 								schwifty.OnMainThreadOncePure(func() {
 									b := gtk.ButtonNewFromInternalPtr(ptr)

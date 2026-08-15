@@ -21,13 +21,15 @@ var (
 
 func init() {
 	var cancel context.CancelFunc
-	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
+	player.TrackChanged.On(func(trackInfo *player.TrackChangedEvent) bool {
 		if cancel != nil {
 			cancel()
 			cancel = nil
 		}
 		if trackInfo != nil {
 			cancel = components.RenderCover(trackInfo.Cover(math.MaxInt), coverState)
+		} else {
+			cancel = components.RenderCover(tonearm.NewURLCover("", ""), coverState)
 		}
 		return signals.Continue
 	})

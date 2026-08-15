@@ -11,7 +11,6 @@ import (
 	"codeberg.org/dergs/tonearm/internal/g"
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/mpris"
-	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/adw"
 	"github.com/godbus/dbus/v5"
 	"github.com/infinytum/injector"
@@ -44,21 +43,27 @@ var mprisServer = g.Lazy(func() *mpris.Server {
 			go SetRepeatMode(RepeatModeQueue)
 		}
 	})
-	mprisServer.OnSeek(SeekToPositionRelative)
+	mprisServer.OnSeek(func(offset time.Duration) {
+		SeekToPosition(PlaybackStateChanged.CurrentValue().Position+offset, false)
+	})
 	mprisServer.OnSetPosition(func(position time.Duration) { SeekToPosition(position, false) })
 	mprisServer.OnVolumeChanged(func(newVal float64) {
 		SetVolume(newVal)
 	})
 	mprisServer.OnShuffleChanged(func(shuffle bool) {
-		SetShuffle(shuffle)
+		currentTrack := ""
+		if current := TrackChanged.CurrentValue(); current != nil {
+			currentTrack = current.ID()
+		}
+		SetShuffle(shuffle, currentTrack)
 	})
 	mprisServer.Export()
 	return mprisServer
 })
 
 func init() {
-	PlaybackStateChanged.Signal.On(func(state *PlaybackState) bool {
-		mprisServer().SetPosition(state.Position, state.IsSeeking)
+	PlaybackStateChanged.Signal.On(func(state PlaybackState) bool {
+		mprisServer().SetPosition(state.Position, false)
 		if state.Loading {
 			mprisServer().SetPlaybackStatus(mpris.PlaybackStatusPaused)
 		} else {
@@ -87,7 +92,7 @@ func init() {
 		return signals.Continue
 	})
 
-	TrackChanged.On(func(trackInfo tonearm.Track) bool {
+	TrackChanged.On(func(trackInfo *TrackChangedEvent) bool {
 		if trackInfo == nil {
 			mprisServer().SetTrackMetadata(map[string]any{})
 			mprisServer().Disconnect()
@@ -117,6 +122,11 @@ func init() {
 
 	VolumeChanged.On(func(volume float64) bool {
 		go mprisServer().SetVolume(volume)
+		return signals.Continue
+	})
+
+	Seeked.On(func(position time.Duration) bool {
+		go mprisServer().SetPosition(position, true)
 		return signals.Continue
 	})
 }

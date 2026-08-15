@@ -1,4 +1,4 @@
-package queue
+package playqueue
 
 import (
 	"codeberg.org/dergs/tonearm/internal/signals"
@@ -39,6 +39,9 @@ type Queue interface {
 // but the original queue is preserved for future use like looping or shuffling.
 type DurableQueue interface {
 	Queue
+
+	// Check if the queue is shuffled
+	IsShuffled() bool
 
 	// Restore all original tracks to the queue.
 	// All tracks before and including the current track are not re-added.

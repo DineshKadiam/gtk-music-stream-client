@@ -32,7 +32,7 @@ github.com/fogleman/gg
 # github.com/go-gst/go-glib v1.4.0
 ## explicit; go 1.23.1
 github.com/go-gst/go-glib/glib
-# github.com/go-gst/go-gst v1.4.0
+# github.com/go-gst/go-gst v1.4.0 => github.com/nilathedragon/go-gst v0.0.0-20260804202341-1e06de8a146b
 ## explicit; go 1.23
 github.com/go-gst/go-gst/gst
 # github.com/godbus/dbus/v5 v5.2.2
@@ -80,6 +80,9 @@ github.com/pkg/errors
 github.com/qjebbs/go-jsons
 github.com/qjebbs/go-jsons/internal/merge
 github.com/qjebbs/go-jsons/internal/ordered
+# github.com/qmuntal/stateless v1.8.0
+## explicit; go 1.24
+github.com/qmuntal/stateless
 # github.com/sosodev/duration v1.3.1
 ## explicit; go 1.17
 github.com/sosodev/duration
@@ -117,3 +120,4 @@ golang.org/x/sync/singleflight
 ## explicit; go 1.25.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows
+# github.com/go-gst/go-gst => github.com/nilathedragon/go-gst v0.0.0-20260804202341-1e06de8a146b

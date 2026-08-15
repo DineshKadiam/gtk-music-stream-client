@@ -5,10 +5,19 @@ import "time"
 type TrackQuality string
 
 const (
-	TrackQualityMax    TrackQuality = "max"
-	TrackQualityHigh   TrackQuality = "high"
-	TrackQualityMedium TrackQuality = "medium"
-	TrackQualityLow    TrackQuality = "low"
+	// TrackQualityHighResLossless represents the maximum quality of the track
+	// Specifically, it represents tracks that exceed 16-bit depth or 44.1kHz sample rate
+	TrackQualityHighResLossless TrackQuality = "HI_RES_LOSSLESS"
+	// TrackQualityLossless represents a high, lossless quality of the track
+	// Specifically, it represents tracks that are encoded with a bit depth of 16-bit and a sample rate of 44.1kHz
+	// but most importantly, they are using a lossless codec (e.g. FLAC)
+	TrackQualityLossless TrackQuality = "LOSSLESS"
+	// TrackQualityHigh represents a medium quality of the track
+	// Specifically, it represents compressed tracks with a bit rate of at least 320 kbps
+	TrackQualityHigh TrackQuality = "HIGH"
+	// TrackQualityLossy represents a low quality of the track
+	// Specifically, it represents compressed tracks with a bit rate below 320 kbps (e.g. MP3)
+	TrackQualityLossy TrackQuality = "LOW"
 )
 
 type TrackFlag int

@@ -15,7 +15,7 @@ import (
 var playerControlsAvailableState = state.NewStateful(false)
 
 func init() {
-	player.PlaybackStateChanged.On(func(ps *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(ps player.PlaybackState) bool {
 		playerControlsAvailableState.SetValue(!ps.Loading)
 		return signals.Continue
 	})

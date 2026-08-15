@@ -95,7 +95,7 @@ func (t *TrackList) onBind(_ gtk.SignalListItemFactory, listItem *gtk.ListItem) 
 
 	body := HStack().ConnectRealize(func(b gtk.Widget) {
 		var ref = weak.NewWidgetRef(&b)
-		player.TrackChanged.On(func(t tonearm.Track) bool {
+		player.TrackChanged.On(func(t *player.TrackChangedEvent) bool {
 			return signals.ContinueIf(
 				ref.Use(func(obj *gtk.Widget) {
 					if t != nil && track.ID() == t.ID() {

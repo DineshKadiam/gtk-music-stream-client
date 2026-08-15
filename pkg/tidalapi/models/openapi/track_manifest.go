@@ -4,6 +4,7 @@ import (
 	"slices"
 
 	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 )
 
 type TrackManifest Response[TrackManifestData]
@@ -21,13 +22,13 @@ func AudioQualityFromFormats(formats []ManifestFormat) v1.AudioQuality {
 	return v1.AudioQualityLossy
 }
 
-func ManifestFormatsForQuality(quality v1.AudioQuality) []ManifestFormat {
+func ManifestFormatsForQuality(quality tonearm.TrackQuality) []ManifestFormat {
 	switch quality {
-	case v1.AudioQualityHighResLossless:
+	case tonearm.TrackQualityHighResLossless:
 		return []ManifestFormat{ManifestFormatHEAACV1, ManifestFormatAACLC, ManifestFormatFLAC, ManifestFormatFLACHiRes}
-	case v1.AudioQualityLossless:
+	case tonearm.TrackQualityLossless:
 		return []ManifestFormat{ManifestFormatHEAACV1, ManifestFormatAACLC, ManifestFormatFLAC}
-	case v1.AudioQualityHighRes:
+	case tonearm.TrackQualityHigh:
 		return []ManifestFormat{ManifestFormatHEAACV1, ManifestFormatAACLC}
 	default:
 		return []ManifestFormat{ManifestFormatHEAACV1}
@@ -75,9 +76,9 @@ const (
 type PreviewReason string
 
 const (
-	PreviewReasonRequiresSubscription      PreviewReason = "FULL_REQUIRES_SUBSCRIPTION"
-	PreviewReasonRequiresPurchase          PreviewReason = "FULL_REQUIRES_PURCHASE"
-	PreviewReasonRequiresHigherAccessTier  PreviewReason = "FULL_REQUIRES_HIGHER_ACCESS_TIER"
+	PreviewReasonRequiresSubscription     PreviewReason = "FULL_REQUIRES_SUBSCRIPTION"
+	PreviewReasonRequiresPurchase         PreviewReason = "FULL_REQUIRES_PURCHASE"
+	PreviewReasonRequiresHigherAccessTier PreviewReason = "FULL_REQUIRES_HIGHER_ACCESS_TIER"
 )
 
 type DrmSystem string

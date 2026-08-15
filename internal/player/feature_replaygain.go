@@ -5,8 +5,9 @@ import (
 	"log/slog"
 
 	"codeberg.org/dergs/tonearm/internal/g"
+	"codeberg.org/dergs/tonearm/internal/player/statemachine"
 	"codeberg.org/dergs/tonearm/internal/settings"
-	openapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
+	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"github.com/go-gst/go-gst/gst"
 )
@@ -33,7 +34,8 @@ var (
 				return
 			}
 
-			if currentlyEnqueuedTrack == nil {
+			enqueuedTrack := statemachine.EnqueuedTrack.CurrentValue()
+			if enqueuedTrack == nil {
 				return
 			}
 
@@ -41,7 +43,7 @@ var (
 				return
 			}
 
-			injectReplayGainTags(rgvolume, currentlyEnqueuedTrack)
+			injectReplayGainTags(rgvolume, enqueuedTrack)
 			return
 		})
 		return rgvolume
@@ -88,24 +90,24 @@ func buildReplayGainFilterBin() (*gst.Bin, error) {
 	return bin, nil
 }
 
-func injectReplayGainTags(rgvolume *gst.Element, manifest *openapi.TrackManifest) {
+func injectReplayGainTags(rgvolume *gst.Element, manifest tonearm.TrackManifest) {
 	tagList := gst.NewEmptyTagList()
 
 	log := slog.With()
-	if data := manifest.Data.Attributes.AlbumAudioNormalizationData; data != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumPeak, float64(data.PeakAmplitude))
-		log = log.With("albumPeak", fmt.Sprintf("%.6f", data.PeakAmplitude))
+	if data := manifest.AlbumNormalization(); data != nil {
+		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumPeak, float64(data.Peak()))
+		log = log.With("albumPeak", fmt.Sprintf("%.6f", data.Peak()))
 
-		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumGain, float64(data.ReplayGain))
-		log = log.With("albumGain", fmt.Sprintf("%.2f dB", data.ReplayGain))
+		tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumGain, float64(data.Gain()))
+		log = log.With("albumGain", fmt.Sprintf("%.2f dB", data.Gain()))
 	}
 
-	if data := manifest.Data.Attributes.TrackAudioNormalizationData; data != nil {
-		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackGain, float64(data.ReplayGain))
-		log = log.With("trackGain", fmt.Sprintf("%.2f dB", data.ReplayGain))
+	if data := manifest.TrackNormalization(); data != nil {
+		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackPeak, float64(data.Peak()))
+		log = log.With("trackPeak", fmt.Sprintf("%.6f", data.Peak()))
 
-		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackPeak, float64(data.PeakAmplitude))
-		log = log.With("trackPeak", fmt.Sprintf("%.6f", data.PeakAmplitude))
+		tagList.AddValue(gst.TagMergeAppend, gst.TagTrackGain, float64(data.Gain()))
+		log = log.With("trackGain", fmt.Sprintf("%.2f dB", data.Gain()))
 	}
 
 	tagEvent := gst.NewTagEvent(tagList)
@@ -131,4 +133,29 @@ func calculateAlbumMode() bool {
 	} else {
 		return mode == settings.ReplayGainModeAlbum
 	}
+}
+
+func initReplayGain() {
+	audioFilterBin, err := buildReplayGainFilterBin()
+	if err != nil {
+		panic(err)
+	}
+
+	emptyBin, err := buildEmptyBin()
+	if err != nil {
+		panic(err)
+	}
+
+	settings.Playback().ConnectNormalizeVolumeChanged(func(newVal bool) bool {
+		var err error
+		if newVal {
+			err = playbin.Set("audio-filter", audioFilterBin)
+		} else {
+			err = playbin.Set("audio-filter", emptyBin)
+		}
+		if err != nil {
+			logger.Error("Failed to set audio filter", err)
+		}
+		return signals.Continue
+	})
 }

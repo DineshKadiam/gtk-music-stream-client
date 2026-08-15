@@ -37,7 +37,7 @@ func controls() schwifty.Box {
 		playPauseSensitiveState   = state.NewStateful(false)
 	)
 
-	player.PlaybackStateChanged.On(func(state *player.PlaybackState) bool {
+	player.PlaybackStateChanged.On(func(state player.PlaybackState) bool {
 		schwifty.OnMainThreadOncePure(func() {
 			var val any
 			switch state.Status {

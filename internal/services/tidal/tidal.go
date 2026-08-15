@@ -7,6 +7,7 @@ import (
 	"codeberg.org/dergs/tonearm/internal/secrets"
 	"codeberg.org/dergs/tonearm/internal/services/tidal/openapi"
 	v2 "codeberg.org/dergs/tonearm/internal/services/tidal/v2"
+	"codeberg.org/dergs/tonearm/internal/settings"
 	"codeberg.org/dergs/tonearm/pkg/tidalapi"
 	modelopenapi "codeberg.org/dergs/tonearm/pkg/tidalapi/models/openapi"
 	"codeberg.org/dergs/tonearm/pkg/tonearm"
@@ -122,6 +123,31 @@ func (t *Tidal) GetTrack(id string) (tonearm.Track, error) {
 	}
 
 	return openapi.NewTrack(*track), nil
+}
+
+func (t *Tidal) GetTrackInfo(id string) (tonearm.TrackInfo, error) {
+	track, err := t.API.OpenAPI.V2.Tracks.Track(context.Background(), id)
+	if err != nil {
+		return nil, err
+	}
+
+	return openapi.NewTrackInfo(*track), nil
+}
+
+func (t *Tidal) GetTrackManifest(id string) (tonearm.TrackManifest, error) {
+	trackManifest, err := t.API.OpenAPI.V2.TrackManifests.TrackManifest(
+		context.Background(),
+		id,
+		modelopenapi.ManifestTypeMPEGDASH,
+		modelopenapi.ManifestFormatsForQuality(settings.Player().GetAudioQuality()),
+		modelopenapi.ManifestURISchemeHTTPS,
+		modelopenapi.ManifestUsagePlayback,
+		false,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return openapi.NewTrackManifest(*trackManifest), nil
 }
 
 func (t *Tidal) GetTrackRadio(id string) (tonearm.PlaylistInfo, error) {

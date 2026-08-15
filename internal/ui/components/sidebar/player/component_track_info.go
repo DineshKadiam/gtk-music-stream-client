@@ -18,7 +18,7 @@ var titleState = state.NewStateful("")
 var artistState = state.NewStateful("")
 
 func init() {
-	player.TrackChanged.On(func(trackInfo tonearm.Track) bool {
+	player.TrackChanged.On(func(trackInfo *player.TrackChangedEvent) bool {
 		schwifty.OnMainThreadOncePure(func() {
 			if trackInfo == nil {
 				titleState.SetValue(gettext.Get("No Track"))

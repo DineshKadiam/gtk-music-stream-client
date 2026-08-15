@@ -13,7 +13,6 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty/state"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
-	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
 )
 
@@ -122,7 +121,7 @@ var queueList = g.Lazy(func() *gtk.ScrolledWindow {
 func NewQueue() schwifty.Box {
 	trackLoaded := state.NewStateful(false)
 
-	player.TrackChanged.On(func(t tonearm.Track) bool {
+	player.TrackChanged.On(func(t *player.TrackChangedEvent) bool {
 		trackLoaded.SetValue(t != nil)
 		return signals.Continue
 	})

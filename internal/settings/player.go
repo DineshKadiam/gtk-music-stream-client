@@ -5,7 +5,7 @@ import (
 
 	"codeberg.org/dergs/tonearm/internal/signals"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/callback"
-	v1 "codeberg.org/dergs/tonearm/pkg/tidalapi/models/v1"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/gio"
 	"codeberg.org/puregotk/puregotk/v4/gobject"
 )
@@ -14,7 +14,7 @@ type PlayerSettings struct {
 	settings *gio.Settings
 }
 
-func (p *PlayerSettings) ConnectAudioQualityChanged(cb func(v1.AudioQuality) bool) {
+func (p *PlayerSettings) ConnectAudioQualityChanged(cb func(tonearm.TrackQuality) bool) {
 	// Ensure that audio-quality gets watched by gio,
 	// since ConnectChanged specifies "
 	// 	Note that @settings only emits this signal if you have read
@@ -34,11 +34,11 @@ func (p *PlayerSettings) ConnectAudioQualityChanged(cb func(v1.AudioQuality) boo
 	})
 }
 
-func (p *PlayerSettings) GetAudioQuality() v1.AudioQuality {
+func (p *PlayerSettings) GetAudioQuality() tonearm.TrackQuality {
 	return p.parseAudioQuality(p.settings.GetString("audio-quality"))
 }
 
-func (p *PlayerSettings) SetAudioQuality(quality v1.AudioQuality) {
+func (p *PlayerSettings) SetAudioQuality(quality tonearm.TrackQuality) {
 	p.settings.SetString("audio-quality", string(quality))
 }
 
@@ -54,18 +54,18 @@ func (p *PlayerSettings) SetVolume(volume float64) {
 	p.settings.SetDouble("volume", volume)
 }
 
-func (p *PlayerSettings) parseAudioQuality(quality string) v1.AudioQuality {
+func (p *PlayerSettings) parseAudioQuality(quality string) tonearm.TrackQuality {
 	switch quality {
-	case string(v1.AudioQualityHighResLossless):
-		return v1.AudioQualityHighResLossless
-	case string(v1.AudioQualityLossless):
-		return v1.AudioQualityLossless
-	case string(v1.AudioQualityHighRes):
-		return v1.AudioQualityHighRes
-	case string(v1.AudioQualityLossy):
-		return v1.AudioQualityLossy
+	case string(tonearm.TrackQualityHighResLossless):
+		return tonearm.TrackQualityHighResLossless
+	case string(tonearm.TrackQualityLossless):
+		return tonearm.TrackQualityLossless
+	case string(tonearm.TrackQualityHigh):
+		return tonearm.TrackQualityHigh
+	case string(tonearm.TrackQualityLossy):
+		return tonearm.TrackQualityLossy
 	default:
 		slog.Error("configured audio quality was invalid, defaulting to maximum", "configured", quality)
-		return v1.AudioQualityHighResLossless
+		return tonearm.TrackQualityHighResLossless
 	}
 }

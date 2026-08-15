@@ -46,9 +46,18 @@ func init() {
 			schwifty.OnMainThreadOncePure(func() {
 				playingFromCoverState.SetValue(texture)
 			})
+		} else {
+			resetPlayingFrom()
 		}
 		return signals.Continue
 	})
+}
+
+func resetPlayingFrom() {
+	playingFromTitleState.SetValue("Nothing")
+	playingFromCoverState.SetValue(resources.MissingAlbum())
+	playingFromCanNavigateState.SetValue(false)
+	playingFromNavTargetState.SetValue("")
 }
 
 func PlayingFrom() schwifty.Button {

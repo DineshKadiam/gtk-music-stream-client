@@ -1,4 +1,4 @@
-package queue
+package playqueue
 
 import (
 	"errors"
@@ -15,7 +15,8 @@ type durableQueue struct {
 	sync.RWMutex
 	queue Queue
 
-	source *signals.StatefulSignal[[]tonearm.Track]
+	source     *signals.StatefulSignal[[]tonearm.Track]
+	isShuffled bool
 }
 
 func (q *durableQueue) Append(track tonearm.Track) {
@@ -40,6 +41,7 @@ func (q *durableQueue) Clear() {
 		return []tonearm.Track{}
 	})
 	q.queue.Clear()
+	q.isShuffled = false
 }
 
 func (q *durableQueue) Contains(trackID string) bool {
@@ -98,6 +100,12 @@ func (q *durableQueue) Insert(track tonearm.Track, index int) error {
 	}
 
 	return q.queue.Insert(track, index)
+}
+
+func (q *durableQueue) IsShuffled() bool {
+	q.RLock()
+	defer q.RUnlock()
+	return q.isShuffled
 }
 
 func (q *durableQueue) Peek() tonearm.Track {
@@ -167,6 +175,7 @@ func (q *durableQueue) Restore(currentTrackID string) {
 		}
 	}
 	q.queue.Set(sourceTracks[offset:])
+	q.isShuffled = false
 }
 
 func (q *durableQueue) Set(tracks []tonearm.Track) {
@@ -184,7 +193,7 @@ func (q *durableQueue) Shuffle(currentTrackID string) {
 	defer q.Unlock()
 
 	sourceTracks := slices.Clone(q.source.CurrentValue())
-	trackOffset := 0
+	trackOffset := -1
 	for i, track := range sourceTracks {
 		if track.ID() == currentTrackID {
 			trackOffset = i
@@ -204,6 +213,7 @@ func (q *durableQueue) Shuffle(currentTrackID string) {
 		sourceTracks[i], sourceTracks[j] = sourceTracks[j], sourceTracks[i]
 	})
 	q.queue.Set(sourceTracks)
+	q.isShuffled = true
 }
 
 func (q *durableQueue) Skip(n int) ([]tonearm.Track, error) {

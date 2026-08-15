@@ -13,7 +13,6 @@ import (
 	"codeberg.org/dergs/tonearm/pkg/schwifty/state"
 	. "codeberg.org/dergs/tonearm/pkg/schwifty/syntax"
 	"codeberg.org/dergs/tonearm/pkg/schwifty/utils/weak"
-	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"codeberg.org/puregotk/puregotk/v4/gtk"
 )
 
@@ -61,7 +60,7 @@ func (s lyricsStatus) ToGTK() *gtk.Widget {
 }
 
 func init() {
-	player.TrackChanged.OnLazy(func(trackInfo tonearm.Track) bool {
+	player.TrackChanged.OnLazy(func(trackInfo *player.TrackChangedEvent) bool {
 		adj := lyricsView().GetVadjustment()
 		defer adj.Unref()
 		adj.SetValue(0)
@@ -104,7 +103,7 @@ func init() {
 func NewLyricsPanel() schwifty.Box {
 	trackLoaded := state.NewStateful(false)
 
-	player.TrackChanged.On(func(t tonearm.Track) bool {
+	player.TrackChanged.On(func(t *player.TrackChangedEvent) bool {
 		trackLoaded.SetValue(t != nil)
 		return signals.Continue
 	})

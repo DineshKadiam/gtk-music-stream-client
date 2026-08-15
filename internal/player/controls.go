@@ -2,20 +2,12 @@ package player
 
 import (
 	"math"
-	"sync"
 	"time"
 
+	"codeberg.org/dergs/tonearm/internal/player/statemachine"
+	"codeberg.org/dergs/tonearm/pkg/tonearm"
 	"github.com/go-gst/go-gst/gst"
 )
-
-type ControllableState struct {
-	HasTrack    bool
-	PlayerReady bool
-}
-
-func (cs *ControllableState) CanControl() bool {
-	return cs.HasTrack && cs.PlayerReady
-}
 
 func CycleRepeatMode() {
 	switch RepeatModeChanged.CurrentValue() {
@@ -28,32 +20,23 @@ func CycleRepeatMode() {
 	}
 }
 
-func SetShuffle(enabled bool) {
-	ShuffleStateChanged.Notify(func(oldValue bool) bool {
-		return enabled
-	})
-}
-
 func Next() {
-	logger.Debug("player controls requested to play next track")
-	disableGaplessPlayback = true
-	playNextTrack()
-	disableGaplessPlayback = false
+	nextTrack, _, err := nextTrack(false)
+	if err != nil {
+		logger.Error("failed to get next track", "error", err)
+		return
+	}
+	stateMachine.Fire(statemachine.TRIGGER_PLAY_TRACK, nextTrack, false)
 }
 
 func Pause() {
 	logger.Debug("player controls requested to pause")
-	playbin.SetState(gst.StatePaused)
-	PlaybackStateChanged.Notify(func(oldValue *PlaybackState) *PlaybackState {
-		newState := *oldValue
-		newState.Status = PlaybackStatusPaused
-		return &newState
-	})
+	stateMachine.Fire(statemachine.TRIGGER_PAUSE)
 }
 
 func Play() {
 	logger.Debug("player controls requested to start playing")
-	playbin.SetState(gst.StatePlaying)
+	stateMachine.Fire(statemachine.TRIGGER_RESUME)
 }
 
 func PlayPause() {
@@ -64,16 +47,29 @@ func PlayPause() {
 	case PlaybackStatusPaused:
 		Play()
 	case PlaybackStatusStopped:
-		seekToPosition(0)
 		Play()
 	}
 }
 
 func Previous() {
-	logger.Debug("player controls requested to play previous track")
-	disableGaplessPlayback = true
-	playPreviousTrack()
-	disableGaplessPlayback = false
+	ok, position := playbin.QueryPosition(gst.FormatTime)
+	if (ok && time.Duration(position) > 5*time.Second) || History.Peek() == nil {
+		logger.Debug("above the 5 second mark, replaying song", "action", "previous")
+		SeekToPosition(0, false)
+		return
+	}
+
+	previousTrack, err := previousTrack(false)
+	if err != nil {
+		logger.Error("failed to get previous track", "error", err)
+		return
+	}
+	currentTrack := tonearm.Track(TrackChanged.CurrentValue())
+	if currentTrack != nil {
+		UserQueue.Prepend(currentTrack)
+	}
+
+	stateMachine.Fire(statemachine.TRIGGER_PLAY_TRACK, previousTrack, false)
 }
 
 func SeekToPercent(percent float64) {
@@ -86,72 +82,14 @@ func SeekToPercent(percent float64) {
 	SeekToPosition(time.Duration(int64(position)), false)
 }
 
-var (
-	seekMutex    sync.Mutex
-	seekDebounce *time.Timer
-)
-
-func seekToPosition(position time.Duration) {
-	playbin.SeekTime(position, gst.SeekFlagFlush|gst.SeekFlagKeyUnit)
-}
-
-func seekToPositionPrecise(position time.Duration) {
-	playbin.SeekTime(position, gst.SeekFlagFlush|gst.SeekFlagAccurate)
-}
-
 func SeekToPosition(position time.Duration, precise bool) {
 	logger.Debug("player controls requested to seek to position", "position", position)
-	go func() {
-		seekMutex.Lock()
-		defer seekMutex.Unlock()
-
-		if seekDebounce != nil {
-			seekDebounce.Stop()
-		} else {
-			playbin.SetState(gst.StatePaused)
-			if updateRunnerSourceHandle != 0 {
-				stopUpdateRunner()
-			}
-		}
-
-		seekDebounce = time.AfterFunc(500*time.Millisecond, func() {
-			seekMutex.Lock()
-			defer seekMutex.Unlock()
-
-			PlaybackStateChanged.Notify(func(oldValue *PlaybackState) *PlaybackState {
-				newState := *oldValue
-				newState.Position = position
-				newState.IsSeeking = true
-				return &newState
-			})
-
-			if precise {
-				seekToPositionPrecise(position)
-			} else {
-				seekToPosition(position)
-			}
-			if PlaybackStateChanged.CurrentValue().Status == PlaybackStatusPlaying {
-				playbin.SetState(gst.StatePlaying)
-				startUpdateRunner()
-			}
-
-			seekDebounce = nil
-		})
-	}()
-}
-
-func SeekToPositionRelative(delta time.Duration) {
-	SeekToPosition(PlaybackStateChanged.CurrentValue().Position+delta, false)
-}
-
-func SetRepeatMode(m RepeatMode) {
-	if m == RepeatModeChanged.CurrentValue() {
-		return
+	if precise {
+		playbin.SeekTime(position, gst.SeekFlagFlush|gst.SeekFlagAccurate)
+	} else {
+		playbin.SeekTime(position, gst.SeekFlagFlush|gst.SeekFlagKeyUnit)
 	}
-
-	RepeatModeChanged.Notify(func(oldValue RepeatMode) RepeatMode {
-		return m
-	})
+	Seeked.Notify(position)
 }
 
 func SetVolume(volume float64) {
@@ -168,11 +106,33 @@ func SetVolume(volume float64) {
 
 func Stop() {
 	logger.Debug("player controls requested to stop")
-	playbin.SetState(gst.StateNull)
+	SourceChanged.Set(nil)
+	stateMachine.Fire(statemachine.TRIGGER_STOP)
+}
+
+func SetRepeatMode(m RepeatMode) {
+	if m == RepeatModeChanged.CurrentValue() {
+		return
+	}
+
+	RepeatModeChanged.Notify(func(oldValue RepeatMode) RepeatMode {
+		return m
+	})
+}
+
+func SetShuffle(shuffle bool, currentTrackID string) {
+	if shuffle {
+		BaseQueue.Shuffle(currentTrackID)
+	} else {
+		BaseQueue.Restore(currentTrackID)
+	}
+	ShuffleStateChanged.Set(shuffle)
 }
 
 func ToggleShuffle() {
-	ShuffleStateChanged.Notify(func(oldValue bool) bool {
-		return !oldValue
-	})
+	currentTrack := ""
+	if current := TrackChanged.CurrentValue(); current != nil {
+		currentTrack = current.ID()
+	}
+	SetShuffle(!BaseQueue.IsShuffled(), currentTrack)
 }
