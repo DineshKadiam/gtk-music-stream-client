@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
 	"strings"
 
 	"codeberg.org/dergs/tonearm/internal/settings"
@@ -13,12 +12,13 @@ import (
 )
 
 func (s *SearchResults) Search(ctx context.Context, query string, include ...string) (*openapi.SearchResult, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/searchResults/%s", settings.ServiceTidal().OpenAPIBaseURL(), url.PathEscape(query)), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/searchResults", settings.ServiceTidal().OpenAPIBaseURL()), nil)
 	if err != nil {
 		return nil, err
 	}
 
 	params := req.URL.Query()
+	params.Set("filter[query]", query)
 	params.Set("include", strings.Join(include, ","))
 	req.URL.RawQuery = params.Encode()
 

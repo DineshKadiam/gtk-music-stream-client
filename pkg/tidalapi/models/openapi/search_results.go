@@ -1,6 +1,6 @@
 package openapi
 
-type SearchResult Response[SearchResultData]
+type SearchResult Response[[]SearchResultData]
 
 const ObjectTypeSearchResult = "searchResult"
 
@@ -12,6 +12,8 @@ type SearchResultData struct {
 }
 
 type SearchResultAttributes struct {
+	DidYouMean string `json:"didYouMean"`
+	Query      string `json:"query"`
 	TrackingID string `json:"trackingId"`
 }
 
