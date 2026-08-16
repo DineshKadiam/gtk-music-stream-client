@@ -46,6 +46,29 @@
   <url type="contact">https://matrix.to/#/%23tonearm:derg.social</url>
 
   <releases>
+    <release version="1.5.0" date="2026-08-16">
+        <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.5.0</url>
+        <description>
+            <p>Bug Fixes:</p>
+            <ul>
+                <li>Fixed a bug where track radios would fail to load</li>
+                <li>Fixed a bug where long tracks could be scrobbled more than once</li>
+                <li>Fixed a bug where an MPRIS error could crash Tonearm</li>
+                <li>Fixed a bug where gapless playback could have noticeable gaps between tracks</li>
+                <li>Fixed a bug where an upstream API change broke search</li>
+                <li>Fixed a bug where scroll edges were incorrectly positioned on several pages</li>
+                <li>Fixed the broken image cache and a related memory leak</li>
+            </ul>
+            <p>Improvements:</p>
+            <ul>
+                <li>Added animated covers to the player and tracklist headers</li>
+                <li>Added indicators for explicit and AI-generated tracks</li>
+                <li>Tracks that are unavailable for streaming are now visibly disabled</li>
+                <li>Reworked the player internals to prevent race conditions and improve playback reliability</li>
+                <li>Added Vietnamese translations</li>
+            </ul>
+        </description>
+    </release>
     <release version="1.4.2" date="2026-06-07">
         <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.4.2</url>
         <description>
