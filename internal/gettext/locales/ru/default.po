@@ -8,21 +8,24 @@ msgstr ""
 "Project-Id-Version: v1.4.2-21-g67c07b4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-08 22:44+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-08-21 14:25+0000\n"
+"Last-Translator: Zellrus <zellrus@noreply.codeberg.org>\n"
+"Language-Team: Russian <https://translate.codeberg.org/projects/tonearm/"
+"tonearm/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2026.8.1\n"
 
 #: internal/ui/components/tracklist_header/tracklist_header_artist.go:25
 msgid "%d Fan"
 msgid_plural "%d Fans"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d подписчик"
+msgstr[1] "%d подписчика"
+msgstr[2] "%d подписчиков"
 
 #: internal/ui/components/media_card/playlist.go:20
 #: internal/ui/components/shortcut_list/playlist.go:14
@@ -39,50 +42,50 @@ msgstr[1] ""
 
 #: internal/ui/routes/feed.go:145
 msgid "%s and %s"
-msgstr ""
+msgstr "%s и %s"
 
 #: internal/ui/window_preferences.go:52
 msgid "API Base URL"
-msgstr ""
+msgstr "Базовый URL API"
 
 #: internal/ui/window_sidebar.go:35
 msgid "About Tonearm"
-msgstr ""
+msgstr "О Tonearm"
 
 #: internal/ui/components/tracklist_header/tracklist_header_album.go:57
 msgid "Add Album to Queue"
-msgstr ""
+msgstr "Добавить альбом в очередь"
 
 #: internal/ui/components/tracklist_header/tracklist_header_collection.go:30
 #: internal/ui/routes/my_collection/tracks.go:52
 msgid "Add My Tracks to Queue"
-msgstr ""
+msgstr "Добавить мои треки в очередь"
 
 #: internal/ui/components/tracklist_header/tracklist_header_playlist.go:47
 msgid "Add Playlist to Queue"
-msgstr ""
+msgstr "Добавить плейлист в очередь"
 
 #: internal/ui/components/tracklist_header/tracklist_header_artist.go:30
 msgid "Add Top Tracks to Queue"
-msgstr ""
+msgstr "Добавить лучшие треки в очередь"
 
 #: internal/ui/components/favourite_button/favourite_button.go:55
 #: internal/ui/components/favourite_button/favourite_button.go:90
 #: internal/ui/components/sidebar/player/component_action_row.go:125
 #: internal/ui/components/sidebar/player/component_action_row.go:146
 msgid "Add to Collection"
-msgstr ""
+msgstr "Добавить в коллекцию"
 
 #: internal/ui/components/tracklist/column_controls.go:59
 msgid "Add to Queue"
-msgstr ""
+msgstr "Добавить в очередь"
 
 #: internal/settings/playback.go:23
 #: internal/ui/routes/album.go:30
 #: internal/ui/routes/album.go:35
 #: internal/ui/routes/album.go:40
 msgid "Album"
-msgstr ""
+msgstr "Альбом"
 
 #: internal/ui/routes/feed.go:153
 msgid "Album by %s"
@@ -91,11 +94,11 @@ msgstr ""
 #: internal/ui/routes/my-collection.go:52
 #: internal/ui/routes/search/top.go:31
 msgid "Albums"
-msgstr ""
+msgstr "Альбомы"
 
 #: internal/ui/window_preferences.go:23
 msgid "Allow Background Activity"
-msgstr ""
+msgstr "Разрешить работу в фоновом режиме"
 
 #: internal/ui/window_preferences.go:111
 msgid "Allow Media Card Images"
@@ -120,68 +123,74 @@ msgstr ""
 #: internal/ui/window_preferences.go:130
 msgid "Allow Tonearm to retain recently loaded images in memory to improve performance and reduce network traffic (estimated 50 MiB limit)"
 msgstr ""
+"Разрешить Tonearm сохранять недавно загруженные изображения в памяти, чтобы "
+"повысить производительность и снизить сетевой трафик (лимит - около 50 МиБ)"
 
 #: internal/ui/window_preferences.go:24
 msgid "Allow Tonearm to run in the background by hiding the player window instead of quitting the application"
 msgstr ""
+"Разрешить Tonearm работать в фоновом режиме, скрывая окно плеера вместо "
+"выхода из приложения"
 
 #: internal/ui/window_preferences.go:167
 msgid "Allow Tonearm to send scrobbling data to Last.fm"
-msgstr ""
+msgstr "Разрешить Tonearm отправлять данные о прослушивании в Last.fm"
 
 #: internal/ui/window_preferences.go:147
 msgid "Allow Tonearm to send scrobbling data to ListenBrainz"
-msgstr ""
+msgstr "Разрешить Tonearm отправлять данные о прослушивании в ListenBrainz"
 
 #: internal/ui/window_preferences.go:85
 msgid "Allow Tonearm to start a mix with the current playing song when you're at the end of an album/queue"
 msgstr ""
+"Разрешить Tonearm запускать микс с текущего трека по окончании альбома или "
+"очереди"
 
 #: internal/ui/window_preferences.go:123
 msgid "Allow Tracklist Images"
-msgstr ""
+msgstr "Разрешить изображения в списке треков"
 
 #: internal/ui/components/sidebar/player/component_action_row.go:227
 msgid "An error occurred while fetching the track mix"
-msgstr ""
+msgstr "Произошла ошибка при загрузке микса"
 
 #: internal/ui/window_preferences.go:265
 msgid "An error occurred while logging in to Last.fm"
-msgstr ""
+msgstr "Произошла ошибка при входе в Last.fm"
 
 #: internal/ui/window_preferences.go:240
 msgid "An error occurred while logging out of Last.fm"
-msgstr ""
+msgstr "Произошла ошибка при выходе из Last.fm"
 
 #: internal/ui/routes/album.go:67
 #: internal/ui/routes/album.go:74
 msgid "An error occurred while playing the album"
-msgstr ""
+msgstr "Произошла ошибка при воспроизведении альбома"
 
 #: internal/ui/routes/playlist.go:68
 #: internal/ui/routes/playlist.go:75
 msgid "An error occurred while playing the playlist"
-msgstr ""
+msgstr "Произошла ошибка при воспроизведении плейлиста"
 
 #: internal/ui/routes/artist.go:55
 #: internal/ui/routes/artist.go:62
 msgid "An error occurred while playing the top tracks"
-msgstr ""
+msgstr "Произошла ошибка при воспроизведении популярных треков"
 
 #: internal/ui/routes/album.go:47
 #: internal/ui/routes/playlist.go:52
 msgid "An error occurred while playing the track"
-msgstr ""
+msgstr "Произошла ошибка при воспроизведении трека"
 
 #: internal/ui/routes/my_collection/tracks.go:65
 #: internal/ui/routes/my_collection/tracks.go:71
 msgid "An error occurred while playing the tracks"
-msgstr ""
+msgstr "Произошла ошибка при воспроизведении треков"
 
 #: internal/ui/routes/my_collection/tracks.go:79
 #: internal/ui/routes/my_collection/tracks.go:85
 msgid "An error occurred while shuffling the tracks"
-msgstr ""
+msgstr "Произошла ошибка при перемешивании треков"
 
 #: internal/secrets/service_linux.go:47
 msgid ""
@@ -197,40 +206,40 @@ msgstr ""
 #: internal/ui/routes/artist.go:40
 #: internal/ui/routes/artist.go:49
 msgid "Artist"
-msgstr ""
+msgstr "Исполнитель"
 
 #: internal/ui/routes/my-collection.go:47
 #: internal/ui/routes/search/top.go:17
 msgid "Artists"
-msgstr ""
+msgstr "Исполнители"
 
 #: internal/ui/window_preferences.go:57
 msgid "Auth Base URL"
-msgstr ""
+msgstr "Базовый URL для аутентификации"
 
 #: internal/ui/components/auth_required.go:13
 msgid "Authentication Required"
-msgstr ""
+msgstr "Требуется аутентификация"
 
 #: internal/settings/playback.go:22
 msgid "Auto"
-msgstr ""
+msgstr "Автоматически"
 
 #: internal/ui/window_shortcuts.go:19
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: internal/ui/window_preferences.go:29
 msgid "Background Activity"
-msgstr ""
+msgstr "Фоновая активность"
 
 #: internal/ui/window_preferences.go:72
 msgid "Base URLs"
-msgstr ""
+msgstr "Базовые URL"
 
 #: internal/ui/window_shortcuts.go:17
 msgid "Basic Shortcuts"
-msgstr ""
+msgstr "Базовые сочетания клавиш"
 
 #: internal/ui/window_preferences.go:129
 msgid "Cache Images"
@@ -238,11 +247,11 @@ msgstr ""
 
 #: internal/features/scrobbling/lastfm.go:65
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: internal/ui/components/linking/linking.go:86
 msgid "Cancel Login"
-msgstr ""
+msgstr "Отменить вход"
 
 #: internal/ui/window_preferences.go:97
 msgid "Choose whether Tonearm should prefer album replay gain, track replay gain or decide automatically"
@@ -250,23 +259,23 @@ msgstr ""
 
 #: internal/ui/window_shortcuts.go:11
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: internal/ui/window_content.go:25
 msgid "Collection"
-msgstr ""
+msgstr "Медиатека"
 
 #: internal/ui/window_preferences.go:294
 msgid "Configure Tonearm to send scrobbling data to Last.fm"
-msgstr ""
+msgstr "Настройте Tonearm для отправки данных о прослушивании в Last.fm"
 
 #: internal/ui/window_preferences.go:163
 msgid "Configure Tonearm to send scrobbling data to ListenBrainz"
-msgstr ""
+msgstr "Настройте Tonearm для отправки данных о прослушивании в ListenBrainz"
 
 #: internal/ui/window_preferences.go:73
 msgid "Configure the base URLs for TIDAL"
-msgstr ""
+msgstr "Настройте базовые URL для TIDAL"
 
 #: internal/ui/window_preferences.go:134
 msgid "Configure the behaviour of Tonearm regarding images"
