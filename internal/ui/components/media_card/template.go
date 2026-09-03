@@ -27,10 +27,15 @@ func Card[T any](title string, subTitle schwifty.Widgetable[T], cover tonearm.Co
 			VStack(
 				Image().
 					PixelSize(172).
+					Background("var(--sidebar-bg-color)").
 					FromPaintable(resources.MissingAlbum()).
 					ConnectRealize(func(i gtk.Widget) {
 						if settings.Performance().AllowMediaCardImages() {
-							injector.MustInject[*imgutil.ImgUtil]().LoadIntoImageCropped(cover.Static(), gtk.ImageNewFromInternalPtr(i.Ptr))
+							if cover.HasStatic() {
+								injector.MustInject[*imgutil.ImgUtil]().LoadIntoImageCropped(cover.Static(), gtk.ImageNewFromInternalPtr(i.Ptr))
+							} else {
+								gtk.ImageNewFromInternalPtr(i.Ptr).SetFromPaintable(resources.MissingAlbum())
+							}
 						}
 					}).CornerRadius(10).Overflow(gtk.OverflowHiddenValue),
 				Label(title).
