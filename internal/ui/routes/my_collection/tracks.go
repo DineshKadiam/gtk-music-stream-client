@@ -26,8 +26,7 @@ import (
 
 func Tracks() *router.Response {
 	logger := slog.With("module", "ui").WithGroup("ui").With("route", "my_collection").WithGroup("my_collection")
-	userId := secrets.UserID()
-	if userId == "" {
+	if !secrets.HasRefreshToken() {
 		return &router.Response{
 			PageTitle: gettext.Get("My Collection"),
 			View:      components.AuthRequired(gettext.Get("Please sign in to view your collection")),
@@ -35,14 +34,14 @@ func Tracks() *router.Response {
 	}
 
 	tidal := injector.MustInject[*tidalapi.TidalAPI]()
-	paginator := openapi.NewPaginator(tidal.OpenAPI.V2.UserCollections.Tracks, userId, func(r *modelopenapi.Response[[]modelopenapi.Relationship]) []tonearm.Track {
+	paginator := openapi.NewPaginator(tidal.OpenAPI.V2.UserCollections.Tracks, "me", func(r *modelopenapi.Response[[]modelopenapi.Relationship]) []tonearm.Track {
 		results := r.Included.Tracks(r.Data...)
 		tracks := make([]tonearm.Track, len(results))
 		for i, track := range results {
 			tracks[i] = openapi.NewTrack(track)
 		}
 		return tracks
-	}, "tracks.artists", "tracks.albums.coverArt")
+	}, "items.artists", "items.albums.coverArt")
 
 	page, err := pages.NewPaginatedTracklistPage(paginator, func(tl *tracklist.TrackList) schwifty.BaseWidgetable {
 		return tl.HMargin(40).VAlign(gtk.AlignStartValue)

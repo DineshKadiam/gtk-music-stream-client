@@ -12,7 +12,7 @@ import (
 )
 
 func (p *UserCollections) Playlists(ctx context.Context, id string, cursor string, include ...string) (*openapi.Response[[]openapi.Relationship], error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/userCollections/%s/relationships/playlists", settings.ServiceTidal().OpenAPIBaseURL(), id), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/v2/userCollectionPlaylists/%s/relationships/items", settings.ServiceTidal().OpenAPIBaseURL(), id), nil)
 	if err != nil {
 		return nil, err
 	}

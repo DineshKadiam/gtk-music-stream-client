@@ -17,17 +17,16 @@ import (
 
 func Artists() *router.Response {
 	tidal := injector.MustInject[*tidalapi.TidalAPI]()
-	userId := secrets.UserID()
-	if userId == "" {
+	if !secrets.HasRefreshToken() {
 		return &router.Response{
 			PageTitle: gettext.Get("My Collection"),
 			View:      components.AuthRequired(gettext.Get("Please sign in to view your collection")),
 		}
 	}
 
-	paginator := pagination.NewPaginator(tidal.OpenAPI.V2.UserCollections.Artists, userId, func(r *modelopenapi.Response[[]modelopenapi.Relationship]) []modelopenapi.Artist {
+	paginator := pagination.NewPaginator(tidal.OpenAPI.V2.UserCollections.Artists, "me", func(r *modelopenapi.Response[[]modelopenapi.Relationship]) []modelopenapi.Artist {
 		return r.Included.Artists(r.Data...)
-	}, "artists.profileArt")
+	}, "items.profileArt")
 
 	page, err := pages.NewPaginatedMediaCardPage(paginator, func(artist modelopenapi.Artist) schwifty.BaseWidgetable {
 		return media_card.NewArtist(openapi.NewArtistInfo(artist))
