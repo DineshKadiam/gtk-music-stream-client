@@ -46,6 +46,20 @@
   <url type="contact">https://matrix.to/#/%23tonearm:derg.social</url>
 
   <releases>
+    <release version="1.5.1" date="2026-09-24">
+        <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.5.1</url>
+        <description>
+            <p>Bug Fixes:</p>
+            <ul>
+                <li>Fixed a bug where an upstream API change broke collection pages</li>
+            </ul>
+            <p>Improvements:</p>
+            <ul>
+                <li>Media cards now show a placeholder and background when artwork is missing</li>
+                <li>Added partial Russian translations</li>
+            </ul>
+        </description>
+    </release>
     <release version="1.5.0" date="2026-08-16">
         <url type="details">https://codeberg.org/dergs/Tonearm/releases/tag/v1.5.0</url>
         <description>
