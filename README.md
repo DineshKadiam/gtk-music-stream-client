@@ -1,3 +1,5 @@
+> Originally developed at [codeberg.org/dergs/Tonearm](https://codeberg.org/dergs/Tonearm) · GPL-3.0
+
 <div align="center">
 
   <a href="https://codeberg.org/dergs/Tonearm">
